@@ -1,1 +1,11 @@
-//This comment will be removed after we wrote our code, its here just for pushing.
+import React, { Component } from "react";
+class chooseFolder extends Component {
+  render() {
+    return (
+      <div className="">
+    </div>
+    );
+  }
+}
+
+export default chooseFolder;
