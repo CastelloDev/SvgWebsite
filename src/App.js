@@ -1,4 +1,3 @@
-import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import chooseFolder from "../src/components/chooseFolder/chooseFolder";
 class App extends Component {
