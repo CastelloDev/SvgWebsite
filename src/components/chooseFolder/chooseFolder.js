@@ -10,7 +10,7 @@ class chooseFolder extends Component {
 
   render() {
     return (
-      <div className="upload">
+      <div>
         <input directory=""  webkitdirectory="" type="file" onChange={this.onChangeHandler} />
 
        </div>
