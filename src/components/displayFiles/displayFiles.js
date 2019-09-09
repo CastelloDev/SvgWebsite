@@ -25,23 +25,7 @@ class displayFolder extends Component {
       }
       }
 
-      
 
-      async componentWillMount(){
-            if((directory != null || directory != undefined) || (fileNames != null || fileNames != undefined) ){
-                    //populate a list with file name
-
-            }else{
-                    //inform screen that the choosen folder is empty
-
-            }
-
-      }
-      
-    onApplyButton(){
-        
-    }
-     
     onBackButton(){
       this.setState({
         shouldDisplayFolderButton:!shouldDisplayFolderButton
