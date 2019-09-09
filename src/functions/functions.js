@@ -16,6 +16,10 @@ export const getFileData = fileDirectory => {
     return fs.readFileSync(fileDirectory);
 };
 
+export const writeFileData = fileDirectory => {
+    return fs.readFileSync(fileDirectory);
+};
+
 export const exportSvg = (svgo, data, fileName) => {
     svgo
         .optimize(data)
