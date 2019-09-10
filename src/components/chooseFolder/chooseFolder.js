@@ -1,19 +1,28 @@
 import React, { Component } from "react";
 class chooseFolder extends Component {
-    onChangeHandler=event=>{
-      console.log(event.target.files);
-    this.setState({
-      selectedFile: event.target.files[0],
-      loaded: 0,
-    })
+  constructor(props){
+    super(props)
+    this.state={
+      path:[]
+
+    }
   }
 
+  onChangeHandler=event=>{
+     this.setState({path:event.target.files})
+  }
+
+
   render() {
+    for(var item of this.state.path) {
+      console.log(item);
+    }
+  
     return (
       <div>
-        <input directory=""  webkitdirectory="" type="file" onChange={this.onChangeHandler} />
-
-       </div>
+        <input  webkitdirectory="" type="file" onChange={this.onChangeHandler} />
+      </div>
+     
     );
   }
 }
