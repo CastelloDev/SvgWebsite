@@ -1,20 +1,16 @@
 import React, { Component } from "react";
 class chooseFolder extends Component {
-
-  constructor(props) {
+ constructor(props) {
     super(props);
     this.state={
       path:[],
       arr:null,
        displayMenu: false,
-       count:0
-
     }
- 
     this.showDropdownMenu = this.showDropdownMenu.bind(this);
     this.hideDropdownMenu = this.hideDropdownMenu.bind(this);
-   
-  }
+  } 
+
   showDropdownMenu(event) {
     event.preventDefault();
     this.setState({ displayMenu: true }, () => {
