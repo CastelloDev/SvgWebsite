@@ -6,9 +6,9 @@ import "./App.scss";
 class App extends Component {
   render() {
     return (
-      <div className="app">
+      <div>
         <BrowserRouter>
-          <div className="h-100">
+          <div>
             <Switch>
               <Route path="/choosefile" component={chooseFolder} />
               <Route path="/displaySvg" component={displaySvg} />
