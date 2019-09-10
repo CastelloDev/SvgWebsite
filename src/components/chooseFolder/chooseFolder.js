@@ -2,11 +2,10 @@ import React, { Component } from "react";
 class chooseFolder extends Component {
  constructor(props) {
     super(props);
-    this.state={
+    this.state = {
       path:[],
       arr:null,
        displayMenu: false,
-    }
     this.showDropdownMenu = this.showDropdownMenu.bind(this);
     this.hideDropdownMenu = this.hideDropdownMenu.bind(this);
   } 
@@ -24,9 +23,9 @@ class chooseFolder extends Component {
     });
 
   }
-  onChangeHandler=event=>{
-     this.setState({path:event.target.files})
-  }
+  onChangeHandler = event => {
+    this.setState({ path: event.target.files });
+  };
 
   render() {
    var arr = [];
@@ -34,7 +33,7 @@ class chooseFolder extends Component {
       if(key<this.state.path.length){
       arr.push(this.state.path[key]);
   }
-  
+
 }
    const listItems = arr.map((item,key) =>
     <li key={key}>{item.name}</li>
