@@ -11,8 +11,7 @@ class chooseFolder extends Component {
   onChangeHandler=event=>{
      this.setState({path:event.target.files})
   }
-
-
+  
   render() {
     for(var item of this.state.path) {
       console.log(item);
