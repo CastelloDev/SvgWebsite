@@ -6,6 +6,7 @@ class chooseFolder extends Component {
       path:[],
       arr:null,
        displayMenu: false,
+    }
     this.showDropdownMenu = this.showDropdownMenu.bind(this);
     this.hideDropdownMenu = this.hideDropdownMenu.bind(this);
   } 
