@@ -4,7 +4,6 @@ class chooseFolder extends Component {
     return (
       <div>
         <div >
-       
         </div>
       </div>
     );
