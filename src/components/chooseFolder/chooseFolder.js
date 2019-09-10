@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import DisplaySvg from "../../components/displaySvg/displaySvg";
 class chooseFolder extends Component {
   render() {
     return (
