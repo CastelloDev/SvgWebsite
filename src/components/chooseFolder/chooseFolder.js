@@ -7,8 +7,7 @@ class chooseFolder extends Component {
     super(props);
     this.state = {
       path:[],
-      arr:null,
-       displayMenu: false,
+      displayMenu: false,
     }
   } 
 
@@ -28,6 +27,7 @@ class chooseFolder extends Component {
   onChangeHandler = event => {
     this.setState({ path: event.target.files });
   };
+  
 
   render() {
    const arr = [];
@@ -38,7 +38,7 @@ class chooseFolder extends Component {
 
 }
    const listItems = arr.map((item,key) =>
-  <CheckBoxSelection arrayOfItems={item.name}/>
+  <CheckBoxSelection filenames={item.name}/>
      );
     return (
       <div className="main" >
@@ -50,18 +50,10 @@ class chooseFolder extends Component {
         <div className="myfiles">
             <button onClick={this.showDropdownMenu}> Files to optimize </button>
         </div>
-         
-           { this.state.displayMenu ? (
-             <div className="myfolderfiles">
+          <div className={`myfolderfiles ${this.state.displayMenu}`}  >
              {listItems}
             </div>
-          
-        ):
-        (
-          null
-        )
-        }
-      </div>
+            </div>
     );
   }
 }

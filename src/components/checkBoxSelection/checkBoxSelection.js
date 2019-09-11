@@ -15,19 +15,10 @@ class CheckBoxSelection extends Component {
 	}
 
 	componentWillMount() {
-		if (this.props.isSelected) {
-			this.setState({
-				isClicked: true
-			});
-		} else if (!this.props.isSelected) {
-			this.setState({
-				isClicked: false
-			});
-		}
+	 this.setState({ isClicked: this.props.isSelected }) 
 	}
 
 	render() {
-    const arrayOfFiles = this.props.arrayOfItems;
 		return (
 				<div
 					className={this.state.isClicked ? 'checkbox-container-clicked' : 'checkbox-container-unclicked'}
@@ -39,7 +30,7 @@ class CheckBoxSelection extends Component {
 						checked={this.state.isClicked}
 					/>
 					<label className="checkbox-label">
-					  {arrayOfFiles}
+					  {this.props.filenames}
 					</label>
 				</div>
 		);
