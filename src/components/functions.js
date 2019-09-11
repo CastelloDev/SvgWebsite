@@ -5,5 +5,5 @@ export default  function optimizeSvg(dataUrl){
     .then(res => {
       return res.data;
     })
-    .catch();
+    .catch(err => console.log(err));
 }
