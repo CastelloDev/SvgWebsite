@@ -29,6 +29,7 @@ class CheckBoxSelection extends Component {
 	}
 
 	render() {
+    const arrayOfFiles = this.props.arrayOfItems
 		return (
 				<div
 					className={this.state.isClicked ? 'checkbox-container-clicked' : 'checkbox-container-unclicked'}
@@ -37,11 +38,10 @@ class CheckBoxSelection extends Component {
 					<input
 						className="checkbox-input"
 						type="checkbox"
-						name={this.props.name}
 						checked={this.state.isClicked}
 					/>
 					<label className="checkbox-label">
-					  File Name Here
+					  {arrayOfFiles}
 					</label>
 				</div>
 		);

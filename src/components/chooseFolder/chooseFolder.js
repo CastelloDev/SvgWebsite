@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import './../checkBoxSelection/checkBoxSelection.scss';
+
+import CheckBoxSelection from "../checkBoxSelection/checkBoxSelection";
 class chooseFolder extends Component {
  constructor(props) {
     super(props);
@@ -37,27 +40,30 @@ class chooseFolder extends Component {
   
 }
    const listItems = arr.map((item,key) =>
-    <li key={key}>{item.name}</li>
+  <CheckBoxSelection arrayOfItems={item.name}/>
      );
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
+      <div className="main" >
+        <div className="myfiles">
+         <label >
           <input type="file"   webkitdirectory=""   onChange={this.onChangeHandler} />
         </label>
-        <br />
-         <br />  
-         <button className="button" onClick={this.showDropdownMenu}> Files to optimize </button>
+        </div>
+        <div className="myfiles">
+            <button onClick={this.showDropdownMenu}> Files to optimize </button>
+        </div>
+         
            { this.state.displayMenu ? (
-          <ul>
-            {listItems}
-          </ul>
+             <div className="myfolderfiles">
+             {listItems}
+            </div>
+          
         ):
         (
           null
         )
         }
-        <br />
-      </form>
+      </div>
     );
   }
 }

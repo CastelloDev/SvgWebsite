@@ -1,19 +1,34 @@
 .checkbox-container-clicked {
 	background-color: yellow;
-	width: 200px;
-	height: 90px;
-	margin: 0 auto;
+	width: 80%;
+	height: 10%;
+	margin-right: 0px;
+	margin-left: 0px;
 }
 
 .checkbox-container-unclicked {
-	background-color: green;
-	width: 200px;
-	height: 90px;
-	margin: 0 auto;
+	background-color: white;
+	width: 80%;
+	height: 10%;
+	margin-right: 0px;
+	margin-left: 0px;
+	border: 1px solid black;
 }
 
 .checkbox-input,
 .checkbox-label {
 	margin-top: 12%;
 	margin-left: 12%;
+}
+
+.main {
+	display: flex;
+	flex-direction: column;
+}
+.myfiles {
+	display: flex;
+	margin-top: 20px;
+}
+.myfolderfiles {
+	margin-top: 20px;
 }
