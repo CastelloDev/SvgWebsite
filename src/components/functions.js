@@ -1,8 +1,8 @@
 import axios from 'axios';
-import BASE_URL from '../constants/constants';
+import {BASE_URL,OPTIMIZE_SVG} from '../constants/constants';
 
 export default  function optimizeSvg(dataUrl){
-  return axios.post(`${BASE_URL}optimizeSvg`, { dataUrl })
+  return axios.post(`${BASE_URL}${OPTIMIZE_SVG}`, { dataUrl })
     .then(res => {
       return res.data;
     })
