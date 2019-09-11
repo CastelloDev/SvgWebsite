@@ -3,14 +3,12 @@ import './checkBoxSelection.scss';
 class CheckBoxSelection extends Component {
 	constructor(props) {
 		super(props);
-
-		this.state = {
+      this.state = {
 			isClicked: false
 		};
-		this.handleDivClick = this.handleDivClick.bind(this);
 	}
 
-	handleDivClick() {
+	handleDivClick= () => {
 		this.setState({
 			isClicked: !this.state.isClicked
 		});
@@ -29,7 +27,7 @@ class CheckBoxSelection extends Component {
 	}
 
 	render() {
-    const arrayOfFiles = this.props.arrayOfItems
+    const arrayOfFiles = this.props.arrayOfItems;
 		return (
 				<div
 					className={this.state.isClicked ? 'checkbox-container-clicked' : 'checkbox-container-unclicked'}

@@ -10,18 +10,16 @@ class chooseFolder extends Component {
       arr:null,
        displayMenu: false,
     }
-    this.showDropdownMenu = this.showDropdownMenu.bind(this);
-    this.hideDropdownMenu = this.hideDropdownMenu.bind(this);
   } 
 
-  showDropdownMenu(event) {
+  showDropdownMenu = event => {
     event.preventDefault();
     this.setState({ displayMenu: true }, () => {
     document.addEventListener('click', this.hideDropdownMenu);
     });
   }
 
-  hideDropdownMenu() {
+  hideDropdownMenu = () => {
     this.setState({ displayMenu: true }, () => {
       document.removeEventListener('click', this.hideDropdownMenu);
     });
@@ -32,7 +30,7 @@ class chooseFolder extends Component {
   };
 
   render() {
-   var arr = [];
+   const arr = [];
    for (var key in this.state.path) {
       if(key<this.state.path.length){
       arr.push(this.state.path[key]);
