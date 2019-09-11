@@ -46,7 +46,7 @@ class chooseFolder extends Component {
 				<div className="myfiles">
 					<button onClick={this.showDropdownMenu}> Files to optimize </button>
 				</div>
-				<div className={`myfolderfiles ${this.state.displayMenu}`}>
+				<div className={this.state.displayMenu ? 'show-file-list':"hide-file-list"}>
 					{listOfFileNames}
 				</div>
 			</div>
