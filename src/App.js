@@ -1,23 +1,23 @@
-import React, { Component } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import chooseFolder from "../src/components/chooseFolder/chooseFolder";
-import displaySvg from "../src/components/displaySvg/displaySvg";
-import "./App.scss";
+import React, { Component } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import ChooseFolder from '../src/components/chooseFolder/chooseFolder';
+import DisplaySvg from '../src/components/displaySvg/displaySvg';
+import './App.scss';
 class App extends Component {
-  render() {
-    return (
-      <div>
-        <BrowserRouter>
-          <div>
-            <Switch>
-              <Route path="/choosefile" component={chooseFolder} />
-              <Route path="/displaySvg" component={displaySvg} />
-            </Switch>
-          </div>
-        </BrowserRouter>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div>
+                <BrowserRouter>
+                    <div>
+                        <Switch>
+                            <Route path='/choosefile' component={ChooseFolder} />
+                            <Route path='/displaySvg' component={DisplaySvg} />
+                        </Switch>
+                    </div>
+                </BrowserRouter>
+            </div>
+        );
+    }
 }
 
 export default App;
