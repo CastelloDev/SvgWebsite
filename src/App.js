@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import chooseFolder from "../src/components/chooseFolder/chooseFolder";
 import displaySvg from "../src/components/displaySvg/displaySvg";
 import "./App.scss";
-import svgSettingArray from "./components/svgSetting/svgSettingArray" ;
+import svgSettingOptions from "./components/svgSetting/svgSettingOptions" ;
 class App extends Component {
   render() {
     return (
@@ -13,7 +13,7 @@ class App extends Component {
             <Switch>
               <Route path="/choosefile" component={chooseFolder} />
               <Route path="/displaySvg" component={displaySvg} />
-               <Route path="/svgCardSetting" component={svgSettingArray} />
+               <Route path="/svgSettingOptions" component={svgSettingOptions} />
             </Switch>
           </div>
         </BrowserRouter>

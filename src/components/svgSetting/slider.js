@@ -5,7 +5,7 @@ import "../checkBoxSelection/checkBoxSelection.scss";
     render() {
       return(
         <div >
-          {this.props.name}
+          {this.props.option}
           <div>
             <input  type="range" name="points"></input>
           </div>

@@ -1,22 +1,22 @@
 import React, { Component } from "react";
 import "./../checkBoxSelection/checkBoxSelection.scss";
-import {cardLayout} from "../svgSetting/svgCardLayout";
-import SvgSetting from "../svgSetting/svgSetting";
+import {cardLayout} from "./svgCardLayout";
+import SvgSetting from "./svgSetting";
 import Slider from "./slider";
-class svgSettingArray extends Component {
+class svgSettingOptions extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-		settingNamesList : []
+		settingOptionList : []
     }
 	}
 
    render() {
    	for(var key in cardLayout) {
 		  if(cardLayout[key].type==="checkbox"){
-					 this.state.settingNamesList.push(<SvgSetting key={key} name={cardLayout[key].text} />);
+					 this.state.settingOptionList.push(<SvgSetting key={key} option={cardLayout[key].text} />);
 			}else if(cardLayout[key].type==="slider"){
-					 this.state.settingNamesList.push(<div className="slider"><Slider key={key} name={cardLayout[key].text} /></div>);
+					 this.state.settingOptionList.push(<div className="slider"><Slider key={key} option={cardLayout[key].text} /></div>);
 			}
 		}
 	
@@ -26,10 +26,10 @@ class svgSettingArray extends Component {
 					<label> SVG settings </label>
 				</div>
 				<div >
-					{ this.state.settingNamesList}
+					{ this.state.settingOptionList}
 				</div>
 			</div>
 		);
 	}
 }
-export default svgSettingArray;
+export default svgSettingOptions;

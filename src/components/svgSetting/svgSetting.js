@@ -29,7 +29,7 @@ class SvgSetting extends Component {
 						checked={this.state.isClicked}
 					/>
 					<label className="checkbox-label-svg">
-                {this.props.name}
+                {this.props.option}
 					</label>
 				</div>
 		);
