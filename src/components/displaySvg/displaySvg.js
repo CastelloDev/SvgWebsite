@@ -5,9 +5,8 @@ class DisplaySvg extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fileSize: 0
+      fileSize: "0 "
     };
-    this.dataURLtoKilloBytes = this.dataURLtoKilloBytes.bind(this);
   }
 
   dataURLtoKilloBytes = dataURI => {
@@ -15,13 +14,11 @@ class DisplaySvg extends Component {
   };
 
   componentWillMount = () => {
-    console.log();
     if (this.props.dataUrl) {
       this.setState({
-        fileSize:
-          this.dataURLtoKilloBytes(
-            this.props.dataUrl.split(",")[1]
-          ).toString() + " KB"
+        fileSize:`${this.dataURLtoKilloBytes(
+          this.props.dataUrl.split(",")[1]
+        ).toString()}  KB`
       });
     }
   };
@@ -36,7 +33,7 @@ class DisplaySvg extends Component {
             height={this.props.height}
             alt="svg image"
           />
-          <figcaption>{"File Size : " + this.state.fileSize}</figcaption>
+          <figcaption> {`File Size : ${this.state.fileSize}`}</figcaption>
         </figure>
       </div>
     );
