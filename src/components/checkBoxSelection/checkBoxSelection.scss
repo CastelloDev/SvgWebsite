@@ -1,39 +1,61 @@
 .checkbox-container-clicked {
-	background-color: yellow;
-	width: 80%;
-	height: 10%;
-	margin-right: 0px;
-	margin-left: 0px;
+  background-color: yellow;
+  width: 80%;
+  height: 10%;
+  margin-right: 0px;
+  margin-left: 0px;
 }
 
 .checkbox-container-unclicked {
-	background-color: white;
-	width: 80%;
-	height: 10%;
-	margin-right: 0px;
-	margin-left: 0px;
-	border: 1px solid black;
+  background-color: white;
+  width: 80%;
+  height: 10%;
+  margin-right: 0px;
+  margin-left: 0px;
+  border: 1px solid black;
 }
 
 .checkbox-input,
 .checkbox-label {
-	margin-top: 12%;
-	margin-left: 12%;
+  margin-top: 12%;
+  margin-left: 12%;
+}
+.checkbox-input-svg,
+.checkbox-label-svg {
+  margin-top: 2%;
+  margin-left: 2%;
 }
 
 .main {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
-.myfiles {
-	display: flex;
-	margin-top: 20px;
+
+.file {
+  display: flex;
+  margin-top: 20px;
 }
+
 .myfolderfiles {
-	margin-top: 20px;
+  margin-top: 20px;
 }
 
 .hide-file-list {
-	margin-top: 20px;
-	display: none;
+  margin-top: 20px;
+  display: none;
+}
+
+.card-settings {
+  height: 600px;
+  overflow-y: scroll;
+  background-color: #b5cfe1;
+  width: 350px;
+  padding-left: 20px;
+  box-shadow: 10px 10px 55px 0px black;
+  z-index: 2;
+  margin-top: 20px;
+}
+
+.slider {
+  margin-top: 5px;
 }
