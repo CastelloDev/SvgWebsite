@@ -9,8 +9,8 @@ class chooseFolder extends Component {
 		this.state = {
 			path: [],
 			displayMenu: false,
-      dataUrl:"",
-      optimizeDataUrl:""
+      originalDataUrl:"",
+      optimizedDataUrl:""
     }
 	}
 
@@ -34,7 +34,7 @@ class chooseFolder extends Component {
   convertSvgToDataUrl=(file)=>{
     let reader  = new FileReader();
       reader.onload = (result)=>{
-        this.setState({dataUrl:result.target.result});
+        this.setState({originalDataUrl:result.target.result});
       }
       if (file) {
         reader.readAsDataURL(file);
@@ -43,7 +43,7 @@ class chooseFolder extends Component {
 
    optimizeSvgDataUrl= async (dataUrl) =>{
       let data= await optimizeSvg(dataUrl);
-      this.setState({optimizeDataUrl:data});
+      this.setState({optimizedDataUrl:data});
   }
 
   render() {
