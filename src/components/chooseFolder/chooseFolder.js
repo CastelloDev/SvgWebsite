@@ -42,8 +42,7 @@ class chooseFolder extends Component {
   }
 
    optimizeSvgDataUrl= async (dataUrl) =>{
-      let data= await optimizeSvg(dataUrl);
-      this.setState({optimizedDataUrl:data});
+      this.setState({optimizedDataUrl:await optimizeSvg(dataUrl)});
   }
 
   render() {
@@ -66,9 +65,6 @@ class chooseFolder extends Component {
 				<div className={this.state.displayMenu ? "show-file-list":"hide-file-list"}>
 					{listOfFileNames}
 				</div>
-				<div>
-				 <button onClick={this.convertSvgToDataUrl}>optimize</button>
-				 </div>
 			</div>
 		);
 	} 
