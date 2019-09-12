@@ -18,6 +18,10 @@ export default class NavBar extends Component {
                 <Link to='/displaySvg'>
                     <div>{'Display Svg'}</div>
                 </Link>                
+                <div>{' | '}</div>
+                <Link to='/reduxdemo'>
+                    <div>{'Redux Demo'}</div>
+                </Link>                
             </div>
         );
     }

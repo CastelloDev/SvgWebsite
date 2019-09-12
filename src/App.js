@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import ChooseFolder from '../src/components/chooseFolder/chooseFolder';
 import DisplaySvg from '../src/components/displaySvg/displaySvg';
 import NavBar from './components/NavBar/NavBar';
+import ReduxDemo from './components/ReduxDemo/ReduxDemo';
 import mainReducer from './store/mainReducer';
 import './App.scss';
 
@@ -20,6 +21,7 @@ class App extends Component {
                         <Switch>
                             <Route path='/choosefile' component={ChooseFolder} />
                             <Route path='/displaySvg' component={DisplaySvg} />
+                            <Route path='/reduxdemo' component={ReduxDemo} />
                         </Switch>
                     </div>
                 </BrowserRouter>
