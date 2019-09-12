@@ -1,3 +1,2 @@
-export const IMPORT_DIRECTORY = './src/svgs/';
-export const EXPORT_DIRECTORY = './src/optimizedSVGs/';
-export const CODE_ELEMENT = '<defs><style>.colour-class{fill:#FFFFFF;}</style></defs>';
+export const BASE_URL = "http://localhost:3500/";
+export const OPTIMIZE_SVG= "optimizeSvg";
