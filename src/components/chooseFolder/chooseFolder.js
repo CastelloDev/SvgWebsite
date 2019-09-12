@@ -9,6 +9,8 @@ class chooseFolder extends Component {
 		this.state = {
 			path: [],
 			displayMenu: false,
+      dataUrl:'',
+      optimizeDataUrl:''
     }
 	}
 
@@ -23,15 +25,27 @@ class chooseFolder extends Component {
 		this.setState({ displayMenu: true }, () => {
 			document.removeEventListener('click', this.hideDropdownMenu);
 		});
-	};
-	 onChangeHandler = event => {
+  };
+  
+	onChangeHandler = event => {
      this.setState({path:event.target.files});
+  }
+
+  convertSvgToDataUrl=(file)=>{
+    let reader  = new FileReader();
+      reader.onload = (result)=>{
+        this.setState({dataUrl:result.target.result});
+      }
+      if (file) {
+        reader.readAsDataURL(file);
+      }
   }
 
    optimizeSvgDataUrl= async (dataUrl) =>{
       let data= await optimizeSvg(dataUrl);
-      console.log("dataUrl",data);
+      this.setState({optimizeDataUrl:data});
   }
+
   render() {
 		
 		const listOfFileNames = [];
@@ -53,10 +67,10 @@ class chooseFolder extends Component {
 					{listOfFileNames}
 				</div>
 				<div>
-				 <button onClick={this.optimizeSvgDataUrl}>optimize</button>
+				 <button onClick={this.convertSvgToDataUrl}>optimize</button>
 				 </div>
 			</div>
 		);
-	}
+	} 
 }
 export default chooseFolder;
