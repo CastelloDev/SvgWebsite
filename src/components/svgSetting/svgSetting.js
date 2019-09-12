@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import '../checkBoxSelection/checkBoxSelection.scss';
+import React, { Component } from "react";
+import "../checkBoxSelection/checkBoxSelection.scss";
 class SvgSetting extends Component {
 	constructor(props) {
 		super(props);
@@ -29,11 +29,10 @@ class SvgSetting extends Component {
 						checked={this.state.isClicked}
 					/>
 					<label className="checkbox-label-svg">
-                {this.props.settingnames}
+                {this.props.name}
 					</label>
 				</div>
 		);
 	}
 }
-
 export default SvgSetting;

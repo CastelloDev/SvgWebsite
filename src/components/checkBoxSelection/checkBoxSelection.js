@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import './checkBoxSelection.scss';
+import React, { Component } from "react";
+import "./checkBoxSelection.scss";
 class CheckBoxSelection extends Component {
 	constructor(props) {
 		super(props);
@@ -30,11 +30,10 @@ class CheckBoxSelection extends Component {
 						checked={this.state.isClicked}
 					/>
 					<label className="checkbox-label">
-					  {this.props.filenames}
+					  {this.props.filename}
 					</label>
 				</div>
 		);
 	}
 }
-
 export default CheckBoxSelection;

@@ -12,7 +12,7 @@ export const cardLayout = {
 				type: "checkbox"
 			},
 			4:{
-				text: "Precesion",
+				text: "Precision",
 				type: "slider"
 			},
 			5:{
