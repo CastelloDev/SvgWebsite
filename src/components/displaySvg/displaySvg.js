@@ -9,6 +9,7 @@ class DisplaySvg extends Component {
                     src={this.props.dataUrl}
                     width={this.props.width}
                     height={this.props.height}
+                    alt={'svg'}
                 />
             </div>
         );

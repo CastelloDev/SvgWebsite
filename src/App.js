@@ -1,21 +1,29 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+
 import ChooseFolder from '../src/components/chooseFolder/chooseFolder';
 import DisplaySvg from '../src/components/displaySvg/displaySvg';
+import NavBar from './components/NavBar/NavBar';
+import mainReducer from './store/mainReducer';
 import './App.scss';
+
 class App extends Component {
     render() {
+        const store = createStore(mainReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
         return (
-            <div>
+            <Provider store={store}>
                 <BrowserRouter>
                     <div>
+                        <NavBar/>
                         <Switch>
                             <Route path='/choosefile' component={ChooseFolder} />
                             <Route path='/displaySvg' component={DisplaySvg} />
                         </Switch>
                     </div>
                 </BrowserRouter>
-            </div>
+            </Provider>
         );
     }
 }
