@@ -6,7 +6,7 @@ import "../checkBoxSelection/checkBoxSelection.scss";
       return(
         <div >
           {this.props.name}
-          <div className="slider">
+          <div>
             <input  type="range" name="points"></input>
           </div>
         </div>

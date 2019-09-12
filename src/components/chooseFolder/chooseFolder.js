@@ -13,12 +13,6 @@ class chooseFolder extends Component {
     }
 	}
 
-	showDropdownMenu = ()=> {
-	this.setState({
-				displayMenu: !this.state.displayMenu
-		});
-	};
-
   onChangeHandler = event => {
      this.setState({path:event.target.files});
   }
@@ -51,10 +45,7 @@ class chooseFolder extends Component {
 						<input type="file" webkitdirectory="" onChange={this.onChangeHandler} />
 					</label>
 				</div>
-				<div className="file">
-					<button onClick={this.showDropdownMenu}> Files to optimize </button>
-				</div>
-				<div className={this.state.displayMenu ? "show-file-list":"hide-file-list"}>
+				<div >
 					{listOfFileNames}
 				</div>
 			</div>

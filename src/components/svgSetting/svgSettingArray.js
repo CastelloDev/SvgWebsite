@@ -16,7 +16,7 @@ class svgSettingArray extends Component {
 		  if(cardLayout[key].type==="checkbox"){
 					 this.state.settingNamesList.push(<SvgSetting key={key} name={cardLayout[key].text} />);
 			}else if(cardLayout[key].type==="slider"){
-					 this.state.settingNamesList.push(<Slider key={key} name={cardLayout[key].text} />);
+					 this.state.settingNamesList.push(<div className="slider"><Slider key={key} name={cardLayout[key].text} /></div>);
 			}
 		}
 	
