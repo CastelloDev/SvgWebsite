@@ -9,8 +9,8 @@ class chooseFolder extends Component {
 		this.state = {
 			path: [],
 			displayMenu: false,
-      dataUrl:'',
-      optimizeDataUrl:''
+      dataUrl:"",
+      optimizeDataUrl:""
     }
 	}
 
