@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import "./checkBoxSelection.scss";
+import React, { Component } from 'react';
+import './checkBoxSelection.scss';
 class CheckBoxSelection extends Component {
 	constructor(props) {
 		super(props);
@@ -21,7 +21,7 @@ class CheckBoxSelection extends Component {
 	render() {
 		return (
 				<div
-					className={this.state.isClicked ? 'checkbox-container-clicked' : 'checkbox-container-unclicked'}
+					className={this.state.isClicked ? "checkbox-container-clicked" : "checkbox-container-unclicked"}
 					onClick={this.handleDivClick}
 				>
 					<input

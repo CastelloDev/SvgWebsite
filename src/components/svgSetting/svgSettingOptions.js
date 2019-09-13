@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import "./../checkBoxSelection/checkBoxSelection.scss";
-import {cardLayout} from "./svgCardLayout";
-import SvgSetting from "./svgSetting";
-import Slider from "./slider";
+import React, { Component } from 'react';
+import './../checkBoxSelection/checkBoxSelection.scss';
+import {cardLayout} from './svgCardLayout';
+import SvgSetting from './svgSetting';
+import Slider from './slider';
 class SvgSettingOptions extends Component {
 	constructor(props) {
 		super(props);

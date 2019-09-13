@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import "../checkBoxSelection/checkBoxSelection.scss";
+import React, { Component } from 'react';
+import '../checkBoxSelection/checkBoxSelection.scss';
   class Slider extends Component {
 
     render() {

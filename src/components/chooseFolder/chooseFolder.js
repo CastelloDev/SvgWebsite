@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import "./../checkBoxSelection/checkBoxSelection.scss";
-import optimizeSvg from "../functions";
-import CheckBoxSelection from "../checkBoxSelection/checkBoxSelection";
+import React, { Component } from 'react';
+import './../checkBoxSelection/checkBoxSelection.scss';
+import optimizeSvg from '../functions';
+import CheckBoxSelection from '../checkBoxSelection/checkBoxSelection';
 class ChooseFolder extends Component {
 	constructor(props) {
 		super(props);
