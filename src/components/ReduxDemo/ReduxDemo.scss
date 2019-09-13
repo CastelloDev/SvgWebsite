@@ -1,0 +1,19 @@
+.redux-demo{
+    display: grid;
+    grid-template-columns: 150px 150px 125px 125px;
+    grid-template-rows: auto auto;
+    grid-gap: 10px;
+    padding: 10px;
+
+    div{
+        display: flex;
+        border: 1px solid #a7a7a7;
+        border-radius: 3px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    div:hover{
+        background-color: #97db3e;
+    }
+}
