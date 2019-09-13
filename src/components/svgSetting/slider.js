@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
 import '../checkBoxSelection/checkBoxSelection.scss';
-  class Slider extends Component {
+import PropTypes from 'prop-types';
+class Slider extends Component {
 
     render() {
-      return(
-        <div >
-          {this.props.option}
-          <div>
-            <input  type="range" name="points"></input>
-          </div>
-        </div>
-      )
+        return(
+            <div >
+                {this.props.option}
+                <div>
+                    <input  type='range' name='points' />
+                </div>
+            </div>
+        );
     }
-  }
-  export default Slider;
+}
+Slider.propTypes = {
+    option: PropTypes.string,
+    isSelected: PropTypes.bool
+};
+export default Slider;

@@ -212,5 +212,5 @@ export const cardLayout =
         type: 'checkbox'
 				
     }
-]
+];
 		
