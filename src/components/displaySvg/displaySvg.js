@@ -5,7 +5,7 @@ class DisplaySvg extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fileSize: '0 '
+      fileSize: 0
     };
   }
 
