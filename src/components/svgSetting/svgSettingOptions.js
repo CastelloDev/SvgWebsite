@@ -3,7 +3,7 @@ import "./../checkBoxSelection/checkBoxSelection.scss";
 import {cardLayout} from "./svgCardLayout";
 import SvgSetting from "./svgSetting";
 import Slider from "./slider";
-class svgSettingOptions extends Component {
+class SvgSettingOptions extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -32,4 +32,4 @@ class svgSettingOptions extends Component {
 		);
 	}
 }
-export default svgSettingOptions;
+export default SvgSettingOptions;

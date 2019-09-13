@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import chooseFolder from "../src/components/chooseFolder/chooseFolder";
+import ChooseFolder from "../src/components/chooseFolder/chooseFolder";
 import displaySvg from "../src/components/displaySvg/displaySvg";
 import "./App.scss";
-import svgSettingOptions from "./components/svgSetting/svgSettingOptions" ;
+import SvgSettingOptions from "./components/svgSetting/svgSettingOptions" ;
 class App extends Component {
   render() {
     return (
@@ -11,9 +11,9 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Switch>
-              <Route path="/choosefile" component={chooseFolder} />
+              <Route path="/choosefile" component={ChooseFolder }/>
               <Route path="/displaySvg" component={displaySvg} />
-               <Route path="/svgSettingOptions" component={svgSettingOptions} />
+               <Route path="/svgSettingOptions" component={SvgSettingOptions} />
             </Switch>
           </div>
         </BrowserRouter>

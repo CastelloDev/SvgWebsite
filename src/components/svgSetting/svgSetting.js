@@ -14,10 +14,6 @@ class SvgSetting extends Component {
 		});
 	}
 
-	componentWillMount() {
-	 this.setState({ isClicked: this.props.isSelected }) 
-	}
-
 	render() {
 		return (
 				<div

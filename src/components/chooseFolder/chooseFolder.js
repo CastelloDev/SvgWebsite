@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./../checkBoxSelection/checkBoxSelection.scss";
 import optimizeSvg from "../functions";
 import CheckBoxSelection from "../checkBoxSelection/checkBoxSelection";
-class chooseFolder extends Component {
+class ChooseFolder extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -52,4 +52,4 @@ class chooseFolder extends Component {
 		);
 	} 
 }
-export default chooseFolder;
+export default ChooseFolder;
