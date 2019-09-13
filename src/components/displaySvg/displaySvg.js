@@ -31,7 +31,7 @@ class DisplaySvg extends Component {
             height={this.props.height}
             alt='svg to be displayed'
           />
-          <figcaption> File Size : {`${this.state.fileSize}`} KB</figcaption>
+          <figcaption> File Size : {this.state.fileSize} KB</figcaption>
         </figure>
       </div>
     );
