@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import base64 from "base-64";
-
+import React, { Component } from 'react';
+import base64 from 'base-64';
+import PropTypes from 'prop-types';
 class DisplaySvg extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fileSize: "0 "
+      fileSize: '0 '
     };
   }
 
@@ -16,9 +16,7 @@ class DisplaySvg extends Component {
   componentWillMount = () => {
     if (this.props.dataUrl) {
       this.setState({
-        fileSize:`${this.dataURLtoKilloBytes(
-          this.props.dataUrl.split(",")[1]
-        ).toString()}  KB`
+        fileSize: this.dataURLtoKilloBytes(this.props.dataUrl.split(',')[1])
       });
     }
   };
@@ -27,13 +25,13 @@ class DisplaySvg extends Component {
       <div>
         <figure>
           <img
-            id="svg-display-id"
+            id='svg-display-id'
             src={this.props.dataUrl}
             width={this.props.width}
             height={this.props.height}
-            alt="svg image"
+            alt='svg to be displayed'
           />
-          <figcaption> {`File Size : ${this.state.fileSize}`}</figcaption>
+          <figcaption> File Size : {`${this.state.fileSize}`} KB</figcaption>
         </figure>
       </div>
     );
@@ -41,9 +39,9 @@ class DisplaySvg extends Component {
 }
 
 DisplaySvg.propTypes = {
-    dataUrl: PropTypes.string,
-    width: PropTypes.string,
-    height: PropTypes.string
+  dataUrl: PropTypes.string,
+  width: PropTypes.string,
+  height: PropTypes.string
 };
 
 export default DisplaySvg;
