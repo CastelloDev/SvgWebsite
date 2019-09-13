@@ -40,4 +40,10 @@ class DisplaySvg extends Component {
   }
 }
 
+DisplaySvg.propTypes = {
+    dataUrl: PropTypes.string,
+    width: PropTypes.string,
+    height: PropTypes.string
+};
+
 export default DisplaySvg;
