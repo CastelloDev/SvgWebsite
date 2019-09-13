@@ -20,7 +20,9 @@ class CheckBoxSelection extends Component {
 	}
 
 	render() {
+
 	    return (
+
 	        <div
     		className={this.state.isClicked ? 'checkbox-container-clicked' : 'checkbox-container-unclicked'}
     		onClick={this.handleDivClick}
@@ -31,7 +33,7 @@ class CheckBoxSelection extends Component {
     			checked={this.state.isClicked}
 	            />
 	            <label className='checkbox-label'>
-	                {this.props.filenames}
+					  {this.props.filename}
 	            </label>
 	        </div>
 	    );
@@ -39,8 +41,7 @@ class CheckBoxSelection extends Component {
 }
 
 CheckBoxSelection.propTypes = {
-    filenames: PropTypes.string,
+    filename: PropTypes.string,
     isSelected: PropTypes.bool
 };
-
 export default CheckBoxSelection;

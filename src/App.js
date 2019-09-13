@@ -8,8 +8,8 @@ import DisplaySvg from '../src/components/displaySvg/displaySvg';
 import NavBar from './components/NavBar/NavBar';
 import ReduxDemo from './components/ReduxDemo/ReduxDemo';
 import mainReducer from './store/mainReducer';
+import SvgSettingOptions from './components/svgSetting/svgSettingOptions';
 import './App.scss';
-
 class App extends Component {
     render() {
         const store = createStore(mainReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
@@ -22,6 +22,7 @@ class App extends Component {
                             <Route path='/choosefile' component={ChooseFolder} />
                             <Route path='/displaySvg' component={DisplaySvg} />
                             <Route path='/reduxdemo' component={ReduxDemo} />
+                            <Route path='/svgSettingOptions' component={SvgSettingOptions} />
                         </Switch>
                     </div>
                 </BrowserRouter>
