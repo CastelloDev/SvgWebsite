@@ -1,4 +1,4 @@
-export const cardLayout = 
+export const CardLayout = 
 [
     {
 		

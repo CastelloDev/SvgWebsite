@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './../checkBoxSelection/checkBoxSelection.scss';
-import {cardLayout} from './svgCardLayout';
+import {CardLayout} from './svgCardLayout';
 import SvgSetting from './svgSetting';
 import Slider from './slider';
 class SvgSettingOptions extends Component {
@@ -12,11 +12,11 @@ class SvgSettingOptions extends Component {
 	 }
 
     render() {
-    	for(var key in cardLayout) {
-		  if(cardLayout[key].type==='checkbox'){
-					 this.state.settingOptionList.push(<SvgSetting key={key} option={cardLayout[key].text} />);
-		  	}else if(cardLayout[key].type==='slider'){
-					 this.state.settingOptionList.push(<div className='slider'><Slider key={key} option={cardLayout[key].text} /></div>);
+    	for(var key in CardLayout) {
+		  if(CardLayout[key].type==='checkbox'){
+					 this.state.settingOptionList.push(<SvgSetting key={key} option={CardLayout[key].text} />);
+		  	}else if(CardLayout[key].type==='slider'){
+					 this.state.settingOptionList.push(<div className='slider'><Slider key={key} option={CardLayout[key].text} /></div>);
 	 		}
 	 	}
 	 

@@ -5,7 +5,7 @@ class SvgSetting extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isClicked: false
+            isClicked: this.props.isSelected
         };
     }
 
