@@ -1,7 +1,10 @@
 import { ADD_VARIABLE, UPDATE_VARIABLE, DELETE_VARIABLE } from './actionTypes';
+import SvgSetting from '../components/svgSetting/svgSetting';
 
 let initialState = {
-    fileNames: []
+    fileNames: [],
+    svgSettingList:[],
+    file:Object
 };
 
 export default (state=initialState, action) => {

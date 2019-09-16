@@ -24,7 +24,7 @@ class App extends Component {
                             <Route path='/displaySvg' component={DisplaySvg} />
                             <Route path='/reduxdemo' component={ReduxDemo} />
                             <Route path='/svgSettingOptions' component={SvgSettingOptions} />
-                            <Route path='/displayAll' component={DisplayAllComponent}/>
+                            <Route path='/' component={DisplayAllComponent} />
                         </Switch>
                     </div>
                 </BrowserRouter>

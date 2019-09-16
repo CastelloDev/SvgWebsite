@@ -1,21 +1,13 @@
 .checkbox-container-clicked {
-  background-color: #b5cfe1;
-  width: 80%;
-  height: 20%;
+  background-color: yellow;
 }
 
 .checkbox-container-unclicked {
   background-color: white;
-  width: 80%;
-  height: 20%;
   border: 1px solid black;
 }
 
-.checkbox-input,
-.checkbox-label {
-  margin-top: 12%;
-  margin-left: 12%;
-}
+
 .checkbox-input-svg,
 .checkbox-label-svg {
   margin-top: 2%;
