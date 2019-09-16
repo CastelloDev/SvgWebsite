@@ -9,6 +9,7 @@ import NavBar from './components/NavBar/NavBar';
 import ReduxDemo from './components/ReduxDemo/ReduxDemo';
 import mainReducer from './store/mainReducer';
 import SvgSettingOptions from './components/svgSetting/svgSettingOptions';
+import DisplayAllComponent from './components/displayAllComponent';
 import './App.scss';
 class App extends Component {
     render() {
