@@ -32,9 +32,9 @@ class ChooseFolder extends Component {
   	}
 
   	render() {
-       	const listOfFileNames = [];
+		   const listOfFileNames = [];
        	for(var key of this.state.path) {
-   	        listOfFileNames.push(<CheckBoxSelection key={key.name} filename={key.name} />);
+			   listOfFileNames.push(<CheckBoxSelection key={key} filename={key.name} />);
        	}
 	
   	return (

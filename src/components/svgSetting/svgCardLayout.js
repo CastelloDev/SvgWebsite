@@ -1,216 +1,231 @@
 export const CardLayout = 
 [
     {
-		
-        text: 'Show original',
-        type: 'checkbox'
-    },
-    {
-        text: 'Compare gzipped',
-        type: 'checkbox'
-    },
-    {
-        text: 'Prettify markup',
-        type: 'checkbox'
-    },
-    {
-        text: 'Precision',
-        type: 'slider'
-    },
-    {
         text: 'Remove doctype',
-        type: 'checkbox'
+        type: 'checkbox',
+        value: 'removeDoctype'
 				
     },
     {
         text: 'Remove XML instructions',
-        type: 'checkbox'
+        type: 'checkbox',
+        value:'removeXMLProcInst'
 				
     },
     {
         text: 'Remove comments',
-        type: 'checkbox'
+        type: 'checkbox',
+        value:'removeComments'
 				
     },
     {
         text: 'Remove <metadata>',
-        type: 'checkbox'
+        type: 'checkbox',
+        value:'removeMetadata'
 				
     },
     {
-        text: 'Remove xmln',
-        type: 'checkbox'
+        text: 'Cleanup attributes',
+        type: 'checkbox',
+        value:'cleanupAttrs'
 				
     },
     {
         text: 'Remove edit data',
-        type: 'checkbox'
+        type: 'checkbox',
+        value:'removeEditorsNSData'
 				
     },
     {
         text: 'Cleanup attributes whitespace',
-        type: 'checkbox'
+        type: 'checkbox',
+        value:'cleanupAttrs'
 				
     },
     {
-        text: 'Inline style',
-        type: 'checkbox'
-				
-    },
-    {
-        text:'Minify style',
-        type: 'checkbox'
-				
-    },
-    {
-        text: 'Style to attribute',
-        type: 'checkbox'
-				
-    },
-    {
-        text: 'Remove raster images',
-        type: 'checkbox'
-				
+        text:'Cleanup numeric values',
+        type:'checkbox',
+        value:'cleanupNumericValues'
+
     },
     {
         text: 'Remove unused def',
-        type: 'checkbox'
+        type: 'checkbox',
+        value:'removeUselessDefs'
 				
     },
     {
-        text: 'Round/rewrite numbers',
-        type: 'checkbox'
-				
-    },
-    {
-        text: 'Round/rewrite number list',
-        type: 'checkbox'
-				
-    },
-    {
-        text: 'Minify colours',
-        type: 'checkbox'
-			
-    },
-    {
-        text: 'Remove unknowns and defaults',
-        type: 'checkbox'
-				
-    },
-    {
-        text: 'Remove unknowns and defaults',
-        type: 'checkbox'
-				
-    },
-    {
-        text: 'Remove unneeded group attrs',
-        type: 'checkbox'
+        text: 'Remove XML procInst',
+        type: 'checkbox',
+        value:'removeXMLProcInst'
 				
     },
     {
         text: 'Remove useless stroke and fill',
-        type: 'checkbox'
+        type: 'checkbox',
+        value:'removeUselessStrokeAndFil'
+
 				
     },
     {
         text: 'Remove viewbox',
-        type: 'checkbox'
-				
-    },
-    {
-        text: 'Remove/tidy enable-background',
-        type: 'checkbox'
+        type: 'checkbox',
+        value:'removeViewBox'
 				
     },
     {
         text: 'Remove hidden elements',
-        type: 'checkbox'
+        type: 'checkbox',
+        value:' removeHiddenElems'
 				
     },
     {
         text: 'Remove empty text',
-        type: 'checkbox'
+        type: 'checkbox',
+        value:'removeEmptyText'
 				
     },
     {
-        text: 'Shapes to(smaller) paths',
-        type: 'checkbox'
+        text: 'Remove raster images',
+        type: 'checkbox',
+        value:'removeRasterImages'
 				
     },
     {
         text: 'Move attrs to parent group',
-        type: 'checkbox'
+        type: 'checkbox',
+        value:'moveElemsAttrsToGroup'
 				
     },
     {
         text: 'Move group attrs to elements',
-        type: 'checkbox'
-				
-    },
-    {
-        text: 'Collapse useless group',
-        type: 'checkbox'
-				
-    },
-    {
-        text: 'Round/rewrite paths',
-        type: 'checkbox'
-				
-    },
-    {
-        text: 'Round/rewrite transformation',
-        type: 'checkbox'
+        type: 'checkbox',
+        value:'moveGroupAttrsToElems'
 				
     },
     {
         text: 'Remove empty attrs',
-        type: 'checkbox'
+        type: 'checkbox',
+        value:'removeEmptyAttrs'
 				
     },
     {
         text: 'Remove empty containers',
-        type: 'checkbox'
+        type: 'checkbox',
+        value:' removeEmptyContainers'
 				
     },
     {
         text: 'Merge paths',
-        type: 'checkbox'
-				
-    },
-    {
-        text: 'Remove unused namesopace',
-        type: 'checkbox'
+        type: 'checkbox',
+        value:' mergePaths'
 				
     },
     {
         text: 'Sort attrs',
-        type: 'checkbox'
+        type: 'checkbox',
+        value:'sortAttrs'
 				
     },
     {
         text: 'Remove <title>',
-        type: 'checkbox'
+        type: 'checkbox',
+        value:'removeTitle'
 				
     },
     {
         text: 'Remove <desc>',
-        type: 'checkbox'
+        type: 'checkbox',
+        value:'removeDesc'
 				
     },
-    {
-        text: 'Prefer viewBox to width/height',
-        type: 'checkbox'
-				
+    {   text:'Remove Dimensions',
+        type: 'checkbox',
+        value:'removeDimensions'
+    },
+    {   
+        text:'Convert shape to path',
+        type: 'checkbox',
+        value:'convertShapeToPath'
+
+    },
+    {   
+        text:'Sort attribute',
+        type:'checkbox',
+        value:'sortAttrs'
     },
     {
-        text: 'Remove style elements',
-        type: 'checkbox'
-				
+        text:'Remove dimensions',
+        type:'checkbox',
+        value:' removeDimensions'
     },
     {
-        text: 'Remove script elements',
-        type: 'checkbox'
-				
+        text:'Remove raster images',
+        type:'checkbox',
+        value:'removeRasterImages'
+    },
+    {
+        text:'Cleanup numeric value',
+        type:'checkbox',
+        value:'cleanupNumericValues'
+    },
+    {
+        text:'Cleanup IDs',
+        type:'checkbox',
+        value:'cleanupIDs'
+    },
+    {
+        text:'Remove Unused NS',
+        type:'checkbox',
+        value:'removeUnusedNS'
+    },
+    {
+        text:'Convert path data',
+        type:'checkbox',
+        value:'convertPathData'
+
+    },
+    {
+        text:'Convert colors',
+        type:'checkbox',
+        value:'convertColors'
+
+    },
+    {
+        text:'Convert transform',
+        type:'checkbox',
+        value:'convertTransform'
+        
+    },
+    {
+        text:'Remove non inheritable group attribute',
+        type:'checkbox',
+        value:'removeNonInheritableGroupAttr'
+        
+    },
+    {
+        text:'Cleanup enable background',
+        type:'checkbox',
+        value:'cleanupEnableBackground'
+        
+    },
+    {
+        text:'Convert style to attribute',
+        type:'checkbox',
+        value:'convertStyleToAttrs'
+        
+    },
+    {
+        text:'Remove noninheritable group attribute',
+        type:'checkbox',
+        value:'removeNonInheritableGroupAttrs'
+          
+    },
+    {
+        text:'Collapse groups',
+        type:'checkbox',
+        value:'collapseGroups'
+             
     }
 ];
 		
