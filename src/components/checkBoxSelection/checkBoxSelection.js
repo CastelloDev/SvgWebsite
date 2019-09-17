@@ -28,6 +28,7 @@ class CheckBoxSelection extends Component {
 			this.b.name=file.name;
 			this.b.dataurl=result.target.result;
 			this.props.reduxState.svgSettingList.push (this.b);
+			console.log('andile');
 		};
 		if (file) {
 			reader.readAsDataURL(file);
@@ -39,7 +40,6 @@ class CheckBoxSelection extends Component {
 	        isClicked: !this.state.isClicked
 		});
 		for(var file in this.props.reduxState.svgSettingList){
-			console.log(this.props.reduxState.svgSettingList[file]);
 			if(this.props.reduxState.svgSettingList[file].name===this.props.file.name){
 				this.state.isFound=true;
 				this.state.index=file;

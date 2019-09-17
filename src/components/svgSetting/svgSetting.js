@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import '../checkBoxSelection/checkBoxSelection.scss';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import {Svgo} from '../svgSetting/svgoConfig';
+import { ADD_VARIABLE, UPDATE_VARIABLE, DELETE_VARIABLE } from '../../store/actionTypes';
 
 class SvgSetting extends Component {
     constructor(props) {
@@ -10,43 +12,70 @@ class SvgSetting extends Component {
 			 isClicked: this.props.isSelected,
 			 arr:[],
 			 svgoObject: {...Svgo},
-			 isFound:true
+			 isFound:false
         };
     }
 
 	handleDivClick= () => {
-		 this.setState({isClicked: !this.state.isClicked});
-	    for(var i of this.state.arr){
-			
-	        if(i===this.props.k){
-	            console.log(i,this.props.k);
-	            this.state.isFound=false;
-			  break;
-	        }
-	    }
-	    console.log(this.state.isFound);
-		 if(this.state.isFound){
-	        this.state.arr.push(this.props.k);	
-	        this.state.isFound=false;	
-		 }
-		 else{
-		   this.state.arr.pop(this.props.k); 
-		 }
-		 this.m(this.state.arr[0]);
-		 				console.log(this.state.arr);
+		this.setState({
+	        isClicked: !this.state.isClicked
+		});
+		for(var file in this.props.reduxState.svgOptions){
+			if(this.props.reduxState.svgOptions[file]===this.props.k){
+				this.state.isFound=true;
+				this.state.index=file;
+			}
+		}
+		if(this.state.isFound===false){
+			this.props.reduxState.svgOptions.push(this.props.k);
+		}else{
+			this.props.reduxState.svgOptions.splice(this.state.index, 1);
+			this.state.isFound=false;
+		}
+		
 	}
+	/*handleDivClick= () => {
+	    this.setState({
+	        isClicked: !this.state.isClicked
+		});
+		for(var file in this.props.reduxState.svgSettingList){
+			console.log(this.props.reduxState.svgSettingList[file]);
+			if(this.props.reduxState.svgSettingList[file].name===this.props.file.name){
+				this.state.isFound=true;
+				this.state.index=file;
+			}
+		}
+		if(this.state.isFound===false){
+			this.convertSvgToDataUrl(this.props.file);	
+		}else{
+			this.props.reduxState.svgSettingList.splice(this.state.index, 1);
+			this.state.isFound=false;
+		}
+	} */
 
 	m=(value)=>{
-	    let newSvgoObject = this.state.svgoObject.plugins.filter((option)=>{
-	        if(option[value] !== null && option[value] !== undefined){
-	            console.log(option[value]);
-	            option[value] = true;
-	        }
-	        return true;
+		
+		
+	    let newSvgoObject = this.props.reduxState.svgObject.plugins.filter((option)=>{
+			for(var p of value){
+				if(option[p] !== null && option[p] !== undefined){
+					option[p] = true;
+				}
+				return true;
+			
+			}
+	        
 	    });
 		
-	    console.log(newSvgoObject);
+		console.log(newSvgoObject);
+		return newSvgoObject;
 	}
+
+	mm=()=>{
+		this.m(this.props.reduxState.svgOptions);
+		console.log(this.props.reduxState);
+	}
+	
 
 	render() {
 	    return (
@@ -63,12 +92,35 @@ class SvgSetting extends Component {
 	                {this.props.option}
 	            </label>
 	        </div>
+			
 	    );
 	}
 }
-SvgSetting.propTypes = {
-	 option: PropTypes.string,
-	 k:PropTypes.string,
-    isSelected: PropTypes.bool
+
+
+
+SvgSetting.propTypes={
+    reduxState: PropTypes.object,
+    addToStore: PropTypes.func,
+    updateStore: PropTypes.func,
+	deleteFromStore: PropTypes.func,
+	option: PropTypes.string,
+	k:PropTypes.string,
+   isSelected: PropTypes.bool
+   
 };
-export default SvgSetting;
+
+const mapStateToProps = state => {
+    const reduxState = {reduxState:{...state}};
+    return reduxState;
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        addToStore: (variableName, variableValue) => dispatch({ type: ADD_VARIABLE, variableName: variableName, variableValue: variableValue }),
+        updateStore: (variableName, variableValue) => dispatch({ type: UPDATE_VARIABLE, variableName: variableName, variableValue: variableValue }),
+        deleteFromStore: (variableName) => dispatch({ type: DELETE_VARIABLE, variableName: variableName })
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SvgSetting);

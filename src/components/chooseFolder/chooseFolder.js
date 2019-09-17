@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './../checkBoxSelection/checkBoxSelection.scss';
-import optimizeSvg from '../functions';
+import {optimizeSvg} from '../functions';
 import CheckBoxSelection from '../checkBoxSelection/checkBoxSelection';
 
 class ChooseFolder extends Component {
@@ -35,7 +35,6 @@ class ChooseFolder extends Component {
   	render() {
 		   const listOfFileNames = [];
        	for(var key of this.state.path) {
-			   console.log(typeof key,'test');
    	        listOfFileNames.push(<CheckBoxSelection key={key.name} filename={key.name} file={key} />);
        	}
 	

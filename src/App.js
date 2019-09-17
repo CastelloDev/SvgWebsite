@@ -10,6 +10,7 @@ import ReduxDemo from './components/ReduxDemo/ReduxDemo';
 import mainReducer from './store/mainReducer';
 import SvgSettingOptions from './components/svgSetting/svgSettingOptions';
 import DisplayAllComponent from './components/displayAllComponent';
+import FinalSvgDisplay from './components/displaySvg/finalSvgDisplay';
 import './App.scss';
 class App extends Component {
     render() {
@@ -24,6 +25,7 @@ class App extends Component {
                             <Route path='/displaySvg' component={DisplaySvg} />
                             <Route path='/reduxdemo' component={ReduxDemo} />
                             <Route path='/svgSettingOptions' component={SvgSettingOptions} />
+                            <Route path='/FinalSvgDisplay' component={FinalSvgDisplay} />
                             <Route path='/' component={DisplayAllComponent} />
                         </Switch>
                     </div>

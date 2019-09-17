@@ -23,7 +23,7 @@ class DisplaySvg extends Component {
 
     render() {
         return (
-            <div>
+            <div className='ncika'>
                 <figure>
                     <img
                         id='svg-display-id'

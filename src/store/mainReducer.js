@@ -1,10 +1,14 @@
 import { ADD_VARIABLE, UPDATE_VARIABLE, DELETE_VARIABLE } from './actionTypes';
 import SvgSetting from '../components/svgSetting/svgSetting';
+import {Svgo} from '../../src/components/svgSetting/svgoConfig'
 
 let initialState = {
     fileNames: [],
     svgSettingList:[],
-    file:Object
+    file:Object,
+    svgOptions:[],
+    svgObject:{...Svgo},
+    displayOptimaze:[]
 };
 
 export default (state=initialState, action) => {

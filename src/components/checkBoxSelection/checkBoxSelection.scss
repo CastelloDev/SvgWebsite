@@ -1,5 +1,5 @@
 .checkbox-container-clicked {
-  background-color: yellow;
+  background-color: #b5cfe1;
 }
 
 .checkbox-container-unclicked {
@@ -32,8 +32,8 @@
 .card-settings {
   height: 350px;
   overflow-y: scroll;
-  background-color: #b5cfe1;
-  width: 250px;
+  background-color:#b5cfe1 ;
+  width: 600px;
   //padding-left: 20px;
   box-shadow: 10px 10px 55px 0px black;
 }
@@ -50,8 +50,29 @@
   display: flex;
 }
 .choose {
-  width: 25%;
+  width: 50%;
 }
 .display {
-  width: 25%;
+  width: 50%;
 }
+
+.lll{
+  width: 319px;
+  display: flex;
+}
+.optimizeButton{
+  display: flex;
+  justify-items: center;
+  width:100px;
+  height: 70px;
+  border-radius: 35px;
+  background-color: #b5cfe1;
+  align-items: center;
+}
+
+.mpilomshengu{
+  display: flex;
+  justify-content: center;
+}
+
+
