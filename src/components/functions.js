@@ -12,10 +12,10 @@ export const optimizeSvg=(dataUrl,svgo)=>{
 
 export const changeObj=(value,svgoObjectPlugins)=>{	
     let newSvgoObject = svgoObjectPlugins.filter((option)=>{
-            if(option[value] !== null && option[value] !== undefined){
-                option[value] = true;
-            }
-            return true;
+        if(option[value] !== null && option[value] !== undefined){
+            option[value] = true;
+        }
+        return true;
         
     });
     return newSvgoObject;

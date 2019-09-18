@@ -8,49 +8,40 @@ class CheckBoxSelection extends Component {
     constructor(props) {
         super(props);
         this.state = {
-			isClicked: false,
-			isFound:false,
-			index:null,
-		};
-		this.b={
-			name:'',
-			dataurl:''
-		}
+			 isClicked: false
+		 };
     }
 
     componentWillMount() {
-	 this.setState({ isClicked: this.props.isSelected }); 
-	}
+	   this.setState({ isClicked: this.props.isSelected }); 
+	 }
 	
 	convertSvgToDataUrl=(file)=>{
-		let reader  = new FileReader();
-		reader.onload = (result)=>{
-			this.b.name=file.name;
-			this.b.dataurl=result.target.result;
-			this.props.reduxState.svgSettingList.push (this.b);
-			console.log('andile');
-		};
-		if (file) {
-			reader.readAsDataURL(file);
-		}
+		 let reader  = new FileReader();
+		 reader.onload = (result)=>{
+			 this.props.reduxState.svgSettingList.push ({'name':file.name,dataurl:result.target.result});
+		 };
+		 if (file) {
+		 	reader.readAsDataURL(file);
+		 }
 	}
 
 	handleDivClick= () => {
-	    this.setState({
-	        isClicked: !this.state.isClicked
-		});
-		for(var file in this.props.reduxState.svgSettingList){
-			if(this.props.reduxState.svgSettingList[file].name===this.props.file.name){
-				this.state.isFound=true;
-				this.state.index=file;
-			}
-		}
-		if(this.state.isFound===false){
-			this.convertSvgToDataUrl(this.props.file);	
-		}else{
-			this.props.reduxState.svgSettingList.splice(this.state.index, 1);
-			this.state.isFound=false;
-		}
+		 let isFound=false;
+		 let index=0;
+	     this.setState({isClicked: !this.state.isClicked});
+		 for(var key in this.props.reduxState.svgSettingList){
+			 if(this.props.reduxState.svgSettingList[key].name===this.props.file.name){
+				 isFound=true;
+				 index=key;
+			 }
+		 }
+		 if(isFound===false){
+			 this.convertSvgToDataUrl(this.props.file);	
+		 }else{
+			 this.props.reduxState.svgSettingList.splice(index, 1);
+			 isFound=false;
+		 }
 	}
 
 	render() {
@@ -78,8 +69,8 @@ CheckBoxSelection.propTypes={
     reduxState: PropTypes.object,
     addToStore: PropTypes.func,
     updateStore: PropTypes.func,
-	deleteFromStore: PropTypes.func,
-	filename:PropTypes.string
+	 deleteFromStore: PropTypes.func,
+	 filename:PropTypes.string
 };
 
 const mapStateToProps = state => {

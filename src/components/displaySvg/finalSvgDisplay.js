@@ -4,26 +4,15 @@ import DisplaySvg from './displaySvg';
 import { connect } from 'react-redux';
 import { ADD_VARIABLE, UPDATE_VARIABLE, DELETE_VARIABLE } from '../../store/actionTypes';
 class FinalSvgDisplay extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            fileSize: 0
-        };
-    }
-
-
 
     render() {
         const listOfFileNames = [];
         
        	for(var key in this.props.reduxState.displayOptimaze) {
-            console.log(this.props.reduxState.displayOptimaze.length);
    	        listOfFileNames.push(<div className='lll'>
-               <DisplaySvg dataUrl={this.props.reduxState.displayOptimaze[key].original}
-               weight='100px' height='300' />
-           <DisplaySvg dataUrl={"data:image/svg+xml;base64,"+this.props.reduxState.displayOptimaze[key].fake}
-                   weight='100px' height='300' />
-           </div>);
+                <DisplaySvg dataUrl={this.props.reduxState.displayOptimaze[key].original} weight='100px' height='300' />
+                <DisplaySvg dataUrl={"data:image/svg+xml;base64,"+this.props.reduxState.displayOptimaze[key].fake} weight='100px' height='300' />
+            </div>);
        	}
         return (
             <div className =''>
@@ -40,9 +29,6 @@ FinalSvgDisplay.propTypes = {
     deleteFromStore: PropTypes.func,
     listToDisplay: PropTypes.array
 };
-
-
-
 
 const mapStateToProps = state => {
     const reduxState = { reduxState: { ...state } };
