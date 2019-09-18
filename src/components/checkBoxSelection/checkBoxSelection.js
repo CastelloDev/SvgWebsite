@@ -36,7 +36,7 @@ class CheckBoxSelection extends Component {
 				 index=key;
 			 }
 		 }
-		 if(isFound===false){
+		 if(!isFound){
 			 this.convertSvgToDataUrl(this.props.file);	
 		 }else{
 			 this.props.reduxState.svgSettingList.splice(index, 1);

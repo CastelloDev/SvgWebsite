@@ -2,80 +2,36 @@ import React, { Component } from 'react';
 import '../checkBoxSelection/checkBoxSelection.scss';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {Svgo} from '../svgSetting/svgoConfig';
 import { ADD_VARIABLE, UPDATE_VARIABLE, DELETE_VARIABLE } from '../../store/actionTypes';
 
 class SvgSetting extends Component {
     constructor(props) {
         super(props);
         this.state = {
-			 isClicked: this.props.isSelected,
-			 arr:[],
-			 svgoObject: {...Svgo},
-			 isFound:false
+			 isClicked: this.props.isSelected
         };
     }
 
 	handleDivClick= () => {
-		this.setState({
-	        isClicked: !this.state.isClicked
-		});
-		for(var file in this.props.reduxState.svgOptions){
-			if(this.props.reduxState.svgOptions[file]===this.props.k){
-				this.state.isFound=true;
-				this.state.index=file;
-			}
-		}
-		if(this.state.isFound===false){
-			this.props.reduxState.svgOptions.push(this.props.k);
-		}else{
-			this.props.reduxState.svgOptions.splice(this.state.index, 1);
-			this.state.isFound=false;
-		}
-		
-	}
-	/*handleDivClick= () => {
-	    this.setState({
-	        isClicked: !this.state.isClicked
-		});
-		for(var file in this.props.reduxState.svgSettingList){
-			console.log(this.props.reduxState.svgSettingList[file]);
-			if(this.props.reduxState.svgSettingList[file].name===this.props.file.name){
-				this.state.isFound=true;
-				this.state.index=file;
-			}
-		}
-		if(this.state.isFound===false){
-			this.convertSvgToDataUrl(this.props.file);	
-		}else{
-			this.props.reduxState.svgSettingList.splice(this.state.index, 1);
-			this.state.isFound=false;
-		}
-	} */
+		 let isFound=false;
+		 let index=0;
+		 this.setState({isClicked: !this.state.isClicked});
+		 for(var key in this.props.reduxState.svgOptions){
+			 if(this.props.reduxState.svgOptions[key]===this.props.k){
+				 isFound=true;
+				 index=key;
+			 }
+		 }
 
-	m=(value)=>{
+		 if(!isFound){
+			 this.props.reduxState.svgOptions.push(this.props.k);
+		 }else{
+			 this.props.reduxState.svgOptions.splice(index, 1);
+			 isFound=false;
+		 }
 		
-		
-	    let newSvgoObject = this.props.reduxState.svgObject.plugins.filter((option)=>{
-			for(var p of value){
-				if(option[p] !== null && option[p] !== undefined){
-					option[p] = true;
-				}
-				return true;
-			
-			}
-	        
-	    });
-		
-		console.log(newSvgoObject);
-		return newSvgoObject;
 	}
 
-	mm=()=>{
-		this.m(this.props.reduxState.svgOptions);
-		console.log(this.props.reduxState);
-	}
-	
 
 	render() {
 	    return (
@@ -83,11 +39,7 @@ class SvgSetting extends Component {
     	
     		onClick={this.handleDivClick}
 	        >
-	            <input
-    		
-    			type='checkbox'
-    			checked={this.state.isClicked}
-	            />
+	            <input type='checkbox' checked={this.state.isClicked} />
 	            <label className='checkbox-label-svg'>
 	                {this.props.option}
 	            </label>
