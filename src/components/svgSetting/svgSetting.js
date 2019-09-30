@@ -25,20 +25,20 @@ class SvgSetting extends Component {
       isClicked: !this.state.isClicked
     });
     for (var file in this.props.reduxState.svgOptions) {
-      if (this.props.reduxState.svgOptions[file] === this.props.k) {
+      if (this.props.reduxState.svgOptions[file] === this.props.value) {
         this.state.isFound = true;
         this.state.index = file;
       }
     }
     if (this.state.isFound === false) {
-      this.props.reduxState.svgOptions.push(this.props.k);
+      this.props.reduxState.svgOptions.push(this.props.value);
     } else {
       this.props.reduxState.svgOptions.splice(this.state.index, 1);
       this.state.isFound = false;
     }
   };
 
-  m = value => {
+  toChangePluginObjectValues = value => {
     let newSvgoObject = this.props.reduxState.svgObject.plugins.filter(
       option => {
         for (var p of value) {
@@ -53,8 +53,8 @@ class SvgSetting extends Component {
     return newSvgoObject;
   };
 
-  mm = () => {
-    this.m(this.props.reduxState.svgOptions);
+  changingPluginValuesPerUserOption= () => {
+    this.changePluginObjectValues(this.props.reduxState.svgOptions);
   };
 
   render() {

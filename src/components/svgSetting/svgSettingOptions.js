@@ -14,7 +14,7 @@ class SvgSettingOptions extends Component {
     render() {
     	for(var key in CardLayout) {
 		  if(CardLayout[key].type==='checkbox'){
-					 this.state.settingOptionList.push(<SvgSetting key={key} k={CardLayout[key].value} option={CardLayout[key].text} />);
+					 this.state.settingOptionList.push(<SvgSetting key={key} value={CardLayout[key].value} option={CardLayout[key].text} />);
 		  	}else if(CardLayout[key].type==='slider'){
 					 this.state.settingOptionList.push(<div className='slider'><Slider key={key} option={CardLayout[key].text} /></div>);
 	 		}

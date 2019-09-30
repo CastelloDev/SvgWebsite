@@ -46,7 +46,7 @@ class DisplayAllComponent extends Component {
           </div>
           <div className="choose">
             <SvgSettingOptions />
-            <div className="mpilomshengu">
+            <div className="optimise-button-div">
               <NavLink to="/FinalSvgDisplay">
                 <div className="optimizeButton" onClick={this.getOptimizeSvg}>
                   Optimize
