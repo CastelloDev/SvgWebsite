@@ -22,7 +22,7 @@ class FinalSvgDisplay extends Component {
 
     for (var key in this.props.reduxState.displayOptimaze) {
       listOfFileNames.push(
-        <div className="lll">
+        <div className="display-svg-opt-notopt">
           <DisplaySvg
             dataUrl={this.props.reduxState.displayOptimaze[key].original}
             weight="100px"
