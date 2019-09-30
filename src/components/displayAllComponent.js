@@ -26,6 +26,7 @@ getOptimizeSvg = async () => {
 }
 
 render() {
+    console.log("this.props.reduxState.svgSettingList :",this.props.reduxState.svgSettingList)
     return (
         <div>
             <div className='main-class'>
