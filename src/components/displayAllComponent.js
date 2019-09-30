@@ -22,7 +22,7 @@ class DisplayAllComponent extends Component {
         this.props.reduxState.displayOptimize.push({
           original: setting.dataurl,
           name: setting.name,
-          fake: await optimizeSvg(
+          normalSvg: await optimizeSvg(
             setting.dataurl,
             this.props.reduxState.svgObject.plugins
           )
@@ -31,7 +31,7 @@ class DisplayAllComponent extends Component {
         this.props.reduxState.displayOptimize.push({
           original: setting.dataurl,
           name: setting.name,
-          fake: await optimizeSvg(setting.dataurl, null)
+          normalSvg: await optimizeSvg(setting.dataurl, null)
         });
       }
     }

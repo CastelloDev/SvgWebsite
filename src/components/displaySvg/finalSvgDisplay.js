@@ -31,7 +31,7 @@ class FinalSvgDisplay extends Component {
           <DisplaySvg
             dataUrl={
               "data:image/svg+xml;base64," +
-              this.props.reduxState.displayOptimize[key].fake
+              this.props.reduxState.displayOptimize[key].normalSvg
             }
             weight="100px"
             height="300"
