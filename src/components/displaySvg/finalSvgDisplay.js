@@ -20,18 +20,18 @@ class FinalSvgDisplay extends Component {
   render() {
     const listOfFileNames = [];
 
-    for (var key in this.props.reduxState.displayOptimaze) {
+    for (var key in this.props.reduxState.displayOptimize) {
       listOfFileNames.push(
         <div className="display-svg-opt-notopt">
           <DisplaySvg
-            dataUrl={this.props.reduxState.displayOptimaze[key].original}
+            dataUrl={this.props.reduxState.displayOptimize[key].original}
             weight="100px"
             height="300"
           />
           <DisplaySvg
             dataUrl={
               "data:image/svg+xml;base64," +
-              this.props.reduxState.displayOptimaze[key].fake
+              this.props.reduxState.displayOptimize[key].fake
             }
             weight="100px"
             height="300"

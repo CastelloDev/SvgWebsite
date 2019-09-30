@@ -6,7 +6,7 @@ let initialState = {
     svgSettingList:[],
     svgOptions:[],
     svgObject:{...Svgo},
-    displayOptimaze:[]
+    displayOptimize:[]
 };
 
 export default (state=initialState, action) => {

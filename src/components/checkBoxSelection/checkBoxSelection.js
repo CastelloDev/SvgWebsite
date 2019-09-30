@@ -8,14 +8,10 @@ class CheckBoxSelection extends Component {
     constructor(props) {
         super(props);
         this.state = {
-			 isClicked: false
+			 isClicked: this.props.isSelected
 		 };
     }
 
-    componentWillMount() {
-	   this.setState({ isClicked: this.props.isSelected }); 
-	 }
-	
 	convertSvgToDataUrl=(file)=>{
 		 let reader  = new FileReader();
 		 reader.onload = (result)=>{
@@ -36,7 +32,7 @@ class CheckBoxSelection extends Component {
 				 index=key;
 			 }
 		 }
-		 if(isFound===false){
+		 if(!isFound){
 			 this.convertSvgToDataUrl(this.props.file);	
 		 }else{
 			 this.props.reduxState.svgSettingList.splice(index, 1);
