@@ -8,15 +8,7 @@ import {
   DELETE_VARIABLE
 } from "../../store/actionTypes";
 class FinalSvgDisplay extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      list : []
-    };
-  }
-
- 
-
+  
   render() {
     const listOfFileNames = [];
 
