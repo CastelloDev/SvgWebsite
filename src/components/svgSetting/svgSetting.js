@@ -38,12 +38,12 @@ class SvgSetting extends Component {
     }
   };
 
-  toChangePluginObjectValues = values => {
+  toChangePluginObjectValues = arrayWithPluginOptions => {
     let newSvgoObject = this.props.reduxState.svgObject.plugins.filter(
       option => {
-        for (var value of values) {
-          if (option[value] !== null && option[value] !== undefined) {
-            option[value] = true;
+        for (var plugiOption of arrayWithPluginOptions) {
+          if (option[plugiOption] !== null && option[plugiOption] !== undefined) {
+            option[plugiOption] = true;
           }
           return true;
         }

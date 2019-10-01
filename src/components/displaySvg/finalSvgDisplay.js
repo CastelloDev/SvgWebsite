@@ -36,7 +36,8 @@ class FinalSvgDisplay extends Component {
     return (
       <div >
         {listOfFileNames.length > 0  ?
-        <div> 
+        <div className="display-page-div">
+         
              {listOfFileNames}        
         </div> : 
         <div>
