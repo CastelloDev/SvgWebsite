@@ -35,7 +35,7 @@ class FinalSvgDisplay extends Component {
     
     return (
       <div >
-        {Array.isArray(listOfFileNames) && listOfFileNames.length > 0  ?
+        {listOfFileNames.length > 0  ?
         <div> 
              {listOfFileNames}        
         </div> : 
