@@ -9,7 +9,7 @@ class ChooseFolder extends Component {
         this.state = {
             path: [],
             displayMenu: false,
-            normalSvgDataUrl:'',
+            originalSvgDataUrl:'',
             optimizedDataUrl:''
         };
     }
@@ -21,7 +21,7 @@ class ChooseFolder extends Component {
   	convertSvgToDataUrl=(file)=>{
   	    let reader  = new FileReader();
   	    reader.onload = (result)=>{
-  	        this.setState({normalSvgDataUrl:result.target.result});
+  	        this.setState({originalSvgDataUrl:result.target.result});
   	    };
   	    if (file) {
   	        reader.readAsDataURL(file);

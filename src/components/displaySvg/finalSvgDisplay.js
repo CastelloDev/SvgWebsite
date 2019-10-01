@@ -16,7 +16,7 @@ class FinalSvgDisplay extends Component {
       listOfFileNames.push(
         <div className="display-svg-opt-notopt">
           <DisplaySvg
-            dataUrl={this.props.reduxState.displayOptimize[key].normalSvg}
+            dataUrl={this.props.reduxState.displayOptimize[key].originalSvg}
             width="100px"
             height="300px"
           />

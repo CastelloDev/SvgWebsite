@@ -20,7 +20,7 @@ class DisplayAllComponent extends Component {
     for (var setting of this.props.reduxState.svgSettingList) {
       if (this.props.reduxState.svgOptions.length > 0) {
         this.props.reduxState.displayOptimize.push({
-          normalSvg: setting.dataurl,
+          originalSvg: setting.dataurl,
           name: setting.name,
           optimisedSVG: await optimizeSvg(
             setting.dataurl,
@@ -29,7 +29,7 @@ class DisplayAllComponent extends Component {
         });
       } else {
         this.props.reduxState.displayOptimize.push({
-          normalSvg: setting.dataurl,
+          originalSvg: setting.dataurl,
           name: setting.name,
           optimisedSVG: await optimizeSvg(setting.dataurl, null)
         });
