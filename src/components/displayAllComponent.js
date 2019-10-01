@@ -20,18 +20,18 @@ class DisplayAllComponent extends Component {
     for (var setting of this.props.reduxState.svgSettingList) {
       if (this.props.reduxState.svgOptions.length > 0) {
         this.props.reduxState.displayOptimize.push({
-          original: setting.dataurl,
+          normalSvg: setting.dataurl,
           name: setting.name,
-          normalSvg: await optimizeSvg(
+          optimisedSVG: await optimizeSvg(
             setting.dataurl,
             this.props.reduxState.svgObject.plugins
           )
         });
       } else {
         this.props.reduxState.displayOptimize.push({
-          original: setting.dataurl,
+          normalSvg: setting.dataurl,
           name: setting.name,
-          normalSvg: await optimizeSvg(setting.dataurl, null)
+          optimisedSVG: await optimizeSvg(setting.dataurl, null)
         });
       }
     }

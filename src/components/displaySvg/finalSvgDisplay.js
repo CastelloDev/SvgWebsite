@@ -16,17 +16,17 @@ class FinalSvgDisplay extends Component {
       listOfFileNames.push(
         <div className="display-svg-opt-notopt">
           <DisplaySvg
-            dataUrl={this.props.reduxState.displayOptimize[key].original}
-            weight="100px"
-            height="300"
+            dataUrl={this.props.reduxState.displayOptimize[key].normalSvg}
+            width="100px"
+            height="300px"
           />
           <DisplaySvg
             dataUrl={
               "data:image/svg+xml;base64," +
-              this.props.reduxState.displayOptimize[key].normalSvg
+              this.props.reduxState.displayOptimize[key].optimisedSVG
             }
-            weight="100px"
-            height="300"
+            width="100px"
+            height="300px"
           />
         </div>
       );
@@ -34,7 +34,7 @@ class FinalSvgDisplay extends Component {
 
     
     return (
-      <div className="">
+      <div >
         {Array.isArray(listOfFileNames) && listOfFileNames.length > 0  ?
         <div> 
              {listOfFileNames}        
