@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 import base64 from 'base-64';
+import "./finalSvgDisplay.scss";
 import PropTypes from 'prop-types';
 class DisplaySvg extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            fileSize: 0
+            fileSize: 0,
+            isClicked: false
         };
     }
+
+    changeColourOnclickToMark=()=>{
+         this.setState({isClicked: !this.state.isClicked});
+        }
 
     componentWillMount = () => {
         if (this.props.dataUrl) {
@@ -24,9 +30,11 @@ class DisplaySvg extends Component {
     render() {
         return (
             <div>
+                <div className={this.props.svgType == "optimisedSvg" ? "optimised-svg-div-"+this.state.isClicked : "original-svg-div"} onClick={this.changeColourOnclickToMark}>
                 <figure>
                     <img
                         id='svg-display-id'
+                        className={this.props.svgType}
                         src={this.props.dataUrl}
                         width={this.props.width}
                         height={this.props.height}
@@ -34,6 +42,7 @@ class DisplaySvg extends Component {
                     />
                     <figcaption>{ 'File Size : '+this.state.fileSize +' KB'}</figcaption>
                 </figure>
+                </div>
             </div>
         );
     }

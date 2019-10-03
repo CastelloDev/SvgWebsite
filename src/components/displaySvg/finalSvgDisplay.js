@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import DisplaySvg from "./displaySvg";
+import finalSvgDisplay from "./finalSvgDisplay.scss";
 import { connect } from "react-redux";
 import {
   ADD_VARIABLE,
@@ -15,19 +16,25 @@ class FinalSvgDisplay extends Component {
     for (var key in this.props.reduxState.displayOptimize) {
       listOfFileNames.push(
         <div className="display-svg-opt-notopt">
+          <div className="original-svg-div">
           <DisplaySvg
+            svgType= "originalSvg"
             dataUrl={this.props.reduxState.displayOptimize[key].originalSvg}
             width="100px"
             height="300px"
           />
+          </div>
+          <div className="optimised-svg-div">
           <DisplaySvg
+            svgType="optimisedSvg"
             dataUrl={
               "data:image/svg+xml;base64," +
-              this.props.reduxState.displayOptimize[key].optimisedSVG
+              this.props.reduxState.displayOptimize[key].optimisedSvg
             }
             width="100px"
             height="300px"
           />
+          </div>
         </div>
       );
     }
