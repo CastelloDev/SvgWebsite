@@ -3,53 +3,92 @@ import PropTypes from "prop-types";
 import DisplaySvg from "./displaySvg";
 import finalSvgDisplay from "./finalSvgDisplay.scss";
 import { connect } from "react-redux";
+import base64 from "base-64";
+import InlineSVG from "svg-inline-react";
 import {
   ADD_VARIABLE,
   UPDATE_VARIABLE,
   DELETE_VARIABLE
 } from "../../store/actionTypes";
+import {wrapPathsWithLinkElement, svgElement , linkElementHead} from '../functions';
+
 class FinalSvgDisplay extends Component {
-  
+  constructor(props) {
+    super(props);
+    this.state = {
+        wrappedPathsElement : [],
+        pathArrayState : null
+    };
+}
+
+
+
+  componentDidMount = () => {
+    var array = [] ;
+    var pathArrayLocal = [];
+    var pathArray = document.getElementsByTagName("path");
+    console.log("pathArray : ", pathArray);
+    console.log("pathArray : ", pathArray.length);
+
+    for (var i = 0; i < pathArray.length; i++) {
+      var elementWrapper = document.createElement("a");
+      elementWrapper.setAttribute("class","className-1");
+      elementWrapper.setAttribute("id","id-1");
+      console.log("pathArray["+ i +"]",pathArray[i]);
+      pathArrayLocal.push(pathArray[i]);
+      elementWrapper.appendChild(pathArray[i]);
+      array.push(elementWrapper);
+
+    }
+
+    this.setState({
+      wrappedPathsElement : array,
+      pathArrayState : pathArrayLocal
+    });
+  };
+
   render() {
     const listOfFileNames = [];
 
     for (var key in this.props.reduxState.displayOptimize) {
+      var stringElement = base64.decode(
+        this.props.reduxState.displayOptimize[key].optimisedSvg
+      );
+      var doc = new DOMParser().parseFromString(stringElement, "text/html").body.firstChild;
+      if(this.state.wrappedPathsElement.length > 0){
+        for(var index=0; index < this.state.wrappedPathsElement.length ; index++){
+            var tempStr = new XMLSerializer().serializeToString(this.state.wrappedPathsElement[index]).toString();
+            stringElement = stringElement.replace();
+        }
+      }
+
       listOfFileNames.push(
         <div className="display-svg-opt-notopt">
-          <div className="original-svg-div">
-          <DisplaySvg
-            svgType= "originalSvg"
-            dataUrl={this.props.reduxState.displayOptimize[key].originalSvg}
-            width="100px"
-            height="300px"
-          />
+          <div className="original-svg-div" key={key}>
+            <DisplaySvg
+              key={key}
+              svgType="originalSvg"
+              dataUrl={this.props.reduxState.displayOptimize[key].originalSvg}
+              width="100px"
+              height="300px"
+            />
           </div>
           <div className="optimised-svg-div">
-          <DisplaySvg
-            svgType="optimisedSvg"
-            dataUrl={
-              "data:image/svg+xml;base64," +
-              this.props.reduxState.displayOptimize[key].optimisedSvg
-            }
-            width="100px"
-            height="300px"
-          />
+            <InlineSVG src={stringElement} />
           </div>
         </div>
       );
     }
 
-    
     return (
-      <div >
-        {listOfFileNames.length > 0  ?
-        <div className="display-page-div">
-         
-             {listOfFileNames}        
-        </div> : 
-        <div>
-            No svg to display
-        </div>}
+      <div>
+        {listOfFileNames.length > 0 ? (
+          <div>
+            <div className="display-page-div">{listOfFileNames}</div>
+          </div>
+        ) : (
+          <div>No svg to display</div>
+        )}
       </div>
     );
   }

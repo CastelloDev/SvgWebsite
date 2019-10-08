@@ -7,9 +7,19 @@
     :hover{
         background-color:#FFC0CB;
     }
-    
  }
+
+ a:hover {
+    background-color: yellow;
+  }
 
  .optimised-svg-div-true{
     background-color: #FFC0CB;
+ }
+
+ .original-svg-div , .optimised-svg-div{
+      float: left;
+      box-sizing: border-box;
+      width: 50%;
+      height: 50%;
  }
