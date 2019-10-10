@@ -47,30 +47,33 @@ class FinalSvgDisplay extends Component {
   componentDidMount = () => {
     var array = [];
     var pathArrayLocal = [];
-    
-    for(var y in SVG_TAG_NAMES){
-        var pathArray = document.getElementsByTagName(SVG_TAG_NAMES[y]);
-        for (var x of pathArray) {
-          var element = new XMLSerializer().serializeToString(x).toString();
-          if (!element.includes("id=")) {
-            element = element.replace(
-              "<"+SVG_TAG_NAMES[y],
-              "<"+SVG_TAG_NAMES[y]+" id=\"id_" + this.generate_random_id(7) + '"'
-            );
-          }
-          var elementWrapper = document.createElement("a");
-          elementWrapper.setAttribute("class", "className-1");
-          elementWrapper.setAttribute("onClick", this.svgPathClick);
-          elementWrapper.setAttribute("id", "id-1");
-          pathArrayLocal.push(x);
-          elementWrapper.appendChild(
-            new DOMParser().parseFromString(element, "text/html").body.firstChild
+
+    for (var y in SVG_TAG_NAMES) {
+      var pathArray = document.getElementsByTagName(SVG_TAG_NAMES[y]);
+      for (var x of pathArray) {
+        var element = new XMLSerializer().serializeToString(x).toString();
+        if (!element.includes("id=")) {
+          element = element.replace(
+            "<" + SVG_TAG_NAMES[y],
+            "<" +
+              SVG_TAG_NAMES[y] +
+              ' id="id_' +
+              this.generate_random_id(7) +
+              '"'
           );
-          array.push(elementWrapper);
         }
-    
+        var elementWrapper = document.createElement("a");
+        elementWrapper.setAttribute("class", "className-1");
+        elementWrapper.setAttribute("onClick", this.svgPathClick);
+        elementWrapper.setAttribute("id", "id-1");
+        pathArrayLocal.push(x);
+        elementWrapper.appendChild(
+          new DOMParser().parseFromString(element, "text/html").body.firstChild
+        );
+        array.push(elementWrapper);
+      }
     }
-    
+
     this.setState({
       wrappedPathsElement: array,
       pathArrayState: pathArrayLocal
@@ -101,30 +104,57 @@ class FinalSvgDisplay extends Component {
           var tempToWrapStr = new XMLSerializer()
             .serializeToString(this.state.pathArrayState[index])
             .toString();
-            console.log("Before replacement 1 : ", tempToWrapStr);
           tempToWrapStr = tempToWrapStr.replace(
             'xmlns="http://www.w3.org/2000/svg"',
             ""
           );
-          console.log("Before replacement 2 : ", tempToWrapStr ," io,"+ tempToWrapStr.substring(0,5));
-          if(tempToWrapStr.substring(0,5)== "<path"){
+          if (
+            tempToWrapStr.substring(0, 5) == "<path" ||
+            tempToWrapStr.substring(0, 5) == "<rect"
+          ) {
             tempToWrapStr =
-            tempToWrapStr.substring(0, 5) +
-            " " +
-            tempToWrapStr.substring(6, tempToWrapStr.length).trim();
-          }else if(tempToWrapStr.substring(0,5)=="<elli"){
-            console.log("Part 1 : ", tempToWrapStr.substring(0, 8));
-            console.log("Part 2 : ",tempToWrapStr.substring(8, tempToWrapStr.length).trim());
+              tempToWrapStr.substring(0, 5) +
+              " " +
+              tempToWrapStr.substring(6, tempToWrapStr.length).trim();
+          } else if (tempToWrapStr.substring(0, 5) == "<elli") {
             tempToWrapStr =
-            tempToWrapStr.substring(0, 8) +
-            " " +
-            tempToWrapStr.substring(8, tempToWrapStr.length).trim();
+              tempToWrapStr.substring(0, 8) +
+              " " +
+              tempToWrapStr.substring(8, tempToWrapStr.length).trim();
+          } else if (tempToWrapStr.substring(0, 5) == "<rect") {
+            tempToWrapStr =
+              tempToWrapStr.substring(0, 5) +
+              " " +
+              tempToWrapStr.substring(6, tempToWrapStr.length).trim();
+          } else if (tempToWrapStr.substring(0, 5) == "<circ") {
+            //<circle
+            //  console.log("Part 1 : ", tempToWrapStr.substring(0,7));
+            //  console.log("Part 2 : ",tempToWrapStr.substring(8, tempToWrapStr.length));
+            tempToWrapStr =
+              tempToWrapStr.substring(0, 7) +
+              " " +
+              tempToWrapStr.substring(8, tempToWrapStr.length).trim();
+            //console.log("stringElement : ",stringElement)
+            console.log("final string : ", tempToWrapStr);
+          } else if (tempToWrapStr.substring(0, 5) == "<poly") {
+            //<polygon
+            tempToWrapStr =
+              tempToWrapStr.substring(0, 8) +
+              " " +
+              tempToWrapStr.substring(9, tempToWrapStr.length).trim();
+          } else if (tempToWrapStr.substring(0, 5) == "<line") {
+            tempToWrapStr =
+              tempToWrapStr.substring(0, 8) +
+              " " +
+              tempToWrapStr.substring(9, tempToWrapStr.length).trim();
+            //console.log("stringElement : ",stringElement)
+          } else if (tempToWrapStr.substring(0, 5) == "<text") {
+            tempToWrapStr =
+              tempToWrapStr.substring(0, 5) +
+              " " +
+              tempToWrapStr.substring(6, tempToWrapStr.length).trim();
           }
-          
 
-            console.log(" remove this : ",tempToWrapStr);
-            console.log("stringElement : ",stringElement);
-            console.log(" place this: ",tempWrapedStr);
           stringElement = stringElement.replace(tempToWrapStr, tempWrapedStr);
         }
       }
