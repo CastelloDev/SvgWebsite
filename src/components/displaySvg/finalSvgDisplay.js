@@ -47,27 +47,30 @@ class FinalSvgDisplay extends Component {
   componentDidMount = () => {
     var array = [];
     var pathArrayLocal = [];
-    var pathArray = document.getElementsByTagName("path");
-  
-    for (var x of pathArray) {
-      var element = new XMLSerializer().serializeToString(x).toString();
-      if (!element.includes("id=")) {
-        element = element.replace(
-          "<path",
-          '<path id="id_' + this.generate_random_id(7) + '"'
-        );
-      }
-      var elementWrapper = document.createElement("a");
-      elementWrapper.setAttribute("class", "className-1");
-      elementWrapper.setAttribute("onClick", this.svgPathClick);
-      elementWrapper.setAttribute("id", "id-1");
-      pathArrayLocal.push(x);
-      elementWrapper.appendChild(
-        new DOMParser().parseFromString(element, "text/html").body.firstChild
-      );
-      array.push(elementWrapper);
+    
+    for(var y in SVG_TAG_NAMES){
+        var pathArray = document.getElementsByTagName(SVG_TAG_NAMES[y]);
+        for (var x of pathArray) {
+          var element = new XMLSerializer().serializeToString(x).toString();
+          if (!element.includes("id=")) {
+            element = element.replace(
+              "<"+SVG_TAG_NAMES[y],
+              "<"+SVG_TAG_NAMES[y]+" id=\"id_" + this.generate_random_id(7) + '"'
+            );
+          }
+          var elementWrapper = document.createElement("a");
+          elementWrapper.setAttribute("class", "className-1");
+          elementWrapper.setAttribute("onClick", this.svgPathClick);
+          elementWrapper.setAttribute("id", "id-1");
+          pathArrayLocal.push(x);
+          elementWrapper.appendChild(
+            new DOMParser().parseFromString(element, "text/html").body.firstChild
+          );
+          array.push(elementWrapper);
+        }
+    
     }
-
+    
     this.setState({
       wrappedPathsElement: array,
       pathArrayState: pathArrayLocal
@@ -94,32 +97,34 @@ class FinalSvgDisplay extends Component {
           var tempWrapedStr = new XMLSerializer()
             .serializeToString(this.state.wrappedPathsElement[index])
             .toString();
+
           var tempToWrapStr = new XMLSerializer()
             .serializeToString(this.state.pathArrayState[index])
             .toString();
+            console.log("Before replacement 1 : ", tempToWrapStr);
           tempToWrapStr = tempToWrapStr.replace(
             'xmlns="http://www.w3.org/2000/svg"',
             ""
           );
-          tempToWrapStr =
+          console.log("Before replacement 2 : ", tempToWrapStr ," io,"+ tempToWrapStr.substring(0,5));
+          if(tempToWrapStr.substring(0,5)== "<path"){
+            tempToWrapStr =
             tempToWrapStr.substring(0, 5) +
             " " +
             tempToWrapStr.substring(6, tempToWrapStr.length).trim();
-
-          if (!tempWrapedStr.includes('id="')) {
-            const positionToInsert =
-              tempWrapedStr.toString().indexOf("<path") + 1;
-            tempWrapedStr = [
-              (tempWrapedStr = tempWrapedStr
-                .toString()
-                .slice(0, positionToInsert)),
-              "id_" + this.generate_random_id(7),
-              tempWrapedStr
-                .toString()
-                .slice(positionToInsert, tempWrapedStr.toString().length)
-            ].join();
+          }else if(tempToWrapStr.substring(0,5)=="<elli"){
+            console.log("Part 1 : ", tempToWrapStr.substring(0, 8));
+            console.log("Part 2 : ",tempToWrapStr.substring(8, tempToWrapStr.length).trim());
+            tempToWrapStr =
+            tempToWrapStr.substring(0, 8) +
+            " " +
+            tempToWrapStr.substring(8, tempToWrapStr.length).trim();
           }
+          
 
+            console.log(" remove this : ",tempToWrapStr);
+            console.log("stringElement : ",stringElement);
+            console.log(" place this: ",tempWrapedStr);
           stringElement = stringElement.replace(tempToWrapStr, tempWrapedStr);
         }
       }
