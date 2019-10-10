@@ -9,8 +9,9 @@
     }
  }
 
- a:hover {
+ rect:hover {
     background-color: yellow;
+    fill:green($color: #000000);
   }
 
   .className-1{
@@ -19,10 +20,12 @@
          fill:yellow;
 
       }
-      fill: pink;
-      color: black;
+      
   }
 
+  a:hover{
+     fill:yellow;
+  }
   
   
 

@@ -5,59 +5,72 @@ import finalSvgDisplay from "./finalSvgDisplay.scss";
 import { connect } from "react-redux";
 import base64 from "base-64";
 import InlineSVG from "svg-inline-react";
-import {SVG_TAG_NAMES} from "../../constants/constants";
+import { SVG_TAG_NAMES } from "../../constants/constants";
 import {
   ADD_VARIABLE,
   UPDATE_VARIABLE,
   DELETE_VARIABLE
 } from "../../store/actionTypes";
-import {wrapPathsWithLinkElement, svgElement , linkElementHead} from '../functions';
+import {
+  wrapPathsWithLinkElement,
+  svgElement,
+  linkElementHead
+} from "../functions";
 
 class FinalSvgDisplay extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        wrappedPathsElement : [],
-        pathArrayState : null
+      wrappedPathsElement: [],
+      pathArrayState: null
     };
-}
+  }
 
-svgPathClick(){
-  alert("I have been clicked");
-}
+  svgPathClick() {
+    alert("I have been clicked");
+  }
 
-
+  generate_random_id = string_length => {
+    let random_string = "";
+    let random_ascii;
+    let ascii_low = 65;
+    let ascii_high = 90;
+    for (let i = 0; i < string_length; i++) {
+      random_ascii = Math.floor(
+        Math.random() * (ascii_high - ascii_low) + ascii_low
+      );
+      random_string += String.fromCharCode(random_ascii);
+    }
+    return `id_${random_string}`;
+  };
 
   componentDidMount = () => {
-    var array = [] ;
+    var array = [];
     var pathArrayLocal = [];
     var pathArray = document.getElementsByTagName("path");
-    console.log("pathArray : ", pathArray);
-    console.log("pathArray : ", pathArray.length);
-    
-
+  
     for (var x of pathArray) {
-      console.log("X------> : ",x);
-    }
-
-    var i = 0;
-    for (var x of pathArray) {
+      var element = new XMLSerializer().serializeToString(x).toString();
+      if (!element.includes("id=")) {
+        element = element.replace(
+          "<path",
+          '<path id="id_' + this.generate_random_id(7) + '"'
+        );
+      }
       var elementWrapper = document.createElement("a");
-      elementWrapper.setAttribute("class","className-1");
-      elementWrapper.setAttribute("onClick",this.svgPathClick);
-      elementWrapper.setAttribute("id","id-1");
-      console.log("element ["+ i +"]",x);
+      elementWrapper.setAttribute("class", "className-1");
+      elementWrapper.setAttribute("onClick", this.svgPathClick);
+      elementWrapper.setAttribute("id", "id-1");
       pathArrayLocal.push(x);
-      elementWrapper.appendChild(x);
+      elementWrapper.appendChild(
+        new DOMParser().parseFromString(element, "text/html").body.firstChild
+      );
       array.push(elementWrapper);
-      console.log("elementWrapper  :",`${i } elementWrapper`);
-      i++;
     }
-
 
     this.setState({
-      wrappedPathsElement : array,
-      pathArrayState : pathArrayLocal
+      wrappedPathsElement: array,
+      pathArrayState: pathArrayLocal
     });
   };
 
@@ -68,18 +81,46 @@ svgPathClick(){
       var stringElement = base64.decode(
         this.props.reduxState.displayOptimize[key].optimisedSvg
       );
-      var doc = new DOMParser().parseFromString(stringElement, "text/html").body.firstChild;
-      if(this.state.wrappedPathsElement.length > 0){
-        for(var index=0; index < this.state.wrappedPathsElement.length ; index++){
-            var tempWrapedStr = new XMLSerializer().serializeToString(this.state.wrappedPathsElement[index]).toString();
-            var tempToWrapStr = new XMLSerializer().serializeToString(this.state.pathArrayState[index]).toString();
-            tempToWrapStr =  tempToWrapStr.replace("xmlns=\"http://www.w3.org/2000/svg\"","");
-            tempToWrapStr = tempToWrapStr.substring(0,5)+" "+tempToWrapStr.substring(6,tempToWrapStr.length).trim();
-            // console.log("replace ----> "+tempToWrapStr.substring(0,5)+" "+tempToWrapStr.substring(6,tempToWrapStr.length).trim()+ "with this ---> "+tempWrapedStr);
-            // console.log("tempToWrapStr : ", tempToWrapStr.substring(41,tempToWrapStr.length));
-            // console.log("tempWrapedStr) : ", tempWrapedStr.substring(41,tempWrapedStr.length));
-            stringElement = stringElement.replace(tempToWrapStr, tempWrapedStr);
-            console.log("stringElement : ", stringElement);
+      console.log(
+        "this.state.wrappedPathsElement : ",
+        this.state.wrappedPathsElement
+      );
+      if (this.state.wrappedPathsElement.length > 0) {
+        for (
+          var index = 0;
+          index < this.state.wrappedPathsElement.length;
+          index++
+        ) {
+          var tempWrapedStr = new XMLSerializer()
+            .serializeToString(this.state.wrappedPathsElement[index])
+            .toString();
+          var tempToWrapStr = new XMLSerializer()
+            .serializeToString(this.state.pathArrayState[index])
+            .toString();
+          tempToWrapStr = tempToWrapStr.replace(
+            'xmlns="http://www.w3.org/2000/svg"',
+            ""
+          );
+          tempToWrapStr =
+            tempToWrapStr.substring(0, 5) +
+            " " +
+            tempToWrapStr.substring(6, tempToWrapStr.length).trim();
+
+          if (!tempWrapedStr.includes('id="')) {
+            const positionToInsert =
+              tempWrapedStr.toString().indexOf("<path") + 1;
+            tempWrapedStr = [
+              (tempWrapedStr = tempWrapedStr
+                .toString()
+                .slice(0, positionToInsert)),
+              "id_" + this.generate_random_id(7),
+              tempWrapedStr
+                .toString()
+                .slice(positionToInsert, tempWrapedStr.toString().length)
+            ].join();
+          }
+
+          stringElement = stringElement.replace(tempToWrapStr, tempWrapedStr);
         }
       }
 
