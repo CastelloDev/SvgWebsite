@@ -164,16 +164,17 @@ export const updateSvgElements=(listOfFileNames, optimisedArray, wrappedPathsEle
         );
       }
 }
-function doSomething(elemId){
-        const prevColour = document.getElementById(elemId).getAttribute("fill");
+function doSomething(elemId, prevColour){
         var arrayOfClickedIds = []
         if(arrayOfClickedIds.includes(elemId) ){
           //remove from array
           alert("About to pop : " + elemId);
-          document.getElementById(elemId).setAttribute("fill",prevColour);
+          document.getElementById(elemId).setAttribute("fill",prevColour);//.style.width='330px';
+          document.getElementById(elemId).style.fill = prevColour ;
         }else{
           //push into an array 
           alert("About to push : " + elemId);
-          document.getElementById(elemId).setAttribute("fill","brown");
+          document.getElementById(elemId).setAttribute("fill","brown"); //.style.width='330px';
+          document.getElementById(elemId).style.fill = "brown";
         }
 }

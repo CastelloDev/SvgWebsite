@@ -33,7 +33,7 @@ class FinalSvgDisplay extends Component {
     var pathArrayLocal = [];
     var elementIds = [];
     wrapElements(SVG_TAG_NAMES, array, pathArrayLocal, 7, elementIds);
-    var functionStr = "function doSomething(elemId){  var arrayOfClickedIds = [];const prevColour = document.getElementById(elemId).getAttribute(\"fill\");if(arrayOfClickedIds.includes(elemId) ){alert(\"About to pop : \" + elemId);document.getElementById(elemId).setAttribute(\"fill\",prevColour);}else{  alert(\"About to push : \" + elemId);document.getElementById(elemId).setAttribute(\"fill\",\"brown\");}}"
+    var functionStr = "function doSomething(elemId,white){  var arrayOfClickedIds = [];if(arrayOfClickedIds.includes(elemId) ){alert(\"About to pop : \" + elemId);document.getElementById(elemId).style.fill = prevColour;}else{  alert(\"About to push : \" + elemId);document.getElementById(elemId).style.fill = \"brown\";;}}"
 
     const script = document.createElement('script');
     var t = document.createTextNode(functionStr);
