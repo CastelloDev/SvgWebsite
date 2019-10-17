@@ -28,15 +28,65 @@ class FinalSvgDisplay extends Component {
     console.log("my function");
   };
 
+  downloadNewSvgFiles = () => {
+    
+    var svgList = document.getElementsByTagName("svg");
+
+    //get svg source.
+    var serializer = new XMLSerializer();
+    console.log("len : ",svgList.length);
+    for(var svgDataIndex in svgList){   
+    //get svg source.
+    var source = serializer.serializeToString(svgList[svgDataIndex]);
+    source = source.replace("<a class=\"className-1\" id=\"id-1\">","").replace("</a>","").replace("onclick=\"doSomething(this.id);\"","");
+
+    //add name spaces.
+    if (!source.match(/^<svg[^>]+xmlns="http\:\/\/www\.w3\.org\/2000\/svg"/)) {
+      source = source.replace(
+        /^<svg/,
+        '<svg xmlns="http://www.w3.org/2000/svg"'
+      );
+    
+    }
+    if (!source.match(/^<svg[^>]+"http\:\/\/www\.w3\.org\/1999\/xlink"/)) {
+      source = source.replace(
+        /^<svg/,
+        '<svg xmlns:xlink="http://www.w3.org/1999/xlink"'
+      );
+    }
+
+    //add xml declaration
+    source = '<?xml version="1.0" standalone="no"?>\r\n' + source;
+
+    //convert svg source to URI data scheme.
+    var url = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(source);
+    console.log("svgDataIndex :",svgDataIndex);
+    console.log("url :",url);
+    //set url value to a element's href attribute.
+        var dl = document.createElement("a");
+        document.body.appendChild(dl); // This line makes it work in Firefox.
+        dl.setAttribute("href", url);
+        dl.setAttribute("download", "test.svg");
+        dl.click();
+
+      if(svgList.length-1 == svgDataIndex){
+        break;
+      }
+    }
+
+  };
+
   componentDidMount = () => {
     var array = [];
     var pathArrayLocal = [];
     var elementIds = [];
     wrapElements(SVG_TAG_NAMES, array, pathArrayLocal, 7, elementIds);
-    var functionStr = "function doSomething(elemId,white){  var arrayOfClickedIds = [];if(arrayOfClickedIds.includes(elemId) ){alert(\"About to pop : \" + elemId);document.getElementById(elemId).style.fill = prevColour;}else{  alert(\"About to push : \" + elemId);document.getElementById(elemId).style.fill = \"brown\";;}}"
+    var functionStr =
+      'function doSomething(elemId,white){  var arrayOfClickedIds = [];if(!arrayOfClickedIds.includes(elemId) || arrayOfClickedIds.length == 0 ){  arrayOfClickedIds.push(elemId);document.getElementById(elemId).style.fill = "brown";}else{arrayOfClickedIds.push(elemId);document.getElementById(elemId).removeAttribute("style");document.getElementById(elemId).style.fill = prevColour;}}';
 
-    const script = document.createElement('script');
+    const script = document.createElement("script");
     var t = document.createTextNode(functionStr);
+    script.setAttribute("class", "fucntionality-script");
     script.appendChild(t);
     document.body.appendChild(script);
 
@@ -47,9 +97,6 @@ class FinalSvgDisplay extends Component {
     });
   };
 
-  handleNvEnter = (event) => {
-    console.log("Nv Enter:", event);
-  }
   render() {
     const listOfFileNames = [];
     updateSvgElements(
@@ -64,6 +111,13 @@ class FinalSvgDisplay extends Component {
         {listOfFileNames.length > 0 ? (
           <div>
             <div className="display-page-div">{listOfFileNames}</div>
+            <button
+              className="download-Button"
+              onClick={this.downloadNewSvgFiles}
+            >
+              {" "}
+              Download edited svg
+            </button>
           </div>
         ) : (
           <div>No svg to display</div>

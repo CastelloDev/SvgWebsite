@@ -57,8 +57,11 @@
   width: 319px;
   display: flex;
 }
-.optimizeButton{
-  display: flex;
+.optimize-Button{
+  margin-top: 12%;
+  margin-top: 19%;
+text-align: center;
+display: inline-block;
   justify-items: center;
   width:100px;
   height: 70px;
@@ -67,9 +70,22 @@
   align-items: center;
 }
 
+.download-Button{
+  margin-top: 12%;
+  margin-top: 19%;
+text-align: center;
+display: inline-block;
+  justify-items: center;
+  width:100px;
+  height: 70px;
+  border-radius: 35px;
+  background-color: #b6e1b5;
+  align-items: center;
+}
 .optimise-button-div{
   display: flex;
   justify-content: center;
+
 }
 
 

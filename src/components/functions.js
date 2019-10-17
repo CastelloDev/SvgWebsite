@@ -159,6 +159,7 @@ export const updateSvgElements=(listOfFileNames, optimisedArray, wrappedPathsEle
             </div>
             <div className="optimised-svg-div">
               <InlineSVG src={stringElement} />
+              
             </div>
           </div>
         );
@@ -166,15 +167,22 @@ export const updateSvgElements=(listOfFileNames, optimisedArray, wrappedPathsEle
 }
 function doSomething(elemId, prevColour){
         var arrayOfClickedIds = []
-        if(arrayOfClickedIds.includes(elemId) ){
-          //remove from array
-          alert("About to pop : " + elemId);
-          document.getElementById(elemId).setAttribute("fill",prevColour);//.style.width='330px';
-          document.getElementById(elemId).style.fill = prevColour ;
-        }else{
-          //push into an array 
+        var i = 0 ;
+        if(!arrayOfClickedIds.includes(elemId) || arrayOfClickedIds.length == 0){
+              //push into an array 
           alert("About to push : " + elemId);
+          arrayOfClickedIds.push(elemId);
           document.getElementById(elemId).setAttribute("fill","brown"); //.style.width='330px';
           document.getElementById(elemId).style.fill = "brown";
+          
+        }else{
+      
+     
+          //remove from array
+          alert("About to pop : " + elemId);
+          arrayOfClickedIds.pop(elemId);
+          document.getElementById(elemId).removeAttribute("style");
+          document.getElementById(elemId).setAttribute("fill",prevColour);//.style.width='330px';
         }
 }
+
