@@ -20,7 +20,21 @@
   }
 
  svg{
-    margin-top: 94%;
-    padding-left: 22%;
+    max-height: 106px;
+    max-width: fit-content;
+    margin-top: 94px;
+    background-color: white;
  }
   
+ .display-svgs-border-match{
+    max-height: 571px;
+    border: outset;
+    border-color: green
+ }
+
+ .display-original-optimised{
+    overflow-y: scroll;
+    max-height: 571px;
+    border: outset;
+    border-color: green;
+ }

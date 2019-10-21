@@ -147,7 +147,6 @@ export const updateSvgElements=(listOfFileNames, optimisedArray, wrappedPathsEle
         }
   
         listOfFileNames.push(
-          <div className="display-svg-opt-notopt">
             <div className="original-svg-div" key={key}>
               <DisplaySvg
                 key={key}
@@ -155,13 +154,9 @@ export const updateSvgElements=(listOfFileNames, optimisedArray, wrappedPathsEle
                 dataUrl={optimisedArray[key].originalSvg}
                 width="100px"
                 height="300px"
+                stringElement={stringElement}
               />
             </div>
-            <div className="optimised-svg-div">
-              <InlineSVG src={stringElement} />
-              
-            </div>
-          </div>
         );
       }
 }
@@ -185,4 +180,3 @@ function doSomething(elemId, prevColour){
           document.getElementById(elemId).setAttribute("fill",prevColour);//.style.width='330px';
         }
 }
-

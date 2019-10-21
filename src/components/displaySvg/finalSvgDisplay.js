@@ -110,7 +110,7 @@ class FinalSvgDisplay extends Component {
       <div>
         {listOfFileNames.length > 0 ? (
           <div>
-            <div className="display-page-div">{listOfFileNames}</div>
+            <div className="display-original-optimised">{listOfFileNames}</div>
             <button
               className="download-Button"
               onClick={this.downloadNewSvgFiles}

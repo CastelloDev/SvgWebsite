@@ -11,7 +11,7 @@ import {
   UPDATE_VARIABLE,
   DELETE_VARIABLE
 } from "../store/actionTypes";
-
+import finalSvgDisplay from "../components/displaySvg/finalSvgDisplay";
 class DisplayAllComponent extends Component {
   getOptimizeSvg = async () => {
     for (var option of this.props.reduxState.svgOptions) {
@@ -44,7 +44,7 @@ class DisplayAllComponent extends Component {
           <div className="choose">
             <ChooseFolder />
           </div>
-          <div className="choose">
+          <div >
             <SvgSettingOptions />
             <div className="optimise-button-div">
               <NavLink to="/FinalSvgDisplay">
@@ -54,6 +54,9 @@ class DisplayAllComponent extends Component {
               </NavLink>
             </div>
           </div>
+        </div>
+        <div className="display-svg-edit-download">
+                
         </div>
       </div>
     );
