@@ -8,7 +8,8 @@ class DisplaySvg extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fileSize: 0,
+      fileSizeNormal: 0,
+      fileSizeOptimised: 0,
       isClicked: false
     };
   }
@@ -20,7 +21,10 @@ class DisplaySvg extends Component {
   componentWillMount = () => {
     if (this.props.dataUrl) {
       this.setState({
-        fileSize: this.dataURLtoKilloBytes(this.props.dataUrl.split(",")[1])
+        fileSizeNormal: this.dataURLtoKilloBytes(
+          this.props.dataUrl.split(",")[1]
+        ),
+        fileSizeOptimised: this.props.stringElement.length / 1000
       });
     }
   };
@@ -32,28 +36,37 @@ class DisplaySvg extends Component {
   render() {
     return (
       <div>
-          <div className="display-svgs-border-match">
-        <Container>
-          <Row>
-            <Col xs="6">
-              <figure>
-                <img
-                  className={this.props.svgType}
-                  src={this.props.dataUrl}
-                  width={this.props.width}
-                  height={this.props.height}
-                  alt="svg to be displayed"
-                />
-                <figcaption>
-                  {"File Size : " + this.state.fileSize + " KB"}
-                </figcaption>
-              </figure>
-            </Col>
-            <Col xs="6">
-              <InlineSVG src={this.props.stringElement} />
-            </Col>
-          </Row>
-        </Container>
+        <div className="display-svgs-border-match">
+          <Container>
+            <Row>
+              <Col xs="6">
+                <figure>
+                  <img
+                    className={this.props.svgType}
+                    src={this.props.dataUrl}
+                    width={this.props.width}
+                    height={this.props.height}
+                    alt="svg to be displayed"
+                  />
+                  <figcaption>
+                    {"File Size : " + this.state.fileSizeNormal + " KB"}
+                  </figcaption>
+                </figure>
+              </Col>
+              <Col xs="6">
+                <InlineSVG src={this.props.stringElement} />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <div>
+                  {"File Size : " + this.state.fileSizeOptimised + " KB"}
+                </div>
+              </Col>
+            </Row>
+          </Container>
         </div>
       </div>
     );

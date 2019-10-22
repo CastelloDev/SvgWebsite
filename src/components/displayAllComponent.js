@@ -44,19 +44,19 @@ class DisplayAllComponent extends Component {
           <div className="choose">
             <ChooseFolder />
           </div>
-          <div >
+          <div>
             <SvgSettingOptions />
             <div className="optimise-button-div">
               <NavLink to="/FinalSvgDisplay">
-                <button className="optimize-Button" onClick={this.getOptimizeSvg}>
+                <button
+                  className="optimize-Button"
+                  onClick={this.getOptimizeSvg}
+                >
                   Optimize
                 </button>
               </NavLink>
             </div>
           </div>
-        </div>
-        <div className="display-svg-edit-download">
-                
         </div>
       </div>
     );

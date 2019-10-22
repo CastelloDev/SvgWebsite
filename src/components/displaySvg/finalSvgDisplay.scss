@@ -3,18 +3,10 @@
     width: 373px; 
 }
 
- .optimised-svg-div-false{
-    :hover{
-        background-color:#FFC0CB;
-    }
- }
-
-
   .className-1{
       :hover{
          background-color: yellow;
          fill:yellow;
-
       }
       
   }
@@ -26,15 +18,20 @@
     background-color: white;
  }
   
- .display-svgs-border-match{
-    max-height: 571px;
+ .display-svgs-border-match {
+    max-height: 381px;
     border: outset;
-    border-color: green
- }
+    border-color: green;
+}
 
  .display-original-optimised{
     overflow-y: scroll;
     max-height: 571px;
     border: outset;
     border-color: green;
+ }
+
+ .button-background{
+    background-color: grey;
+    height: 171px;   
  }
