@@ -35,3 +35,29 @@
     background-color: grey;
     height: 171px;   
  }
+
+ .loader-text{
+      margin-top: 210px;
+ }
+
+ .loader {
+   border: 16px solid #f3f3f3;
+    border-radius: -114%; /* to make it round use a positive number*/
+    /* border-top: 16px solid #bcda12; */
+    width: 197px;
+    height: 199px;
+    animation: spin 4s linear infinite;
+   margin-top: 100px;
+    margin-left: 856px;
+ }
+
+ /* Safari */
+@-webkit-keyframes spin {
+   0% { -webkit-transform: rotate(0deg); }
+   100% { -webkit-transform: rotate(360deg); }
+ }
+ 
+ @keyframes spin {
+   0% { transform: rotate(0deg); }
+   100% { transform: rotate(360deg); }
+ }

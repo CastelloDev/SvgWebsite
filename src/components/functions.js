@@ -45,6 +45,7 @@ export const wrapElements = (
   idLengthToGenerate,
   idOfElements
 ) => {
+  while(array.length != 0){
   for (var svgTagNameIndex in SVG_TAG_NAMES) {
     var drawingComponet = document.getElementsByTagName(
       SVG_TAG_NAMES[svgTagNameIndex]
@@ -82,6 +83,8 @@ export const wrapElements = (
       array.push(elementWrapper);
     }
   }
+}
+  return array;
 };
 
 export const updateSvgElements = (

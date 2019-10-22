@@ -12,7 +12,7 @@ import {
   DELETE_VARIABLE
 } from "../../store/actionTypes";
 import { wrapElements, updateSvgElements } from "../functions";
-
+import { Col, Row, Container } from "reactstrap";
 class FinalSvgDisplay extends Component {
   constructor(props) {
     super(props);
@@ -74,11 +74,14 @@ class FinalSvgDisplay extends Component {
     }
   };
 
-  componentDidMount = () => {
+  componentWillMount = () => {
     var array = [];
     var pathArrayLocal = [];
     var elementIds = [];
-    wrapElements(SVG_TAG_NAMES, array, pathArrayLocal, 7, elementIds);
+    console.log(" before array len : ", array.length);
+     let newArray = wrapElements(SVG_TAG_NAMES, array, pathArrayLocal, 7, elementIds);
+
+    console.log("after array len : ",newArray.length);
     var functionStr =
       'function doSomething(elemId,white){  var arrayOfClickedIds = [];if(!arrayOfClickedIds.includes(elemId) || arrayOfClickedIds.length == 0 ){  arrayOfClickedIds.push(elemId);document.getElementById(elemId).style.fill = "brown";}else{arrayOfClickedIds.push(elemId);document.getElementById(elemId).removeAttribute("style");document.getElementById(elemId).style.fill = prevColour;}}';
 
@@ -103,7 +106,7 @@ class FinalSvgDisplay extends Component {
       this.state.wrappedPathsElement,
       this.state.pathArrayState
     );
-
+      console.log("listOfFileNames len ", listOfFileNames.length);
     return (
       <div>
         {listOfFileNames.length > 0 ? (
@@ -120,7 +123,11 @@ class FinalSvgDisplay extends Component {
             </div>
           </div>
         ) : (
-          <div>No svg to display</div>
+          <div>
+            <h2 className="loader-text" align="center">Loading svg images .......</h2>
+          <div className="loader" ></div>
+          
+          </div>
         )}
       </div>
     );
