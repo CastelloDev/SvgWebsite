@@ -60,7 +60,6 @@ class DisplaySvg extends Component {
                 <br />
                 <br />
                 <br />
-                <br />
                 <div>
                   {"File Size : " + this.state.fileSizeOptimised + " KB"}
                 </div>

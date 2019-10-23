@@ -27,6 +27,8 @@ class DisplayAllComponent extends Component {
             this.props.reduxState.svgObject.plugins
           )
         });
+
+        
       } else {
         this.props.reduxState.displayOptimize.push({
           originalSvg: setting.dataurl,
