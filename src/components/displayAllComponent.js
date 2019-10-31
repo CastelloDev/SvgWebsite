@@ -3,7 +3,11 @@ import ChooseFolder from "./chooseFolder/chooseFolder";
 import { NavLink } from "react-router-dom";
 import SvgSettingOptions from "./svgSetting/svgSettingOptions";
 import "../components/checkBoxSelection/checkBoxSelection.scss";
-import { changeObj, optimizeSvg } from "../../src/components/functions";
+import {
+  changeObj,
+  optimizeSvg,
+  optimizeSvgList
+} from "../../src/components/functions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import {
@@ -13,27 +17,52 @@ import {
 } from "../store/actionTypes";
 import finalSvgDisplay from "../components/displaySvg/finalSvgDisplay";
 class DisplayAllComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      optimisedSvg: [],
+      optimisedSvgDataUrl :{}
+    };
+  }
+
   getOptimizeSvg = async () => {
     for (var option of this.props.reduxState.svgOptions) {
       changeObj(option, this.props.reduxState.svgObject.plugins);
     }
-    for (var setting of this.props.reduxState.svgSettingList) {
-      if (this.props.reduxState.svgOptions.length > 0) {
-        this.props.reduxState.displayOptimize.push({
-          originalSvg: setting.dataurl,
-          name: setting.name,
-          optimisedSvg: await optimizeSvg(
-            setting.dataurl,
-            this.props.reduxState.svgObject.plugins
-          )
-        });
+    var results =await  optimizeSvgList(
+      this.props.reduxState.svgSettingList,
+      this.props.reduxState.svgOptions,
+      this.props.reduxState.svgObject.plugins
+    ).then(res => {
+      return res;
+    }).catch(error =>{
+       return error ;
+    });
 
-        
-      } else {
+    console.log("res 1 : ", results);
+    for(var i=0 ; i < results.length; i++){
+      console.log("setting",results[i])
+      this.props.reduxState.displayOptimize.push({
+        originalSvg: results[i].dataurl,
+        name: results[i].name,
+        optimisedSvg: results[i].OptimsedDataUrl
+      });
+    console.log("before looping x  ", x);
+    for (var setting of x) {
+      console.log("settings : ",setting);
+      if (this.props.reduxState.svgOptions.length > 0) {
+        console.log("this.props.reduxState.svgOptions.length > 0 ");
         this.props.reduxState.displayOptimize.push({
           originalSvg: setting.dataurl,
           name: setting.name,
-          optimisedSvg: await optimizeSvg(setting.dataurl, null)
+          optimisedSvg: setting.OptimsedDataUrl
+        });
+      } else {
+        console.log("this.props.reduxState.svgOptions.length < 0 ");
+        this.props.reduxState.displayOptimize.push({
+          originalSvg: setting.dataurl,
+          name: setting.name,
+          optimisedSvg: setting.OptimsedDataUrl
         });
       }
     }
@@ -60,6 +89,7 @@ class DisplayAllComponent extends Component {
             </div>
           </div>
         </div>
+        <div className="display-svg-edit-download"></div>
       </div>
     );
   }

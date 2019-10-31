@@ -2,8 +2,9 @@ import axios from "axios";
 import React from "react";
 import DisplaySvg from "../components/displaySvg/displaySvg";
 import finalSvgDisplay from "../components/displaySvg/finalSvgDisplay.scss";
-import { BASE_URL, OPTIMIZE_SVG } from "../constants/constants";
+import { BASE_URL, OPTIMIZE_SVG, OPTIMIZE_SVG_LIST} from "../constants/constants";
 import base64 from "base-64";
+import { async } from "q";
 
 export const optimizeSvg = (dataUrl, svgo) => {
   return axios
@@ -12,6 +13,24 @@ export const optimizeSvg = (dataUrl, svgo) => {
       return res.data.urlData;
     })
     .catch(err => console.log(err));
+};
+
+export const optimizeSvgList = async (dataUrlList, svgOptions,plugins) => {
+  var optimisedSvgArray = []
+  // console.log(" started test");
+  // console.log("dataUrlList : ", dataUrlList);
+  // console.log("svgo : ", svgOptions);
+  for (var option of svgOptions) {
+    changeObj(option, plugins);
+  }
+  dataUrlList.forEach(async element => {
+    var newOptimsedDataUrl = await optimizeSvg(
+      element.dataurl,
+       null
+    );
+    optimisedSvgArray.push({ "name": element.name , "dataUrl":element.dataurl, "OptimsedDataUrl": newOptimsedDataUrl});
+  });
+  return optimisedSvgArray;
 };
 
 export const changeObj = (value, svgoObjectPlugins) => {
@@ -77,8 +96,7 @@ export const wrapElements = (
       elementWrapper.firstChild.setAttribute(
         "onclick",
         "doSomething(this.id);"
-      ); // for FF
-
+      );
       array.push(elementWrapper);
     }
   }
@@ -147,7 +165,6 @@ export const updateSvgElements = (
           .replace('xmlns="http://www.w3.org/1999/xhtml"', "");
       }
     }
-
     listOfFileNames.push(
       <div className="original-svg-div" key={key}>
         <DisplaySvg
@@ -160,5 +177,6 @@ export const updateSvgElements = (
         />
       </div>
     );
+
   }
 };
