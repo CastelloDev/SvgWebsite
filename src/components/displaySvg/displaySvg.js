@@ -30,6 +30,7 @@ class DisplaySvg extends Component {
   };
 
   dataURLtoKilloBytes = dataURI => {
+    console.log("dataURLtoKilloBytes");
     return base64.decode(dataURI).length / 1000;
   };
 

@@ -28,7 +28,7 @@ export const optimizeSvgList = async (dataUrlList, svgOptions,plugins) => {
       element.dataurl,
        null
     );
-    optimisedSvgArray.push({ "name": element.name , "dataUrl":element.dataurl, "OptimsedDataUrl": newOptimsedDataUrl});
+    optimisedSvgArray.push(newOptimsedDataUrl.toString());
   });
   return optimisedSvgArray;
 };
@@ -108,6 +108,7 @@ export const updateSvgElements = (
   wrappedPathsElement,
   drawingComponetState
 ) => {
+ try {
   for (var key in optimisedArray) {
     var stringElement = base64.decode(optimisedArray[key].optimisedSvg);
     if (wrappedPathsElement.length > 0) {
@@ -165,18 +166,26 @@ export const updateSvgElements = (
           .replace('xmlns="http://www.w3.org/1999/xhtml"', "");
       }
     }
-    listOfFileNames.push(
-      <div className="original-svg-div" key={key}>
-        <DisplaySvg
-          key={key}
-          svgType="originalSvg"
-          dataUrl={optimisedArray[key].originalSvg}
-          width="100px"
-          height="300px"
-          stringElement={stringElement}
-        />
-      </div>
-    );
-
+    try {
+      listOfFileNames.push(
+        <div className="original-svg-div" key={key}>
+          <DisplaySvg
+            key={key}
+            svgType="originalSvg"
+            dataUrl={optimisedArray[key].originalSvg}
+            width="100px"
+            height="300px"
+            stringElement={stringElement}
+          />
+        </div>
+      );
+    } catch (error) {
+      console.log("Failed to push to listOfFIleNames");
+      console.log("Actual error :",error.message);
+    }
+    
   }
+ } catch (error) {
+   console.log(error.message);
+ }
 };
