@@ -26,13 +26,13 @@ class FinalSvgDisplay extends Component {
 
   downloadNewSvgFiles = () => {
     
-    var svgList = document.getElementsByTagName("svg");
+    var svgElementList = document.getElementsByTagName("svg");
 
     //get svg source.
     var serializer = new XMLSerializer();
-    for(var svgDataIndex in svgList){   
+    for(var svgDataIndex in svgElementList){   
     //get svg source.
-    var source = serializer.serializeToString(svgList[svgDataIndex]);
+    var source = serializer.serializeToString(svgElementList[svgDataIndex]);
     source = source.replace("<a class=\"className-1\" id=\"id-1\">","").replace("</a>","").replace("onclick=\"doSomething(this.id);\"","");
 
     //add name spaces.
@@ -62,7 +62,7 @@ class FinalSvgDisplay extends Component {
         dl.setAttribute("download", "test.svg");
         dl.click();
 
-      if(svgList.length-1 == svgDataIndex){
+      if(svgElementList.length-1 == svgDataIndex){
         break;
       }
     }

@@ -91,59 +91,59 @@ export const updateSvgElements = (
   drawingComponetState
 ) => {
   for (var key in optimisedArray) {
-    var stringElement = base64.decode(optimisedArray[key].optimisedSvg);
+    var finalStringElementWrappedWithLink = base64.decode(optimisedArray[key].optimisedSvg);
     if (wrappedPathsElement.length > 0) {
       for (var index = 0; index < wrappedPathsElement.length; index++) {
-        var tempWrapedStr = new XMLSerializer()
+        var stringToWithLinkToWrap = new XMLSerializer()
           .serializeToString(wrappedPathsElement[index])
           .toString();
 
-        var tempToWrapStr = new XMLSerializer()
+        var StringToBeWrappedByLink = new XMLSerializer()
           .serializeToString(drawingComponetState[index])
           .toString();
-        tempToWrapStr = tempToWrapStr.replace(
+        StringToBeWrappedByLink = StringToBeWrappedByLink.replace(
           'xmlns="http://www.w3.org/2000/svg"',
           ""
         );
-        if (tempToWrapStr.substring(0, 5) == "<path") {
-          tempToWrapStr =
-            tempToWrapStr.substring(0, 5) +
+        if (StringToBeWrappedByLink.substring(0, 5) == "<path") {
+          StringToBeWrappedByLink =
+            StringToBeWrappedByLink.substring(0, 5) +
             " " +
-            tempToWrapStr.substring(6, tempToWrapStr.length).trim();
-        } else if (tempToWrapStr.substring(0, 5) == "<elli") {
-          tempToWrapStr =
-            tempToWrapStr.substring(0, 8) +
+            StringToBeWrappedByLink.substring(6, StringToBeWrappedByLink.length).trim();
+        } else if (StringToBeWrappedByLink.substring(0, 5) == "<elli") {
+          StringToBeWrappedByLink =
+            StringToBeWrappedByLink.substring(0, 8) +
             " " +
-            tempToWrapStr.substring(8, tempToWrapStr.length).trim();
-        } else if (tempToWrapStr.substring(0, 5) == "<rect") {
-          tempToWrapStr =
-            tempToWrapStr.substring(0, 5) +
+            StringToBeWrappedByLink.substring(8, StringToBeWrappedByLink.length).trim();
+        } else if (StringToBeWrappedByLink.substring(0, 5) == "<rect") {
+          StringToBeWrappedByLink =
+            StringToBeWrappedByLink.substring(0, 5) +
             " " +
-            tempToWrapStr.substring(6, tempToWrapStr.length).trim();
-        } else if (tempToWrapStr.substring(0, 5) == "<circ") {
-          tempToWrapStr =
-            tempToWrapStr.substring(0, 7) +
+            StringToBeWrappedByLink.substring(6, StringToBeWrappedByLink.length).trim();
+        } else if (StringToBeWrappedByLink.substring(0, 5) == "<circ") {
+          StringToBeWrappedByLink =
+            StringToBeWrappedByLink.substring(0, 7) +
             " " +
-            tempToWrapStr.substring(8, tempToWrapStr.length).trim();
-        } else if (tempToWrapStr.substring(0, 5) == "<poly") {
-          tempToWrapStr =
-            tempToWrapStr.substring(0, 8) +
+            StringToBeWrappedByLink.substring(8, StringToBeWrappedByLink.length).trim();
+        } else if (StringToBeWrappedByLink.substring(0, 5) == "<poly") {
+          StringToBeWrappedByLink =
+            StringToBeWrappedByLink.substring(0, 8) +
             " " +
-            tempToWrapStr.substring(9, tempToWrapStr.length).trim();
-        } else if (tempToWrapStr.substring(0, 5) == "<line") {
-          tempToWrapStr =
-            tempToWrapStr.substring(0, 8) +
+            StringToBeWrappedByLink.substring(9, StringToBeWrappedByLink.length).trim();
+        } else if (StringToBeWrappedByLink.substring(0, 5) == "<line") {
+          StringToBeWrappedByLink =
+            StringToBeWrappedByLink.substring(0, 8) +
             " " +
-            tempToWrapStr.substring(9, tempToWrapStr.length).trim();
-        } else if (tempToWrapStr.substring(0, 5) == "<text") {
-          tempToWrapStr =
-            tempToWrapStr.substring(0, 5) +
+            StringToBeWrappedByLink.substring(9, StringToBeWrappedByLink.length).trim();
+        } else if (StringToBeWrappedByLink.substring(0, 5) == "<text") {
+          StringToBeWrappedByLink =
+            StringToBeWrappedByLink.substring(0, 5) +
             " " +
-            tempToWrapStr.substring(6, tempToWrapStr.length).trim();
+            StringToBeWrappedByLink.substring(6, StringToBeWrappedByLink.length).trim();
         }
 
-        stringElement = stringElement
-          .replace(tempToWrapStr, tempWrapedStr)
+        finalStringElementWrappedWithLink = finalStringElementWrappedWithLink
+          .replace(StringToBeWrappedByLink, stringToWithLinkToWrap)
           .replace('xmlns="http://www.w3.org/1999/xhtml"', "");
       }
     }
@@ -156,7 +156,7 @@ export const updateSvgElements = (
           dataUrl={optimisedArray[key].originalSvg}
           width="100px"
           height="300px"
-          stringElement={stringElement}
+          finalStringElementWrappedWithLink={finalStringElementWrappedWithLink}
         />
       </div>
     );

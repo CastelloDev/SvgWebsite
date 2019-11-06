@@ -24,13 +24,12 @@ class DisplaySvg extends Component {
         fileSizeNormal: this.dataURLtoKilloBytes(
           this.props.dataUrl.split(",")[1]
         ),
-        fileSizeOptimised: this.props.stringElement.length / 1000
+        fileSizeOptimised: this.props.finalStringElementWrappedWithLink.length / 1000
       });
     }
   };
 
   dataURLtoKilloBytes = dataURI => {
-    console.log("dataURLtoKilloBytes");
     return base64.decode(dataURI).length / 1000;
   };
 
@@ -55,13 +54,8 @@ class DisplaySvg extends Component {
                 </figure>
               </Col>
               <Col xs="6">
-                <InlineSVG src={this.props.stringElement} />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <div>
+                <InlineSVG src={this.props.finalStringElementWrappedWithLink} />
+                <div className="optimised-file-size">
                   {"File Size : " + this.state.fileSizeOptimised + " KB"}
                 </div>
               </Col>
