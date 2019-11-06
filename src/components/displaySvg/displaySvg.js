@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import base64 from 'base-64';
 import "./finalSvgDisplay.scss";
 import PropTypes from 'prop-types';
+import InlineSVG from "svg-inline-react";
+
 class DisplaySvg extends Component {
     constructor(props) {
         super(props);
@@ -42,6 +44,9 @@ class DisplaySvg extends Component {
                     />
                     <figcaption>{ 'File Size : '+this.state.fileSize +' KB'}</figcaption>
                 </figure>
+                </div>
+                <div>
+                <InlineSVG src={this.props.stringElement} />
                 </div>
             </div>
         );

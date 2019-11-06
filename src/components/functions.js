@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React from "react";
-import InlineSVG from "svg-inline-react";
 import DisplaySvg from "../components/displaySvg/displaySvg";
 import finalSvgDisplay from "../components/displaySvg/finalSvgDisplay.scss";
 import {BASE_URL,OPTIMIZE_SVG} from '../constants/constants';
@@ -145,7 +144,7 @@ export const updateSvgElements=(listOfFileNames, optimisedArray, wrappedPathsEle
             stringElement = stringElement.replace(tempToWrapStr, tempWrapedStr).replace("xmlns=\"http://www.w3.org/1999/xhtml\"","");
           }
         }
-  
+        console.log("As we were about to insert string elem : ", stringElement);
         listOfFileNames.push(
           <div className="display-svg-opt-notopt">
             <div className="original-svg-div" key={key}>
@@ -155,12 +154,13 @@ export const updateSvgElements=(listOfFileNames, optimisedArray, wrappedPathsEle
                 dataUrl={optimisedArray[key].originalSvg}
                 width="100px"
                 height="300px"
+                stringElement={stringElement}
               />
             </div>
-            <div className="optimised-svg-div">
+            {/* <div className="optimised-svg-div">
               <InlineSVG src={stringElement} />
               
-            </div>
+            </div> */}
           </div>
         );
       }
