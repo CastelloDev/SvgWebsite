@@ -36,8 +36,7 @@ class ChooseFolder extends Component {
 		   const listOfFileNames = [];
        	for(var key of this.state.path) {
    	        listOfFileNames.push(<CheckBoxSelection key={key.name} filename={key.name} file={key} />);
-       	}
-	
+		   }	
   	return (
    	        <div className='main'>
    	            <div className='file'>

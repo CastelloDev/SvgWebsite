@@ -1,6 +1,6 @@
 .navbar{
     display: flex;
-    height: 30px;
+    height: 60px;
     background-color: #bcda12;
     align-items: center;
 
@@ -12,4 +12,9 @@
     a:hover{
         background-color: #abc514;
     }
+}
+
+.navbar-devider{
+    font-size: 59px;
+    margin-top: -30px;    
 }

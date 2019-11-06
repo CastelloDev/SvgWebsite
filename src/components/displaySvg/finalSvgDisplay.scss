@@ -3,24 +3,61 @@
     width: 373px; 
 }
 
- .optimised-svg-div-false{
-    :hover{
-        background-color:#FFC0CB;
-    }
- }
-
-
   .className-1{
       :hover{
          background-color: yellow;
          fill:yellow;
-
       }
       
   }
 
  svg{
-    margin-top: 94%;
-    padding-left: 22%;
+    max-height: 106px;
+    max-width: fit-content;
+    margin-top: 94px;
+    background-color: white;
  }
   
+ .display-svgs-border-match {
+    max-height: 381px;
+    border: outset;
+    border-color: green;
+}
+
+ .display-original-optimised{
+    overflow-y: scroll;
+    max-height: 571px;
+    border: outset;
+    border-color: green;
+ }
+
+ .button-background{
+    background-color: grey;
+    height: 171px;   
+ }
+
+ .loader-text{
+      margin-top: 210px;
+ }
+
+ .loader {
+   border: 16px solid greenyellow;
+    border-radius: -114%; /* to make it round use a positive number*/
+    /* border-top: 16px solid #bcda12; */
+    width: 197px;
+    height: 199px;
+    animation: spin 4s linear infinite;
+   margin-top: 100px;
+    margin-left: 856px;
+ }
+
+ /* Safari */
+@-webkit-keyframes spin {
+   0% { -webkit-transform: rotate(0deg); }
+   100% { -webkit-transform: rotate(360deg); }
+ }
+ 
+ @keyframes spin {
+   0% { transform: rotate(0deg); }
+   100% { transform: rotate(360deg); }
+ }

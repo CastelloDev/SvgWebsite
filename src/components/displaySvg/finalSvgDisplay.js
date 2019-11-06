@@ -24,17 +24,12 @@ class FinalSvgDisplay extends Component {
     };
   }
 
-  handleClick = () => {
-    console.log("my function");
-  };
-
   downloadNewSvgFiles = () => {
     
     var svgList = document.getElementsByTagName("svg");
 
     //get svg source.
     var serializer = new XMLSerializer();
-    console.log("len : ",svgList.length);
     for(var svgDataIndex in svgList){   
     //get svg source.
     var source = serializer.serializeToString(svgList[svgDataIndex]);
@@ -60,8 +55,6 @@ class FinalSvgDisplay extends Component {
 
     //convert svg source to URI data scheme.
     var url = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(source);
-    console.log("svgDataIndex :",svgDataIndex);
-    console.log("url :",url);
     //set url value to a element's href attribute.
         var dl = document.createElement("a");
         document.body.appendChild(dl); // This line makes it work in Firefox.
@@ -95,7 +88,7 @@ class FinalSvgDisplay extends Component {
       pathArrayState: pathArrayLocal,
       storePathsIds: elementIds
     });
-  };
+  }
 
   render() {
     const listOfFileNames = [];
@@ -105,12 +98,11 @@ class FinalSvgDisplay extends Component {
       this.state.wrappedPathsElement,
       this.state.pathArrayState
     );
-
     return (
       <div>
-        {listOfFileNames.length > 0 ? (
+        {listOfFileNames.length > 0? (
           <div>
-            <div className="display-page-div">{listOfFileNames}</div>
+            <div className="display-original-optimised">{listOfFileNames}</div>
             <button
               className="download-Button"
               onClick={this.downloadNewSvgFiles}
@@ -120,7 +112,10 @@ class FinalSvgDisplay extends Component {
             </button>
           </div>
         ) : (
-          <div>No svg to display</div>
+          <div>
+                <div className="loader-text" align="center">loading svg .....</div>
+                <div className="loader"></div>
+          </div>
         )}
       </div>
     );
