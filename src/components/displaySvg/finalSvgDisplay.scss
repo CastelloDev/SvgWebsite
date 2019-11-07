@@ -3,13 +3,10 @@
     width: 373px; 
 }
 
-  .className-1{
-      :hover{
-         background-color: yellow;
-         fill:yellow;
-      }
-      
-  }
+  a:hover {
+   background-color: yellow;
+   fill:yellow;
+ }
 
  svg{
     max-height: 106px;
@@ -42,8 +39,8 @@
 
  .loader {
    border: 16px solid greenyellow;
-    border-radius: -114%; /* to make it round use a positive number*/
-    /* border-top: 16px solid #bcda12; */
+    border-radius: 114%;
+    border-top: 16px solid #bcda12; 
     width: 197px;
     height: 199px;
     animation: spin 4s linear infinite;

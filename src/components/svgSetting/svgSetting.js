@@ -30,7 +30,7 @@ class SvgSetting extends Component {
         this.state.index = file;
       }
     }
-    if (this.state.isFound === false) {
+    if (!this.state.isFound) {
       this.props.reduxState.svgOptions.push(this.props.value);
     } else {
       this.props.reduxState.svgOptions.splice(this.state.index, 1);
@@ -73,7 +73,6 @@ SvgSetting.propTypes = {
   updateStore: PropTypes.func,
   deleteFromStore: PropTypes.func,
   option: PropTypes.string,
-  k: PropTypes.string,
   isSelected: PropTypes.bool
 };
 

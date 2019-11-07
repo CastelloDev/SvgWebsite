@@ -68,7 +68,7 @@ export const wrapElements = (
         );
       }
       var elementWrapper = document.createElement("a");
-      elementWrapper.setAttribute("class", "className-1");
+      elementWrapper.setAttribute("class", "svg-elem-wrapper");
       elementWrapper.setAttribute("id", "id-1");
       drawingComponetLocal.push(drawingComponetIndex);
       elementWrapper.appendChild(

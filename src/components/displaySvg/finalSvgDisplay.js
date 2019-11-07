@@ -33,7 +33,7 @@ class FinalSvgDisplay extends Component {
     for(var svgDataIndex in svgElementList){   
     //get svg source.
     var source = serializer.serializeToString(svgElementList[svgDataIndex]);
-    source = source.replace("<a class=\"className-1\" id=\"id-1\">","").replace("</a>","").replace("onclick=\"changeSvgColourById(this.id);\"","");
+    source = source.replace("<a class=\"svg-elem-wrapper\" id=\"id-1\">","").replace("</a>","").replace("onclick=\"changeSvgColourById(this.id);\"","");
 
     //add name spaces.
     if (!source.match(/^<svg[^>]+xmlns="http\:\/\/www\.w3\.org\/2000\/svg"/)) {

@@ -74,9 +74,6 @@ class DisplayAllComponent extends Component {
 
 DisplayAllComponent.propTypes = {
   reduxState: PropTypes.object,
-  addToStore: PropTypes.func,
-  updateStore: PropTypes.func,
-  deleteFromStore: PropTypes.func
 };
 
 const mapStateToProps = state => {
@@ -84,26 +81,6 @@ const mapStateToProps = state => {
   return reduxState;
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    addToStore: (variableName, variableValue) =>
-      dispatch({
-        type: ADD_VARIABLE,
-        variableName: variableName,
-        variableValue: variableValue
-      }),
-    updateStore: (variableName, variableValue) =>
-      dispatch({
-        type: UPDATE_VARIABLE,
-        variableName: variableName,
-        variableValue: variableValue
-      }),
-    deleteFromStore: variableName =>
-      dispatch({ type: DELETE_VARIABLE, variableName: variableName })
-  };
-};
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
 )(DisplayAllComponent);
