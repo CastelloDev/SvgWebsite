@@ -30,7 +30,7 @@ class DisplayAllComponent extends Component {
           name: setting.name,
           optimisedSvg: await optimizeSvg(
             setting.dataurl,
-            this.props.reduxState.svgObject.plugins
+            this.props.svgObject.plugins
           )
         });
       } else {
@@ -73,7 +73,6 @@ class DisplayAllComponent extends Component {
 }
 
 DisplayAllComponent.propTypes = {
-  reduxState: PropTypes.object,
   svgSettingList: PropTypes.object,
   svgSettingList : PropTypes.object,
   svgOptions: PropTypes.object,

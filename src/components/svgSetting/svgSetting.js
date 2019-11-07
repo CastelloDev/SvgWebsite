@@ -24,22 +24,22 @@ class SvgSetting extends Component {
     this.setState({
       isClicked: !this.state.isClicked
     });
-    for (var file in this.props.reduxState.svgOptions) {
-      if (this.props.reduxState.svgOptions[file] === this.props.value) {
+    for (var file in this.props.svgOptions) {
+      if (this.props.svgOptions[file] === this.props.value) {
         this.state.isFound = true;
         this.state.index = file;
       }
     }
     if (!this.state.isFound) {
-      this.props.reduxState.svgOptions.push(this.props.value);
+      this.props.svgOptions.push(this.props.value);
     } else {
-      this.props.reduxState.svgOptions.splice(this.state.index, 1);
+      this.props.svgOptions.splice(this.state.index, 1);
       this.state.isFound = false;
     }
   };
 
   toChangePluginObjectValues = arrayWithPluginOptions => {
-    let newSvgoObject = this.props.reduxState.svgObject.plugins.filter(
+    let newSvgoObject = this.props.svgObject.plugins.filter(
       option => {
         for (var element of arrayWithPluginOptions) {
           if (option[element] !== null && option[element] !== undefined) {
@@ -54,7 +54,7 @@ class SvgSetting extends Component {
   };
 
   changingPluginValuesPerUserOption= () => {
-    this.changePluginObjectValues(this.props.reduxState.svgOptions);
+    this.changePluginObjectValues(this.props.svgOptions);
   };
 
   render() {
@@ -68,17 +68,21 @@ class SvgSetting extends Component {
 }
 
 SvgSetting.propTypes = {
-  reduxState: PropTypes.object,
-  addToStore: PropTypes.func,
-  updateStore: PropTypes.func,
-  deleteFromStore: PropTypes.func,
+  svgSettingList: PropTypes.object,
+  svgSettingList : PropTypes.object,
+  svgOptions: PropTypes.object,
+  svgObject: PropTypes.object,
+  displayOptimize: PropTypes.object,
   option: PropTypes.string,
   isSelected: PropTypes.bool
 };
 
 const mapStateToProps = state => {
-  const reduxState = { reduxState: { ...state } };
-  return reduxState;
+  const svgSettingList = state.svgSettingList;
+  const svgOptions = state.svgOptions;
+  const svgObject = state.svgObject;
+  const displayOptimize = state.displayOptimize;
+  return {svgSettingList,svgOptions,svgObject,displayOptimize};
 };
 const mapDispatchToProps = dispatch => {
   return {

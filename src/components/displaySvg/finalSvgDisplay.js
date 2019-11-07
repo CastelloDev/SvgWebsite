@@ -90,10 +90,11 @@ class FinalSvgDisplay extends Component {
   }
 
   render() {
+    console.log("props : ", this.props);
     const listOfFileNames = [];
     updateSvgElements(
       listOfFileNames,
-      this.props.reduxState.displayOptimize,
+      this.props.displayOptimize,
       this.state.wrappedPathsElement,
       this.state.pathArrayState
     );
@@ -122,16 +123,13 @@ class FinalSvgDisplay extends Component {
 }
 
 FinalSvgDisplay.propTypes = {
-  reduxState: PropTypes.object,
-  addToStore: PropTypes.func,
-  updateStore: PropTypes.func,
-  deleteFromStore: PropTypes.func,
+  displayOptimize : PropTypes.object, 
   listToDisplay: PropTypes.array
 };
 
 const mapStateToProps = state => {
-  const reduxState = { reduxState: { ...state } };
-  return reduxState;
+  const displayOptimize = state.displayOptimize;
+  return {displayOptimize};
 };
 
 const mapDispatchToProps = dispatch => {

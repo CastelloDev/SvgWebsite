@@ -19,7 +19,7 @@ class CheckBoxSelection extends Component {
   convertSvgToDataUrl = file => {
     let reader = new FileReader();
     reader.onload = result => {
-      this.props.reduxState.svgSettingList.push({
+      this.props.svgSettingList.push({
         name: file.name,
         dataurl: result.target.result
       });
@@ -33,9 +33,9 @@ class CheckBoxSelection extends Component {
     let isFound = false;
     let index = 0;
     this.setState({ isClicked: !this.state.isClicked });
-    for (var key in this.props.reduxState.svgSettingList) {
+    for (var key in this.props.svgSettingList) {
       if (
-        this.props.reduxState.svgSettingList[key].name === this.props.file.name
+        this.props.svgSettingList[key].name === this.props.file.name
       ) {
         isFound = true;
         index = key;
@@ -44,7 +44,7 @@ class CheckBoxSelection extends Component {
     if (!isFound) {
       this.convertSvgToDataUrl(this.props.file);
     } else {
-      this.props.reduxState.svgSettingList.splice(index, 1);
+      this.props.svgSettingList.splice(index, 1);
       isFound = false;
     }
   };
@@ -71,16 +71,20 @@ class CheckBoxSelection extends Component {
 }
 
 CheckBoxSelection.propTypes = {
-  reduxState: PropTypes.object,
-  addToStore: PropTypes.func,
-  updateStore: PropTypes.func,
-  deleteFromStore: PropTypes.func,
+  svgSettingList: PropTypes.object,
+  svgSettingList : PropTypes.object,
+  svgOptions: PropTypes.object,
+  svgObject: PropTypes.object,
+  displayOptimize: PropTypes.object,
   filename: PropTypes.string
 };
 
 const mapStateToProps = state => {
-  const reduxState = { reduxState: { ...state } };
-  return reduxState;
+  const svgSettingList = state.svgSettingList;
+  const svgOptions = state.svgOptions;
+  const svgObject = state.svgObject;
+  const displayOptimize = state.displayOptimize;
+  return {svgSettingList,svgOptions,svgObject,displayOptimize};
 };
 
 const mapDispatchToProps = dispatch => {
