@@ -20,12 +20,12 @@ class DisplayAllComponent extends Component {
     };
   }
   getOptimizeSvg = async () => {
-    for (var option of this.props.reduxState.svgOptions) {
-      changeObj(option, this.props.reduxState.svgObject.plugins);
+    for (var option of this.props.svgOptions) {
+      changeObj(option, this.props.svgObject.plugins);
     }
-    for (var setting of this.props.reduxState.svgSettingList) {
-      if (this.props.reduxState.svgOptions.length > 0) {
-        this.props.reduxState.displayOptimize.push({
+    for (var setting of this.props.svgSettingList) {
+      if (this.props.svgOptions.length > 0) {
+        this.props.displayOptimize.push({
           originalSvg: setting.dataurl,
           name: setting.name,
           optimisedSvg: await optimizeSvg(
@@ -34,7 +34,7 @@ class DisplayAllComponent extends Component {
           )
         });
       } else {
-        this.props.reduxState.displayOptimize.push({
+        this.props.displayOptimize.push({
           originalSvg: setting.dataurl,
           name: setting.name,
           optimisedSvg: await optimizeSvg(setting.dataurl, null)
@@ -53,6 +53,7 @@ class DisplayAllComponent extends Component {
   }
 
   render() {
+    console.log("current props", this.props);
     return (
         <div className="home-display-class">
         {this.renderRedirect()}
@@ -74,11 +75,19 @@ class DisplayAllComponent extends Component {
 
 DisplayAllComponent.propTypes = {
   reduxState: PropTypes.object,
+  svgSettingList: PropTypes.object,
+  svgSettingList : PropTypes.object,
+  svgOptions: PropTypes.object,
+  svgObject: PropTypes.object,
+  displayOptimize: PropTypes.object
 };
 
 const mapStateToProps = state => {
-  const reduxState = { reduxState: { ...state } };
-  return reduxState;
+  const svgSettingList = state.svgSettingList;
+  const svgOptions = state.svgOptions;
+  const svgObject = state.svgObject;
+  const displayOptimize = state.displayOptimize;
+  return {svgSettingList,svgOptions,svgObject,displayOptimize};
 };
 
 export default connect(
