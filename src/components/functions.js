@@ -76,7 +76,7 @@ export const wrapElements = (
       );
       elementWrapper.firstChild.setAttribute(
         "onclick",
-        "doSomething(this.id);"
+        "changeSvgColourById(this.id);"
       ); // for FF
 
       array.push(elementWrapper);

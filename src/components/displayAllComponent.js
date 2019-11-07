@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ChooseFolder from "./chooseFolder/chooseFolder";
-import { NavLink } from "react-router-dom";
+import { NavLink,Redirect } from "react-router-dom";
 import SvgSettingOptions from "./svgSetting/svgSettingOptions";
 import "../components/checkBoxSelection/checkBoxSelection.scss";
 import { changeObj, optimizeSvg } from "../../src/components/functions";
@@ -13,6 +13,12 @@ import {
 } from "../store/actionTypes";
 
 class DisplayAllComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+     redirect : false
+    };
+  }
   getOptimizeSvg = async () => {
     for (var option of this.props.reduxState.svgOptions) {
       changeObj(option, this.props.reduxState.svgObject.plugins);
@@ -35,11 +41,21 @@ class DisplayAllComponent extends Component {
         });
       }
     }
+    this.setState({
+      redirect: true
+    })
   };
+
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to='/FinalSvgDisplay' />
+    }
+  }
 
   render() {
     return (
       <div>
+        {this.renderRedirect()}
         <div className="main-class">
           <div className="choose">
             <ChooseFolder />
@@ -47,11 +63,9 @@ class DisplayAllComponent extends Component {
           <div className="choose">
             <SvgSettingOptions />
             <div className="optimise-button-div">
-              <NavLink to="/FinalSvgDisplay">
                 <button className="optimize-Button" onClick={this.getOptimizeSvg}>
                   Optimize
                 </button>
-              </NavLink>
             </div>
           </div>
         </div>

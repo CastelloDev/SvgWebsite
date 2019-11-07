@@ -33,7 +33,7 @@ class FinalSvgDisplay extends Component {
     for(var svgDataIndex in svgElementList){   
     //get svg source.
     var source = serializer.serializeToString(svgElementList[svgDataIndex]);
-    source = source.replace("<a class=\"className-1\" id=\"id-1\">","").replace("</a>","").replace("onclick=\"doSomething(this.id);\"","");
+    source = source.replace("<a class=\"className-1\" id=\"id-1\">","").replace("</a>","").replace("onclick=\"changeSvgColourById(this.id);\"","");
 
     //add name spaces.
     if (!source.match(/^<svg[^>]+xmlns="http\:\/\/www\.w3\.org\/2000\/svg"/)) {
@@ -75,7 +75,7 @@ class FinalSvgDisplay extends Component {
     var elementIds = [];
     wrapElements(SVG_TAG_NAMES, array, pathArrayLocal, 7, elementIds);
     var functionStr =
-      'function doSomething(elemId,white){  var arrayOfClickedIds = [];if(!arrayOfClickedIds.includes(elemId) || arrayOfClickedIds.length == 0 ){  arrayOfClickedIds.push(elemId);document.getElementById(elemId).style.fill = "brown";}else{arrayOfClickedIds.push(elemId);document.getElementById(elemId).removeAttribute("style");document.getElementById(elemId).style.fill = prevColour;}}';
+      'function changeSvgColourById(elemId,white){  var arrayOfClickedIds = [];if(!arrayOfClickedIds.includes(elemId) || arrayOfClickedIds.length == 0 ){  arrayOfClickedIds.push(elemId);document.getElementById(elemId).style.fill = "brown";}else{arrayOfClickedIds.push(elemId);document.getElementById(elemId).removeAttribute("style");document.getElementById(elemId).style.fill = prevColour;}}';
 
     const script = document.createElement("script");
     var t = document.createTextNode(functionStr);
