@@ -4,7 +4,6 @@ import DisplaySvg from "./displaySvg";
 import finalSvgDisplay from "./finalSvgDisplay.scss";
 import { connect } from "react-redux";
 import base64 from "base-64";
-import InlineSVG from "svg-inline-react";
 import { SVG_TAG_NAMES } from "../../constants/constants";
 import {
   ADD_VARIABLE,

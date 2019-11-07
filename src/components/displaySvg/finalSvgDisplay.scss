@@ -58,3 +58,12 @@
    0% { transform: rotate(0deg); }
    100% { transform: rotate(360deg); }
  }
+
+ li{
+     display: table-cell;
+     margin: 5px; padding: 10px; 
+     vertical-align: top; 
+     position:relative; 
+     text-align: center;
+     left: 226%
+   }

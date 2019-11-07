@@ -3,7 +3,6 @@ import base64 from "base-64";
 import "./finalSvgDisplay.scss";
 import PropTypes from "prop-types";
 import InlineSVG from "svg-inline-react";
-import { Col, Row, Container } from "reactstrap";
 class DisplaySvg extends Component {
   constructor(props) {
     super(props);
@@ -37,9 +36,8 @@ class DisplaySvg extends Component {
     return (
       <div>
         <div className="display-svgs-border-match">
-          <Container>
-            <Row>
-              <Col xs="6">
+            <ul>
+              <li>
                 <figure>
                   <img
                     className={this.props.svgType}
@@ -52,15 +50,14 @@ class DisplaySvg extends Component {
                     {"File Size : " + this.state.fileSizeNormal + " KB"}
                   </figcaption>
                 </figure>
-              </Col>
-              <Col xs="6">
+              </li>
+              <li>
                 <InlineSVG src={this.props.finalStringElementWrappedWithLink} />
                 <div className="optimised-file-size">
                   {"File Size : " + this.state.fileSizeOptimised + " KB"}
                 </div>
-              </Col>
-            </Row>
-          </Container>
+              </li>
+            </ul>
         </div>
       </div>
     );

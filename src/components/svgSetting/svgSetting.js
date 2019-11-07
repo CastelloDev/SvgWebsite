@@ -58,7 +58,6 @@ class SvgSetting extends Component {
   };
 
   render() {
-    console.log("props :", this.props);
     return (
       <div onClick={this.handleDivClick}>
         <input type="checkbox" checked={this.state.isClicked} />
@@ -81,7 +80,6 @@ const mapStateToProps = state => {
   const reduxState = { reduxState: { ...state } };
   return reduxState;
 };
-
 const mapDispatchToProps = dispatch => {
   return {
     addToStore: (variableName, variableValue) =>
