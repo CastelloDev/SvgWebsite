@@ -53,7 +53,6 @@ class DisplayAllComponent extends Component {
   }
 
   render() {
-    console.log("current props", this.props);
     return (
         <div className="home-display-class">
         {this.renderRedirect()}
