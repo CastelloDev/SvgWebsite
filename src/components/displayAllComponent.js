@@ -63,7 +63,7 @@ class DisplayAllComponent extends Component {
           <div className="choose">
             <SvgSettingOptions />
             <div className="optimise-button-div">
-                <button className="optimize-Button" onClick={this.getOptimizeSvg}>
+                <button className="optimize-button" onClick={this.getOptimizeSvg}>
                   Optimize
                 </button>
             </div>
