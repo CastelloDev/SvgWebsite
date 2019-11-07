@@ -10,15 +10,15 @@ export default class NavBar extends Component {
         <Link to="/">
           <div>{"Home"}</div>
         </Link>
-        <div className="navbar-devider">{" | "}</div>
+        <div className="navbar-divider">{" | "}</div>
         <Link to="/choosefile">
           <div>{"Choose File"}</div>
         </Link>
-        <div className="navbar-devider">{" | "}</div>
+        <div className="navbar-divider">{" | "}</div>
         <Link to="/displaySvg">
           <div>{"Display Svg"}</div>
         </Link>
-        <div className="navbar-devider">{" | "}</div>
+        <div className="navbar-divider">{" | "}</div>
         <Link to="/reduxdemo">
           <div>{"Redux Demo"}</div>
         </Link>
