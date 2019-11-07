@@ -54,9 +54,8 @@ class DisplayAllComponent extends Component {
 
   render() {
     return (
-      <div>
-        {this.renderRedirect()}
         <div className="main-class">
+        {this.renderRedirect()}
           <div className="choose">
             <ChooseFolder />
           </div>
@@ -69,7 +68,6 @@ class DisplayAllComponent extends Component {
             </div>
           </div>
         </div>
-      </div>
     );
   }
 }
