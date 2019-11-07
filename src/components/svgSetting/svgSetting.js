@@ -58,6 +58,7 @@ class SvgSetting extends Component {
   };
 
   render() {
+    console.log("props :", this.props);
     return (
       <div onClick={this.handleDivClick}>
         <input type="checkbox" checked={this.state.isClicked} />
