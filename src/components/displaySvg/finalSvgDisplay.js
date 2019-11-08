@@ -102,17 +102,18 @@ class FinalSvgDisplay extends Component {
         {listOfFileNames.length > 0? (
           <div>
             <div className="display-original-optimised">{listOfFileNames}</div>
+            <div align="center">
             <button
               className="download-Button"
               onClick={this.downloadNewSvgFiles}
             >
-              {" "}
               Download edited svg
             </button>
+            </div>
           </div>
         ) : (
-          <div>
-                <div className="loader-text" align="center">loading svg .....</div>
+          <div className="position-loader" align="center">
+                <div className="loader-text">loading svg .....</div>
                 <div className="loader"></div>
           </div>
         )}

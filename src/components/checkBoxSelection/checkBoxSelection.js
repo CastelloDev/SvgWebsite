@@ -72,7 +72,6 @@ class CheckBoxSelection extends Component {
 
 CheckBoxSelection.propTypes = {
   svgSettingList: PropTypes.object,
-  svgSettingList : PropTypes.object,
   svgOptions: PropTypes.object,
   svgObject: PropTypes.object,
   displayOptimize: PropTypes.object,

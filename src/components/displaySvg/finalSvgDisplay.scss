@@ -8,10 +8,12 @@
    fill:yellow;
  }
 
+ .inline-display-position{
+   padding-top: 71%;
+ }
  svg{
     max-height: 106px;
     max-width: fit-content;
-    margin-top: 94px;
     background-color: white;
  }
   
@@ -32,10 +34,9 @@
     background-color: grey;
     height: 171px;   
  }
-
- .loader-text{
-      margin-top: 210px;
- }
+ .position-loader{
+   padding-top: 11%;
+}
 
  .loader {
     border: 16px solid greenyellow;
@@ -44,7 +45,6 @@
     width: 197px;
     height: 199px;
     animation: spin 4s linear infinite;
-    margin: 0 auto;
  }
 
  /* Safari */
@@ -60,10 +60,8 @@
 
  li{
      display: table-cell;
-     margin: 5px; 
      padding: 10px; 
      vertical-align: top; 
      position:relative; 
      text-align: center;
-     left: 226%
    }

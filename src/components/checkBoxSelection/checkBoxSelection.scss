@@ -10,8 +10,7 @@
 
 .checkbox-input-svg,
 .checkbox-label-svg {
-  margin-top: 2%;
-  margin-left: 2%;
+  padding-left: 3%;
 }
 
 .main {
@@ -21,11 +20,10 @@
 
 .file {
   display: flex;
-  margin-top: 20px;
+      padding: 2%;
 }
 
 .hide-file-list {
-  margin-top: 20px;
   display: none;
 }
 .card-settings {
@@ -33,10 +31,6 @@
   overflow-y: scroll;
   background-color:#b5cfe1 ;
   width: 600px;
-}
-.slider {
-  margin-top: 10px;
-  margin-bottom: 10px;
 }
 
 .home-display-class {
@@ -50,8 +44,6 @@
 }
 
 .optimize-button{
-  margin-top: 12%;
-  margin-top: 19%;
   text-align: center;
   display: inline-block;
   justify-items: center;
@@ -62,6 +54,10 @@
   align-items: center;
 }
 
+// .download-Button{
+//     padding-left: 50%;
+//     padding-top: 3%;
+// }
 .download-Button {
   text-align: center;
   display: inline-grid;
@@ -71,9 +67,7 @@
   border-radius: 35px;
   background-color: #b6e1b5;
   align-items: center;
-  margin-left: 50%;
   position: fixed;
-  margin-top: 11px;
 }
 .optimise-button-div{
   display: flex;

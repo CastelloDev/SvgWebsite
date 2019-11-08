@@ -68,21 +68,16 @@ class SvgSetting extends Component {
 }
 
 SvgSetting.propTypes = {
-  svgSettingList: PropTypes.object,
-  svgSettingList : PropTypes.object,
   svgOptions: PropTypes.object,
   svgObject: PropTypes.object,
-  displayOptimize: PropTypes.object,
   option: PropTypes.string,
   isSelected: PropTypes.bool
 };
 
 const mapStateToProps = state => {
-  const svgSettingList = state.svgSettingList;
   const svgOptions = state.svgOptions;
   const svgObject = state.svgObject;
-  const displayOptimize = state.displayOptimize;
-  return {svgSettingList,svgOptions,svgObject,displayOptimize};
+  return {svgOptions,svgObject};
 };
 const mapDispatchToProps = dispatch => {
   return {

@@ -35,7 +35,7 @@ class DisplaySvg extends Component {
   render() {
     return (
       <div>
-        <div className="display-svgs-border-match">
+        <div className="display-svgs-border-match" align="center">
             <ul>
               <li>
                 <figure>
@@ -53,7 +53,9 @@ class DisplaySvg extends Component {
               </li>
               <li>
               <figure>
+                <div className="inline-display-position">
               <InlineSVG src={this.props.finalStringElementWrappedWithLink} />
+              </div>
               <figcaption>
               {"File Size : " + this.state.fileSizeOptimised + " KB"}
               </figcaption>
