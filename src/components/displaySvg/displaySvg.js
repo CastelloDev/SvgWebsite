@@ -52,10 +52,12 @@ class DisplaySvg extends Component {
                 </figure>
               </li>
               <li>
-                <InlineSVG src={this.props.finalStringElementWrappedWithLink} />
-                <div className="optimised-file-size">
-                  {"File Size : " + this.state.fileSizeOptimised + " KB"}
-                </div>
+              <figure>
+              <InlineSVG src={this.props.finalStringElementWrappedWithLink} />
+              <figcaption>
+              {"File Size : " + this.state.fileSizeOptimised + " KB"}
+              </figcaption>
+              </figure>
               </li>
             </ul>
         </div>

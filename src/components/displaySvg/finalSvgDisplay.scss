@@ -38,14 +38,13 @@
  }
 
  .loader {
-   border: 16px solid greenyellow;
+    border: 16px solid greenyellow;
     border-radius: 114%;
     border-top: 16px solid #bcda12; 
     width: 197px;
     height: 199px;
     animation: spin 4s linear infinite;
-   margin-top: 100px;
-    margin-left: 856px;
+    margin: 0 auto;
  }
 
  /* Safari */
@@ -61,7 +60,8 @@
 
  li{
      display: table-cell;
-     margin: 5px; padding: 10px; 
+     margin: 5px; 
+     padding: 10px; 
      vertical-align: top; 
      position:relative; 
      text-align: center;

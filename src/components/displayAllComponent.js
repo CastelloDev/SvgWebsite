@@ -20,26 +20,31 @@ class DisplayAllComponent extends Component {
     };
   }
   getOptimizeSvg = async () => {
+    let OriginalAndOptimised = {}
     for (var option of this.props.svgOptions) {
       changeObj(option, this.props.svgObject.plugins);
     }
     for (var setting of this.props.svgSettingList) {
       if (this.props.svgOptions.length > 0) {
-        this.props.displayOptimize.push({
+        OriginalAndOptimised = {
           originalSvg: setting.dataurl,
           name: setting.name,
           optimisedSvg: await optimizeSvg(
             setting.dataurl,
             this.props.svgObject.plugins
           )
-        });
+        }
       } else {
-        this.props.displayOptimize.push({
+        OriginalAndOptimised = {
           originalSvg: setting.dataurl,
           name: setting.name,
-          optimisedSvg: await optimizeSvg(setting.dataurl, null)
-        });
+          optimisedSvg: await optimizeSvg(
+            setting.dataurl,
+            this.props.svgObject.plugins
+          )
+        }
       }
+      this.props.displayOptimize.push(OriginalAndOptimised);
     }
     this.setState({
       redirect: true
