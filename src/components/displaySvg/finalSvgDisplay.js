@@ -124,7 +124,6 @@ class FinalSvgDisplay extends Component {
 
 FinalSvgDisplay.propTypes = {
   displayOptimize : PropTypes.object, 
-  listToDisplay: PropTypes.array
 };
 
 const mapStateToProps = state => {

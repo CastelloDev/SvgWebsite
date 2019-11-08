@@ -24,7 +24,7 @@ export const changeObj = (value, svgoObjectPlugins) => {
   return newSvgoObject;
 };
 
-export const generate_random_id = string_length => {
+const generate_random_id = string_length => {
   let random_string = "";
   let random_ascii;
   let ascii_low = 65;

@@ -3,6 +3,7 @@ import base64 from "base-64";
 import "./finalSvgDisplay.scss";
 import PropTypes from "prop-types";
 import InlineSVG from "svg-inline-react";
+import {DEFAULT_DATA_URL,DEFAULT_SVG_STRING} from "../../constants/constants";
 class DisplaySvg extends Component {
   constructor(props) {
     super(props);
@@ -41,9 +42,9 @@ class DisplaySvg extends Component {
                 <figure>
                   <img
                     className={this.props.svgType}
-                    src={this.props.dataUrl}
-                    width={this.props.width}
-                    height={this.props.height}
+                    src={this.props.dataUrl ?this.props.dataUrl : DEFAULT_DATA_URL}
+                    width={this.props.width ? this.props.width : "auto"}
+                    height={this.props.height? this.props.height : "auto"}
                     alt="svg to be displayed"
                   />
                   <figcaption>
@@ -54,7 +55,7 @@ class DisplaySvg extends Component {
               <li>
               <figure>
                 <div className="inline-display-position">
-              <InlineSVG src={this.props.finalStringElementWrappedWithLink} />
+              <InlineSVG src={this.props.finalStringElementWrappedWithLink ? this.props.finalStringElementWrappedWithLink : DEFAULT_SVG_STRING } />
               </div>
               <figcaption>
               {"File Size : " + this.state.fileSizeOptimised + " KB"}

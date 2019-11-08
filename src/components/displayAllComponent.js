@@ -79,7 +79,6 @@ class DisplayAllComponent extends Component {
 
 DisplayAllComponent.propTypes = {
   svgSettingList: PropTypes.object,
-  svgSettingList : PropTypes.object,
   svgOptions: PropTypes.object,
   svgObject: PropTypes.object,
   displayOptimize: PropTypes.object

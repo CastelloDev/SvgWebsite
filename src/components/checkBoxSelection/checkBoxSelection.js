@@ -72,18 +72,12 @@ class CheckBoxSelection extends Component {
 
 CheckBoxSelection.propTypes = {
   svgSettingList: PropTypes.object,
-  svgOptions: PropTypes.object,
-  svgObject: PropTypes.object,
-  displayOptimize: PropTypes.object,
   filename: PropTypes.string
 };
 
 const mapStateToProps = state => {
   const svgSettingList = state.svgSettingList;
-  const svgOptions = state.svgOptions;
-  const svgObject = state.svgObject;
-  const displayOptimize = state.displayOptimize;
-  return {svgSettingList,svgOptions,svgObject,displayOptimize};
+  return {svgSettingList};
 };
 
 const mapDispatchToProps = dispatch => {
