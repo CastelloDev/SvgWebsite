@@ -25,34 +25,18 @@ class SvgSetting extends Component {
       isClicked: !this.state.isClicked
     });
 
-    
     this.setState({
-      IndexOf : this.props.svgOptions.findIndex(this.props.value)
-    })
+      IndexOf: this.props.svgOptions.findIndex(this.props.value)
+    });
 
     if (this.state.IndexOf < 0) {
       this.props.svgOptions.push(this.props.value);
     } else {
       this.props.svgOptions.splice(this.state.IndexOf, 1);
       this.setState({
-        IndexOf : -1
-      })
+        IndexOf: -1
+      });
     }
-  };
-
-  toChangePluginObjectValues = (arrayWithPluginOptions) => {
-    let newSvgoObject = this.props.svgObject.plugins.filter(
-      option => {
-        for (var element of arrayWithPluginOptions) {
-          if (option[element] !== null && option[element] !== undefined) {
-            option[element] = true;
-          }
-          return true;
-        }
-      }
-    );
-
-    return newSvgoObject;
   };
 
   render() {
@@ -75,7 +59,7 @@ SvgSetting.propTypes = {
 const mapStateToProps = state => {
   const svgOptions = state.svgOptions;
   const svgObject = state.svgObject;
-  return {svgOptions,svgObject};
+  return { svgOptions, svgObject };
 };
 const mapDispatchToProps = dispatch => {
   return {

@@ -30,23 +30,16 @@ class CheckBoxSelection extends Component {
   };
 
   changeColourAndTick = () => {
-    let isFound = false;
     let index = 0;
     this.setState({ isClicked: !this.state.isClicked });
-    for (var key in this.props.svgSettingList) {
-      if (
-        this.props.svgSettingList[key].name === this.props.file.name
-      ) {
-        isFound = true;
-        index = key;
-        break;
-      }
-    }
-    if (!isFound) {
+    index = this.props.svgSettingList.findIndex(
+      setting => setting.name == this.props.file.name
+    );
+
+    if (index < 0) {
       this.convertSvgToDataUrl(this.props.file);
     } else {
       this.props.svgSettingList.splice(index, 1);
-      isFound = false;
     }
   };
 
@@ -78,7 +71,7 @@ CheckBoxSelection.propTypes = {
 
 const mapStateToProps = state => {
   const svgSettingList = state.svgSettingList;
-  return {svgSettingList};
+  return { svgSettingList };
 };
 
 const mapDispatchToProps = dispatch => {
