@@ -20,7 +20,7 @@ class SvgSetting extends Component {
     };
   }
 
-  handleDivClick = () => {
+  handleSettingsClick = () => {
     this.setState({
       isClicked: !this.state.isClicked
     });
@@ -28,8 +28,11 @@ class SvgSetting extends Component {
       if (this.props.svgOptions[file] === this.props.value) {
         this.state.isFound = true;
         this.state.index = file;
+        break;
       }
     }
+ 
+
     if (!this.state.isFound) {
       this.props.svgOptions.push(this.props.value);
     } else {
@@ -59,7 +62,7 @@ class SvgSetting extends Component {
 
   render() {
     return (
-      <div onClick={this.handleDivClick}>
+      <div onClick={this.handleSettingsClick}>
         <input type="checkbox" checked={this.state.isClicked} />
         <label className="checkbox-label-svg">{this.props.option}</label>
       </div>

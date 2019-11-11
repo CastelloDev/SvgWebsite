@@ -39,6 +39,7 @@ class CheckBoxSelection extends Component {
       ) {
         isFound = true;
         index = key;
+        break;
       }
     }
     if (!isFound) {

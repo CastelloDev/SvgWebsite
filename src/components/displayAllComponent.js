@@ -20,13 +20,13 @@ class DisplayAllComponent extends Component {
     };
   }
   getOptimizeSvg = async () => {
-    let OriginalAndOptimised = {}
+    let originalAndOptimised = {}
     for (var option of this.props.svgOptions) {
       changeObj(option, this.props.svgObject.plugins);
     }
     for (var setting of this.props.svgSettingList) {
       if (this.props.svgOptions.length > 0) {
-        OriginalAndOptimised = {
+        originalAndOptimised = {
           originalSvg: setting.dataurl,
           name: setting.name,
           optimisedSvg: await optimizeSvg(
@@ -35,7 +35,7 @@ class DisplayAllComponent extends Component {
           )
         }
       } else {
-        OriginalAndOptimised = {
+        originalAndOptimised = {
           originalSvg: setting.dataurl,
           name: setting.name,
           optimisedSvg: await optimizeSvg(
@@ -44,23 +44,17 @@ class DisplayAllComponent extends Component {
           )
         }
       }
-      this.props.displayOptimize.push(OriginalAndOptimised);
+      this.props.displayOptimize.push(originalAndOptimised);
     }
     this.setState({
       redirect: true
     })
   };
 
-  renderRedirect = () => {
-    if (this.state.redirect) {
-      return <Redirect to='/FinalSvgDisplay' />
-    }
-  }
-
   render() {
     return (
         <div className="home-display-class">
-        {this.renderRedirect()}
+        {this.state.redirect ?  <Redirect to='/FinalSvgDisplay' /> : null}
           <div className="choose">
             <ChooseFolder />
           </div>
