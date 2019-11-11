@@ -75,9 +75,9 @@ class FinalSvgDisplay extends Component {
       'function changeSvgColourById(elemId,white){  var arrayOfClickedIds = [];if(!arrayOfClickedIds.includes(elemId) || arrayOfClickedIds.length == 0 ){  arrayOfClickedIds.push(elemId);document.getElementById(elemId).style.fill = "brown";}else{arrayOfClickedIds.push(elemId);document.getElementById(elemId).removeAttribute("style");document.getElementById(elemId).style.fill = prevColour;}}';
 
     const script = document.createElement("script");
-    var t = document.createTextNode(functionStr);
+    var textNodeToChangeAvgColour = document.createTextNode(functionStr);
     script.setAttribute("class", "fucntionality-script");
-    script.appendChild(t);
+    script.appendChild(textNodeToChangeAvgColour);
     document.body.appendChild(script);
 
     this.setState({

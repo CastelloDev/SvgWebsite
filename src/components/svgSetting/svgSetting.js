@@ -15,27 +15,24 @@ class SvgSetting extends Component {
     this.state = {
       isClicked: this.props.isSelected,
       arr: [],
-      svgoObject: { ...Svgo },
-      IndexOf: -1
-    };
+      svgoObject: { ...Svgo }
+        };
   }
 
   handleSettingsClick = () => {
+    let indexOf = -1;
     this.setState({
       isClicked: !this.state.isClicked
     });
 
-    this.setState({
-      IndexOf: this.props.svgOptions.findIndex(this.props.value)
-    });
+ 
+      indexOf = this.props.svgOptions.findIndex(this.props.value);
 
     if (this.state.IndexOf < 0) {
       this.props.svgOptions.push(this.props.value);
     } else {
       this.props.svgOptions.splice(this.state.IndexOf, 1);
-      this.setState({
-        IndexOf: -1
-      });
+        indexOf = -1;
     }
   };
 
