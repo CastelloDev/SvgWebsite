@@ -33,7 +33,7 @@
   width: 600px;
 }
 
-.home-display-class {
+.home-display {
   display: flex;
 }
 .choose {
@@ -54,19 +54,10 @@
   align-items: center;
 }
 
-// .download-Button{
-//     padding-left: 50%;
-//     padding-top: 3%;
-// }
 .download-Button {
-  text-align: center;
-  display: inline-grid;
-  justify-items: center;
-  width: 100px;
   height: 70px;
-  border-radius: 25px;
+  border-radius: 35px;
   background-color: #b6e1b5;
-  align-items: center;
   position: fixed;
 }
 .optimise-button-div{

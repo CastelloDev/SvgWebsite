@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import DisplaySvg from "./displaySvg";
 import finalSvgDisplay from "./finalSvgDisplay.scss";
 import { connect } from "react-redux";
-import base64 from "base-64";
 import { SVG_TAG_NAMES } from "../../constants/constants";
 import {
   ADD_VARIABLE,

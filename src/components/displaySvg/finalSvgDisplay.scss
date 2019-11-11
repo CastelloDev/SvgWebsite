@@ -3,10 +3,10 @@
     width: 373px; 
 }
 
-  a:hover {
+ellipse:hover,rect:hover,path:hover,text:hover,linearGradient:hover,polygon:hover,circle:hover {
    background-color: yellow;
-   fill:yellow;
- }
+   fill: yellow;
+}
 
  .inline-display-position{
    padding-top: 71%;
@@ -14,7 +14,7 @@
  svg{
     max-height: 106px;
     max-width: fit-content;
-    background-color: white;
+   //  background-color: white;
  }
   
  .display-svgs-border-match {

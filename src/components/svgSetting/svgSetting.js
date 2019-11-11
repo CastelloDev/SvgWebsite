@@ -41,7 +41,7 @@ class SvgSetting extends Component {
     }
   };
 
-  toChangePluginObjectValues = arrayWithPluginOptions => {
+  toChangePluginObjectValues = (arrayWithPluginOptions) => {
     let newSvgoObject = this.props.svgObject.plugins.filter(
       option => {
         for (var element of arrayWithPluginOptions) {
@@ -54,10 +54,6 @@ class SvgSetting extends Component {
     );
 
     return newSvgoObject;
-  };
-
-  changingPluginValuesPerUserOption= () => {
-    this.changePluginObjectValues(this.props.svgOptions);
   };
 
   render() {

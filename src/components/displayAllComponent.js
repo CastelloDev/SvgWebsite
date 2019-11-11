@@ -1,26 +1,21 @@
 import React, { Component } from "react";
 import ChooseFolder from "./chooseFolder/chooseFolder";
-import { NavLink,Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import SvgSettingOptions from "./svgSetting/svgSettingOptions";
 import "../components/checkBoxSelection/checkBoxSelection.scss";
 import { changeObj, optimizeSvg } from "../../src/components/functions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import {
-  ADD_VARIABLE,
-  UPDATE_VARIABLE,
-  DELETE_VARIABLE
-} from "../store/actionTypes";
 
 class DisplayAllComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-     redirect : false
+      redirect: false
     };
   }
   getOptimizeSvg = async () => {
-    let originalAndOptimised = {}
+    let originalAndOptimised = {};
     for (var option of this.props.svgOptions) {
       changeObj(option, this.props.svgObject.plugins);
     }
@@ -33,7 +28,7 @@ class DisplayAllComponent extends Component {
             setting.dataurl,
             this.props.svgObject.plugins
           )
-        }
+        };
       } else {
         originalAndOptimised = {
           originalSvg: setting.dataurl,
@@ -42,31 +37,29 @@ class DisplayAllComponent extends Component {
             setting.dataurl,
             this.props.svgObject.plugins
           )
-        }
+        };
       }
       this.props.displayOptimize.push(originalAndOptimised);
     }
-    this.setState({
-      redirect: true
-    })
+    this.setState({ redirect: true });
   };
 
   render() {
     return (
-        <div className="home-display-class">
-        {this.state.redirect ?  <Redirect to='/FinalSvgDisplay' /> : null}
-          <div className="choose">
-            <ChooseFolder />
-          </div>
-          <div className="choose">
-            <SvgSettingOptions />
-            <div className="optimise-button-div">
-                <button className="optimize-button" onClick={this.getOptimizeSvg}>
-                  Optimize
-                </button>
-            </div>
+      <div className="home-display">
+        {this.state.redirect ? <Redirect to="/FinalSvgDisplay" /> : null}
+        <div className="choose">
+          <ChooseFolder />
+        </div>
+        <div className="choose">
+          <SvgSettingOptions />
+          <div className="optimise-button-div">
+            <button className="optimize-button" onClick={this.getOptimizeSvg}>
+              Optimize
+            </button>
           </div>
         </div>
+      </div>
     );
   }
 }
@@ -83,9 +76,7 @@ const mapStateToProps = state => {
   const svgOptions = state.svgOptions;
   const svgObject = state.svgObject;
   const displayOptimize = state.displayOptimize;
-  return {svgSettingList,svgOptions,svgObject,displayOptimize};
+  return { svgSettingList, svgOptions, svgObject, displayOptimize };
 };
 
-export default connect(
-  mapStateToProps,
-)(DisplayAllComponent);
+export default connect(mapStateToProps)(DisplayAllComponent);
