@@ -16,7 +16,7 @@ class SvgSetting extends Component {
       isClicked: this.props.isSelected,
       arr: [],
       svgoObject: { ...Svgo },
-      isFound: false
+      IndexOf: -1
     };
   }
 
@@ -24,20 +24,19 @@ class SvgSetting extends Component {
     this.setState({
       isClicked: !this.state.isClicked
     });
-    for (var file in this.props.svgOptions) {
-      if (this.props.svgOptions[file] === this.props.value) {
-        this.state.isFound = true;
-        this.state.index = file;
-        break;
-      }
-    }
- 
 
-    if (!this.state.isFound) {
+    
+    this.setState({
+      IndexOf : this.props.svgOptions.findIndex(this.props.value)
+    })
+
+    if (this.state.IndexOf < 0) {
       this.props.svgOptions.push(this.props.value);
     } else {
-      this.props.svgOptions.splice(this.state.index, 1);
-      this.state.isFound = false;
+      this.props.svgOptions.splice(this.state.IndexOf, 1);
+      this.setState({
+        IndexOf : -1
+      })
     }
   };
 
