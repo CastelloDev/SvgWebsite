@@ -42,7 +42,7 @@ class ChooseFolder extends Component {
    	        <div className='main'>
    	            <div className='file'>
    	                <label>
-   	                    <input type='file' webkitdirectory='' onChange={this.onChangeHandler} />
+   	                    <input type='file' webkitdirectory='' onChange={(e)=>this.onChangeHandler(e)} />
    	                </label>
    	            </div>
 				   

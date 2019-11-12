@@ -36,7 +36,7 @@ class SvgSetting extends Component {
 
   render() {
     return (
-      <div onClick={this.handleSettingsClick}>
+      <div onClick={()=>this.handleSettingsClick()}>
         <input type="checkbox" checked={this.state.isClicked} />
         <label className="checkbox-label-svg">{this.props.option}</label>
       </div>

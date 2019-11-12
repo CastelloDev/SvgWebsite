@@ -51,7 +51,7 @@ class CheckBoxSelection extends Component {
             ? "checkbox-container-clicked"
             : "checkbox-container-unclicked"
         }
-        onClick={this.changeColourAndTick}
+        onClick={()=>this.changeColourAndTick()}
       >
         <input
           className="checkbox-input"
