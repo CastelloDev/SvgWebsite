@@ -14,6 +14,10 @@ export const optimizeSvg = (dataUrl, svgo) => {
     .catch(err => console.log(err));
 };
 
+export const immutablePush=(arr, newEntry)=>{
+  return [].concat(arr, newEntry)
+}
+
 export const changeObj = (value, svgoObjectPlugins) => {
   let newSvgoObject = svgoObjectPlugins.filter(option => {
     if (option[value] !== null && option[value] !== undefined) {

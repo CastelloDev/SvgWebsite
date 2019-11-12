@@ -18,11 +18,15 @@ class CheckBoxSelection extends Component {
 
   convertSvgToDataUrl = file => {
     let reader = new FileReader();
+    const svgSettings = this.props.svgSettingList ?this.props.svgSettingList : [];
     reader.onload = result => {
-      this.props.svgSettingList.push({
+  
+      svgSettings.push({
         name: file.name,
         dataurl: result.target.result
       });
+      this.props.updateStore("svgSettingList",svgSettings);
+
     };
     if (file) {
       reader.readAsDataURL(file);
@@ -30,9 +34,9 @@ class CheckBoxSelection extends Component {
   };
 
   changeColourAndTick = () => {
-    let index = 0;
+    
     this.setState({ isClicked: !this.state.isClicked });
-    index = this.props.svgSettingList.findIndex(
+    let index = this.props.svgSettingList.findIndex(
       setting => setting.name == this.props.file.name
     );
 

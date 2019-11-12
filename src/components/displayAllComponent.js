@@ -6,16 +6,18 @@ import "../components/checkBoxSelection/checkBoxSelection.scss";
 import { changeObj, optimizeSvg } from "../../src/components/functions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { UPDATE_VARIABLE} from "../../src/store/actionTypes";
 
 class DisplayAllComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
       redirect: false
-    };
+        };
   }
   getOptimizeSvg = async () => {
     let originalAndOptimised = {};
+    let tempOptimisationArr = [];
     for (var option of this.props.svgOptions) {
       changeObj(option, this.props.svgObject.plugins);
     }
@@ -39,9 +41,12 @@ class DisplayAllComponent extends Component {
           )
         };
       }
-      this.props.displayOptimize.push(originalAndOptimised);
+      tempOptimisationArr.push(originalAndOptimised);
+     
     }
+    this.props.updateStore("displayOptimize",tempOptimisationArr);
     this.setState({ redirect: true });
+
   };
 
   render() {
@@ -65,6 +70,8 @@ class DisplayAllComponent extends Component {
 }
 
 DisplayAllComponent.propTypes = {
+  addToStore: PropTypes.func,
+  updateStore: PropTypes.func,
   svgSettingList: PropTypes.object,
   svgOptions: PropTypes.object,
   svgObject: PropTypes.object,
@@ -79,4 +86,10 @@ const mapStateToProps = state => {
   return { svgSettingList, svgOptions, svgObject, displayOptimize };
 };
 
-export default connect(mapStateToProps)(DisplayAllComponent);
+const mapDispatchToProps = dispatch => {
+  return {
+      updateStore: (variableName, variableValue) => dispatch({ type: UPDATE_VARIABLE, variableName: variableName, variableValue: variableValue })
+      };
+};
+
+export default connect(mapStateToProps,mapDispatchToProps)(DisplayAllComponent);
