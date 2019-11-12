@@ -3,18 +3,18 @@
     width: 373px; 
 }
 
-ellipse:hover,rect:hover,path:hover,text:hover,linearGradient:hover,polygon:hover,circle:hover {
+
+
+ellipse,rect,path,text,linearGradient,polygon,circle{ &:hover{ 
    background-color: yellow;
    fill: yellow;
-}
-
+} }
  .inline-display-position{
-   padding-top: 71%;
+   padding-top: 40px;
  }
  svg{
     max-height: 106px;
     max-width: fit-content;
-   //  background-color: white;
  }
   
  .display-svgs-border-match {
@@ -40,7 +40,7 @@ ellipse:hover,rect:hover,path:hover,text:hover,linearGradient:hover,polygon:hove
 
  .loader {
     border: 16px solid greenyellow;
-    border-radius: 56%;
+    border-radius: 111px;
     border-top: 16px solid #bcda12;
     width: 197px;
     height: 199px;

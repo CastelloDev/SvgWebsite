@@ -34,9 +34,10 @@ class ChooseFolder extends Component {
 
   	render() {
 		   const listOfFileNames = [];
-       	for(var key of this.state.path) {
+       	for(let key of this.state.path) {
    	        listOfFileNames.push(<CheckBoxSelection key={key.name} filename={key.name} file={key} />);
 		   }	
+
   	return (
    	        <div className='main'>
    	            <div className='file'>
@@ -44,6 +45,7 @@ class ChooseFolder extends Component {
    	                    <input type='file' webkitdirectory='' onChange={this.onChangeHandler} />
    	                </label>
    	            </div>
+				   
    	            <div >
    	                {listOfFileNames}
    	            </div>

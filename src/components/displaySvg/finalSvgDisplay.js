@@ -23,13 +23,13 @@ class FinalSvgDisplay extends Component {
 
   downloadNewSvgFiles = () => {
     
-    var svgElementList = document.getElementsByTagName("svg");
+    let svgElementList = document.getElementsByTagName("svg");
 
     //get svg source.
-    var serializer = new XMLSerializer();
-    for(var svgDataIndex in svgElementList){   
+    let serializer = new XMLSerializer();
+    for(let svgDataIndex in svgElementList){   
     //get svg source.
-    var source = serializer.serializeToString(svgElementList[svgDataIndex]);
+    let source = serializer.serializeToString(svgElementList[svgDataIndex]);
     source = source.replace("<a class=\"svg-elem-wrapper\" id=\"id-1\">","").replace("</a>","").replace("onclick=\"changeSvgColourById(this.id);\"","");
 
     //add name spaces.
@@ -51,9 +51,9 @@ class FinalSvgDisplay extends Component {
     source = '<?xml version="1.0" standalone="no"?>\r\n' + source;
 
     //convert svg source to URI data scheme.
-    var url = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(source);
+    let url = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(source);
     //set url value to a element's href attribute.
-        var dl = document.createElement("a");
+        let dl = document.createElement("a");
         document.body.appendChild(dl); // This line makes it work in Firefox.
         dl.setAttribute("href", url);
         dl.setAttribute("download", "test.svg");
@@ -67,15 +67,15 @@ class FinalSvgDisplay extends Component {
   };
 
   componentDidMount = () => {
-    var array = [];
-    var pathArrayLocal = [];
-    var elementIds = [];
+    let array = [];
+    let pathArrayLocal = [];
+    let elementIds = [];
     wrapElements(SVG_TAG_NAMES, array, pathArrayLocal, 7, elementIds);
-    var functionStr =
-      'function changeSvgColourById(elemId,white){  var arrayOfClickedIds = [];if(!arrayOfClickedIds.includes(elemId) || arrayOfClickedIds.length == 0 ){  arrayOfClickedIds.push(elemId);document.getElementById(elemId).style.fill = "brown";}else{arrayOfClickedIds.push(elemId);document.getElementById(elemId).removeAttribute("style");document.getElementById(elemId).style.fill = prevColour;}}';
+    let functionStr =
+      'function changeSvgColourById(elemId,white){  let arrayOfClickedIds = [];if(!arrayOfClickedIds.includes(elemId) || arrayOfClickedIds.length == 0 ){  arrayOfClickedIds.push(elemId);document.getElementById(elemId).style.fill = "brown";}else{arrayOfClickedIds.push(elemId);document.getElementById(elemId).removeAttribute("style");document.getElementById(elemId).style.fill = prevColour;}}';
 
     const script = document.createElement("script");
-    var textNodeToChangeAvgColour = document.createTextNode(functionStr);
+    let textNodeToChangeAvgColour = document.createTextNode(functionStr);
     script.setAttribute("class", "fucntionality-script");
     script.appendChild(textNodeToChangeAvgColour);
     document.body.appendChild(script);
@@ -102,7 +102,7 @@ class FinalSvgDisplay extends Component {
             <div className="display-original-optimised">{listOfFileNames}</div>
             <div align="center">
             <button
-              className="download-Button"
+              className="download-button"
               onClick={this.downloadNewSvgFiles}
             >
               Download edited svg

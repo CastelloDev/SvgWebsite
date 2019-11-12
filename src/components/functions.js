@@ -45,17 +45,17 @@ export const wrapElements = (
   idLengthToGenerate,
   idOfElements
 ) => {
-  for (var svgTagNameIndex in SVG_TAG_NAMES) {
-    var drawingComponet = document.getElementsByTagName(
+  for (let svgTagNameIndex in SVG_TAG_NAMES) {
+    let drawingComponet = document.getElementsByTagName(
       SVG_TAG_NAMES[svgTagNameIndex]
     );
-    for (var drawingComponetIndex of drawingComponet) {
-      var element = new XMLSerializer()
+    for (let drawingComponetIndex of drawingComponet) {
+      let element = new XMLSerializer()
         .serializeToString(drawingComponetIndex)
         .toString()
         .replace('xmlns="http://www.w3.org/2000/svg"', "");
       if (!element.includes("id=")) {
-        var idInserter =
+        let idInserter =
           "<" +
           SVG_TAG_NAMES[svgTagNameIndex] +
           ' id="id_' +
@@ -67,7 +67,7 @@ export const wrapElements = (
           idInserter
         );
       }
-      var elementWrapper = document.createElement("a");
+      let elementWrapper = document.createElement("a");
       elementWrapper.setAttribute("class", "svg-elem-wrapper");
       elementWrapper.setAttribute("id", "id-1");
       drawingComponetLocal.push(drawingComponetIndex);
@@ -90,15 +90,15 @@ export const updateSvgElements = (
   wrappedPathsElement,
   drawingComponetState
 ) => {
-  for (var key in optimisedArray) {
-    var finalStringElementWrappedWithLink = base64.decode(optimisedArray[key].optimisedSvg);
+  for (let key in optimisedArray) {
+    let finalStringElementWrappedWithLink = base64.decode(optimisedArray[key].optimisedSvg);
     if (wrappedPathsElement.length > 0) {
-      for (var index = 0; index < wrappedPathsElement.length; index++) {
-        var stringToWithLinkToWrap = new XMLSerializer()
+      for (let index = 0; index < wrappedPathsElement.length; index++) {
+        let stringToWithLinkToWrap = new XMLSerializer()
           .serializeToString(wrappedPathsElement[index])
           .toString();
 
-        var StringToBeWrappedByLink = new XMLSerializer()
+        let StringToBeWrappedByLink = new XMLSerializer()
           .serializeToString(drawingComponetState[index])
           .toString();
         StringToBeWrappedByLink = StringToBeWrappedByLink.replace(
