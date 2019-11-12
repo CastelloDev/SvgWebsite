@@ -3,7 +3,6 @@ import base64 from "base-64";
 import "./finalSvgDisplay.scss";
 import PropTypes from "prop-types";
 import InlineSVG from "svg-inline-react";
-import {DEFAULT_DATA_URL,DEFAULT_SVG_STRING} from "../../constants/constants";
 class DisplaySvg extends Component {
   constructor(props) {
     super(props);
@@ -36,13 +35,14 @@ class DisplaySvg extends Component {
   render() {
     return (
       <div>
+        { (this.props.dataUrl && this.props.finalStringElementWrappedWithLink) ? 
         <div className="display-svgs-border-match" align="center">
             <ul>
               <li>
                 <figure>
                   <img
                     className={this.props.svgType}
-                    src={this.props.dataUrl ?this.props.dataUrl : DEFAULT_DATA_URL}
+                    src={this.props.dataUrl}
                     width={this.props.width ? this.props.width : "auto"}
                     height={this.props.height? this.props.height : "auto"}
                     alt="svg to be displayed"
@@ -55,7 +55,7 @@ class DisplaySvg extends Component {
               <li>
               <figure>
                 <div className="inline-display-position">
-              <InlineSVG src={this.props.finalStringElementWrappedWithLink ? this.props.finalStringElementWrappedWithLink : DEFAULT_SVG_STRING } />
+              <InlineSVG src={this.props.finalStringElementWrappedWithLink} />
               </div>
               <figcaption>
               {"File Size : " + this.state.fileSizeOptimised + " KB"}
@@ -64,7 +64,8 @@ class DisplaySvg extends Component {
               </li>
             </ul>
         </div>
-      </div>
+     : null}
+     </div>
     );
   }
 }

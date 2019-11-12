@@ -25,7 +25,7 @@ class SvgSetting extends Component {
     });
 
  
-      let indexOf = this.props.svgOptions.findIndex(this.props.value);
+    let indexOf = this.props.svgOptions.findIndex(this.props.value);
 
     if (indexOf < 0) {
       this.props.svgOptions.push(this.props.value);
