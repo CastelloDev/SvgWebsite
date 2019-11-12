@@ -41,7 +41,6 @@ class DisplaySvg extends Component {
               <li>
                 <figure>
                   <img
-                    className={this.props.svgType}
                     src={this.props.dataUrl}
                     width={this.props.width ? this.props.width : "auto"}
                     height={this.props.height? this.props.height : "auto"}

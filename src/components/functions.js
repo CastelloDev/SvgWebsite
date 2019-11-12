@@ -152,7 +152,6 @@ export const updateSvgElements = (
       <div className="original-svg-div" key={key}>
         <DisplaySvg
           key={key}
-          svgType="originalSvg"
           dataUrl={optimisedArray[key].originalSvg}
           width="100px"
           height="300px"
