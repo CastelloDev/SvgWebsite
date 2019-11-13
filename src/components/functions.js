@@ -19,7 +19,7 @@ export const immutablePush=(arr, newEntry)=>{
 }
 
 export const changeObj = (value, svgoObjectPlugins) => {
-  let newSvgoObject = svgoObjectPlugins.filter(option => {
+  let newSvgoObject = svgoObjectPlugins.map(option => {
     if (option[value] !== null && option[value] !== undefined) {
       option[value] = true;
     }
