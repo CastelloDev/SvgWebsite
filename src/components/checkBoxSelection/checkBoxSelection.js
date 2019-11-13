@@ -18,14 +18,14 @@ class CheckBoxSelection extends Component {
 
   convertSvgToDataUrl = file => {
     let reader = new FileReader();
-    const svgSettings = this.props.svgSettingList ?this.props.svgSettingList : [];
+    const svgSettings = [...this.props.svgSettingList];
     reader.onload = result => {
   
       svgSettings.push({
         name: file.name,
         dataurl: result.target.result
       });
-      this.props.updateStore("svgSettingList",svgSettings);
+      this.props.updateStore("svgSettingList",svgSettings)
 
     };
     if (file) {
