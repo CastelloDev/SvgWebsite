@@ -21,7 +21,7 @@ class FinalSvgDisplay extends Component {
     };
   }
 
-  downloadNewSvgFiles = () => {
+  downloadOptimizedSvgs = () => {
     
     let svgElementList = document.getElementsByTagName("svg");
 
@@ -103,7 +103,7 @@ class FinalSvgDisplay extends Component {
             <div align="center">
             <button
               className="download-button"
-              onClick={this.downloadNewSvgFiles}
+              onClick={this.downloadOptimizedSvgs}
             >
               Download edited svg
             </button>

@@ -37,7 +37,7 @@ class DisplayAllComponent extends Component {
           name: setting.name,
           optimisedSvg: await optimizeSvg(
             setting.dataurl,
-            this.props.svgObject.plugins
+            null
           )
         };
       }
