@@ -23,7 +23,6 @@ export const changeObj = (value, svgoObjectPlugins) => {
     if (option[value] !== null && option[value] !== undefined) {
       option[value] = true;
     }
-    return true;
   });
   return newSvgoObject;
 };
