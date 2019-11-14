@@ -8,7 +8,6 @@ class ChooseFolder extends Component {
     super(props);
     this.state = {
       path: [],
-      value: "",
       displayMenu: false,
       originalSvgDataUrl: "",
       optimizedDataUrl: ""
@@ -16,7 +15,7 @@ class ChooseFolder extends Component {
   }
 
   onChangeHandler = event => {
-    this.setState({ path: event.target.files, value: event.target.value });
+    this.setState({ path: event.target.files});
   };
 
   convertSvgToDataUrl = file => {
@@ -48,7 +47,6 @@ class ChooseFolder extends Component {
             <input
               type="file"
               webkitdirectory=""
-              value={this.state.value}
               onChange={e => this.onChangeHandler(e)}
             />
           </label>

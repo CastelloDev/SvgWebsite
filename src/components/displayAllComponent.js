@@ -17,11 +17,11 @@ class DisplayAllComponent extends Component {
   }
   getOptimizeSvg = async () => {
     let originalAndOptimised = {};
-    let tempOptimisationArr = [];
     for (var option of this.props.svgOptions) {
       changeObj(option, this.props.svgObject.plugins);
     }
     for (var setting of this.props.svgSettingList) {
+      let { displayOptimize=[] } = this.props;
       let SvgPlugins = this.props.svgOptions.length > 0 ?  this.props.svgObject.plugins : null;
         originalAndOptimised = {
           originalSvg: setting.dataurl,
@@ -31,10 +31,8 @@ class DisplayAllComponent extends Component {
             SvgPlugins
           )
         };
-      tempOptimisationArr.push(originalAndOptimised);
-      
+        this.props.updateStore("displayOptimize",[...displayOptimize,originalAndOptimised]);
     }
-    this.props.updateStore("displayOptimize",tempOptimisationArr);
     this.setState({ redirect: true });
   };
 
