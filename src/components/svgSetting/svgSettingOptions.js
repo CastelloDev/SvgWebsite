@@ -12,30 +12,25 @@ class SvgSettingOptions extends Component {
   }
 
   render() {
-    for (var key in CardLayout) {
-      if (CardLayout[key].type === "checkbox") {
-        this.state.settingOptionList.push(
-          <SvgSetting
-            key={key}
-            value={CardLayout[key].value}
-            option={CardLayout[key].text}
-          />
-        );
-      } else if (CardLayout[key].type === "slider") {
-        this.state.settingOptionList.push(
-          <div className="slider">
-            <Slider key={key} option={CardLayout[key].text} />
-          </div>
-        );
-      }
-    }
-
+   
     return (
       <div className="card-settings">
         <div>
-          <label> {"SVG settings"} </label>
+          <label>{"SVG settings"}</label>
         </div>
-        <div>{this.state.settingOptionList}</div>
+        {CardLayout.map(function(option,key){
+          if(option.type === "checkbox"){
+            return (<SvgSetting
+            key={key}
+            value={option.value}
+            option={option.text}
+          />)
+          } else if (option.type === "slider"){
+            return (<div className="slider">
+            <Slider key={key} option={option.text} />
+          </div>)
+          }
+        })}
       </div>
     );
   }

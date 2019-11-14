@@ -14,10 +14,6 @@ export const optimizeSvg = (dataUrl, svgo) => {
     .catch(err => console.log(err));
 };
 
-export const immutablePush=(arr, newEntry)=>{
-  return [].concat(arr, newEntry)
-}
-
 export const changeObj = (value, svgoObjectPlugins) => {
   let newSvgoObject = svgoObjectPlugins.map(option => {
     if (option[value] !== null && option[value] !== undefined) {
@@ -79,8 +75,8 @@ export const wrapElements = (
       );
       elementWrapper.firstChild.setAttribute(
         "onclick",
-        "changeSvgColourById(this.id);"
-      ); // for FF
+        "changeSvgColourById(this.id)"
+      );
 
       array.push(elementWrapper);
     }
@@ -94,7 +90,9 @@ export const updateSvgElements = (
   drawingComponetState
 ) => {
   for (let key in optimisedArray) {
-    let finalStringElementWrappedWithLink = base64.decode(optimisedArray[key].optimisedSvg);
+    let finalStringElementWrappedWithLink = base64.decode(
+      optimisedArray[key].optimisedSvg
+    );
     if (wrappedPathsElement.length > 0) {
       for (let index = 0; index < wrappedPathsElement.length; index++) {
         let stringToWithLinkToWrap = new XMLSerializer()
@@ -112,37 +110,58 @@ export const updateSvgElements = (
           StringToBeWrappedByLink =
             StringToBeWrappedByLink.substring(0, 5) +
             " " +
-            StringToBeWrappedByLink.substring(6, StringToBeWrappedByLink.length).trim();
+            StringToBeWrappedByLink.substring(
+              6,
+              StringToBeWrappedByLink.length
+            ).trim();
         } else if (StringToBeWrappedByLink.substring(0, 5) == "<elli") {
           StringToBeWrappedByLink =
             StringToBeWrappedByLink.substring(0, 8) +
             " " +
-            StringToBeWrappedByLink.substring(8, StringToBeWrappedByLink.length).trim();
+            StringToBeWrappedByLink.substring(
+              8,
+              StringToBeWrappedByLink.length
+            ).trim();
         } else if (StringToBeWrappedByLink.substring(0, 5) == "<rect") {
           StringToBeWrappedByLink =
             StringToBeWrappedByLink.substring(0, 5) +
             " " +
-            StringToBeWrappedByLink.substring(6, StringToBeWrappedByLink.length).trim();
+            StringToBeWrappedByLink.substring(
+              6,
+              StringToBeWrappedByLink.length
+            ).trim();
         } else if (StringToBeWrappedByLink.substring(0, 5) == "<circ") {
           StringToBeWrappedByLink =
             StringToBeWrappedByLink.substring(0, 7) +
             " " +
-            StringToBeWrappedByLink.substring(8, StringToBeWrappedByLink.length).trim();
+            StringToBeWrappedByLink.substring(
+              8,
+              StringToBeWrappedByLink.length
+            ).trim();
         } else if (StringToBeWrappedByLink.substring(0, 5) == "<poly") {
           StringToBeWrappedByLink =
             StringToBeWrappedByLink.substring(0, 8) +
             " " +
-            StringToBeWrappedByLink.substring(9, StringToBeWrappedByLink.length).trim();
+            StringToBeWrappedByLink.substring(
+              9,
+              StringToBeWrappedByLink.length
+            ).trim();
         } else if (StringToBeWrappedByLink.substring(0, 5) == "<line") {
           StringToBeWrappedByLink =
             StringToBeWrappedByLink.substring(0, 8) +
             " " +
-            StringToBeWrappedByLink.substring(9, StringToBeWrappedByLink.length).trim();
+            StringToBeWrappedByLink.substring(
+              9,
+              StringToBeWrappedByLink.length
+            ).trim();
         } else if (StringToBeWrappedByLink.substring(0, 5) == "<text") {
           StringToBeWrappedByLink =
             StringToBeWrappedByLink.substring(0, 5) +
             " " +
-            StringToBeWrappedByLink.substring(6, StringToBeWrappedByLink.length).trim();
+            StringToBeWrappedByLink.substring(
+              6,
+              StringToBeWrappedByLink.length
+            ).trim();
         }
 
         finalStringElementWrappedWithLink = finalStringElementWrappedWithLink

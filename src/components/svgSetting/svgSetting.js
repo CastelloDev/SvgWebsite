@@ -46,7 +46,7 @@ class SvgSetting extends Component {
 }
 
 SvgSetting.propTypes = {
-  svgOptions: PropTypes.object,
+  svgOptions: PropTypes.array,
   svgObject: PropTypes.object,
   option: PropTypes.string,
   isSelected: PropTypes.bool

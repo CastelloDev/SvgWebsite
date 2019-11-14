@@ -69,7 +69,7 @@ class CheckBoxSelection extends Component {
 }
 
 CheckBoxSelection.propTypes = {
-  svgSettingList: PropTypes.object,
+  svgSettingList: PropTypes.array,
   filename: PropTypes.string
 };
 

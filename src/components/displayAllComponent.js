@@ -30,7 +30,8 @@ class DisplayAllComponent extends Component {
           this.props.svgObject.plugins
         )
       };
-      let SvgPlugins = this.props.svgOptions.length > 0 ?  this.props.svgObject.plugins : null
+      let SvgPlugins = this.props.svgOptions.length > 0 ?  this.props.svgObject.plugins : null;
+    
         originalAndOptimised = {
           originalSvg: setting.dataurl,
           name: setting.name,
@@ -40,6 +41,7 @@ class DisplayAllComponent extends Component {
           )
         };
       tempOptimisationArr.push(originalAndOptimised);
+      
     }
     this.props.updateStore("displayOptimize",tempOptimisationArr);
     this.setState({ redirect: true });
@@ -68,10 +70,10 @@ class DisplayAllComponent extends Component {
 DisplayAllComponent.propTypes = {
   addToStore: PropTypes.func,
   updateStore: PropTypes.func,
-  svgSettingList: PropTypes.object,
-  svgOptions: PropTypes.object,
+  svgSettingList: PropTypes.array,
+  svgOptions: PropTypes.array,
   svgObject: PropTypes.object,
-  displayOptimize: PropTypes.object
+  displayOptimize: PropTypes.array
 };
 
 const mapStateToProps = state => {
