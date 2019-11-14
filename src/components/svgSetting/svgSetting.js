@@ -16,7 +16,7 @@ class SvgSetting extends Component {
       isClicked: this.props.isSelected,
       arr: [],
       svgoObject: { ...Svgo }
-        };
+    };
   }
 
   handleSettingsClick = () => {
@@ -24,20 +24,19 @@ class SvgSetting extends Component {
       isClicked: !this.state.isClicked
     });
 
- 
     let indexOf = this.props.svgOptions.findIndex(this.props.value);
 
-    if (indexOf < 0) {
-      this.props.updateStore("svgOptions",this.props.svgOptions.concat(this.props.value))
-    } else {
-      this.props.updateStore("svgOptions",this.props.svgOptions.slice(0,indexOf).concat(this.props.svgOptions.slice(indexOf + 1))
-      )
-    }
+    let { svgOptions = [] } = this.props;
+    let updatedArr =
+      indexOf < 0
+        ? [...svgOptions, this.props.value]
+        : [...svgOptions.slice(0, indexOf), ...svgOptions.slice(indexOf + 1)];
+    this.props.updateStore("svgOptions", updatedArr);
   };
 
   render() {
     return (
-      <div onClick={()=>this.handleSettingsClick()}>
+      <div onClick={() => this.handleSettingsClick()}>
         <input type="checkbox" checked={this.state.isClicked} />
         <label className="checkbox-label-svg">{this.props.option}</label>
       </div>
@@ -76,7 +75,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SvgSetting);
+export default connect(mapStateToProps, mapDispatchToProps)(SvgSetting);
