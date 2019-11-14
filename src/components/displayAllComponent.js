@@ -22,16 +22,7 @@ class DisplayAllComponent extends Component {
       changeObj(option, this.props.svgObject.plugins);
     }
     for (var setting of this.props.svgSettingList) {
-      originalAndOptimised = {
-        originalSvg: setting.dataurl,
-        name: setting.name,
-        optimisedSvg: await optimizeSvg(
-          setting.dataurl,
-          this.props.svgObject.plugins
-        )
-      };
       let SvgPlugins = this.props.svgOptions.length > 0 ?  this.props.svgObject.plugins : null;
-    
         originalAndOptimised = {
           originalSvg: setting.dataurl,
           name: setting.name,
