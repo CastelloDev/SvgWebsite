@@ -1,0 +1,67 @@
+.display-page-div{
+    padding: 171px;
+    width: 373px; 
+}
+
+
+
+ellipse,rect,path,text,linearGradient,polygon,circle{ &:hover{ 
+   background-color: yellow;
+   fill: yellow;
+} }
+ .inline-display-position{
+   padding-top: 40px;
+ }
+ svg{
+    max-height: 106px;
+    max-width: fit-content;
+ }
+  
+ .display-svgs-border-match {
+    max-height: 381px;
+    border: outset;
+    border-color: green;
+}
+
+ .display-original-optimised{
+    overflow-y: scroll;
+    max-height: 571px;
+    border: outset;
+    border-color: green;
+ }
+
+ .button-background{
+    background-color: grey;
+    height: 171px;   
+ }
+ .position-loader{
+   padding-top: 11%;
+}
+
+ .loader {
+    border: 16px solid greenyellow;
+    border-radius: 111px;
+    border-top: 16px solid #bcda12;
+    width: 197px;
+    height: 199px;
+    animation: spin 4s linear infinite;
+ }
+
+ /* Safari */
+@-webkit-keyframes spin {
+   0% { -webkit-transform: rotate(0deg); }
+   100% { -webkit-transform: rotate(360deg); }
+ }
+ 
+ @keyframes spin {
+   0% { transform: rotate(0deg); }
+   100% { transform: rotate(360deg); }
+ }
+
+ li{
+     display: table-cell;
+     padding: 10px; 
+     vertical-align: top; 
+     position:relative; 
+     text-align: center;
+   }

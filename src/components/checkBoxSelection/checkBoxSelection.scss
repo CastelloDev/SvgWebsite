@@ -1,25 +1,16 @@
 .checkbox-container-clicked {
-  background-color: yellow;
-  width: 80%;
-  height: 10%;
+  background-color: #b5cfe1;
 }
 
 .checkbox-container-unclicked {
-  background-color: white;
-  width: 80%;
-  height: 10%;
-  border: 1px solid black;
+  background-color: #FFFFFF;
+  border: 1px solid #000000;
 }
 
-.checkbox-input,
-.checkbox-label {
-  margin-top: 12%;
-  margin-left: 12%;
-}
+
 .checkbox-input-svg,
 .checkbox-label-svg {
-  margin-top: 2%;
-  margin-left: 2%;
+  padding-left: 3%;
 }
 
 .main {
@@ -29,24 +20,50 @@
 
 .file {
   display: flex;
-  margin-top: 20px;
+      padding: 2%;
 }
 
 .hide-file-list {
-  margin-top: 20px;
   display: none;
 }
-
 .card-settings {
-  height: 600px;
+  height: 350px;
   overflow-y: scroll;
-  background-color: #b5cfe1;
-  width: 350px;
-  padding-left: 20px;
-  box-shadow: 10px 10px 55px 0px black;
+  background-color:#b5cfe1 ;
+  width: 600px;
 }
 
-.slider {
-  margin-top: 10px;
-  margin-bottom: 10px;
+.home-display {
+  display: flex;
 }
+.choose {
+  width: 50%;
+}
+.display {
+  width: 50%;
+}
+
+.optimize-button{
+  text-align: center;
+  display: inline-block;
+  justify-items: center;
+  width:100px;
+  height: 70px;
+  border-radius: 25px;
+  background-color: #b5cfe1;
+  align-items: center;
+}
+
+.download-button {
+  height: 70px;
+  border-radius: 35px;
+  background-color: #b6e1b5;
+  position: fixed;
+}
+.optimise-button-div{
+  display: flex;
+  justify-content: center;
+
+}
+
+
